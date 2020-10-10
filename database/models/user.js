@@ -36,10 +36,12 @@ const userSchema = new Schema({
   },
   goal: {
     type: Number,
+    min: [0, "goal cannot be negative"],
   },
   revenue: {
     type: Number,
     default: 0,
+    min: [0, "revenue cannot be negative"],
   },
   items: [
     {
