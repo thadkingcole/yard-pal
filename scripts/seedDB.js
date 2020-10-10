@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const db = require("../models");
+const db = require("../database/models");
 
 // This file empties the Books collection and inserts the books below
 
@@ -12,7 +12,7 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/yard-pal", {
 
 const sellerSeed = [
   {
-    email: "test@example.com",
+    username: "test@example.com",
     password: "superSecure:)",
     goal: 100,
     items: [
@@ -24,8 +24,8 @@ const sellerSeed = [
     ]
   },
   {
-    email: "test1@example.com",
-    password: "superSecure:)",
+    username: "test1@example.com",
+    password: "lessSecure:(",
     goal: 100,
     items: [
       {
@@ -37,8 +37,8 @@ const sellerSeed = [
   },
 ];
 
-db.Sellers.deleteMany({})
-  .then(() => db.Sellers.insertMany(sellerSeed))
+db.User.deleteMany({})
+  .then(() => db.User.insertMany(sellerSeed))
   .then((data) => {
     console.log('data', data);
     console.log(data.length + " records inserted!");
