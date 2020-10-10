@@ -4,11 +4,12 @@ import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 
 
 
-function LoginComponent() {
+function LoginComponent(props) {
+    
     return (
         <Container>
             <Row>
-                <Col className="col col-md-4 col-lg-6 border login bg-light">
+                <Col className="col col-md-6 col-lg-4 border login bg-light mx-auto mt-4">
                     <Form>
                         <Form.Group controlId="formGroupEmail">
                             <Form.Label>Email address</Form.Label>
@@ -19,7 +20,7 @@ function LoginComponent() {
                             <Form.Control type="password" placeholder="Password" />
                         </Form.Group>
                         <Button className="float-right" id="loginSubmit" variant="primary" type="submit">
-                            Submit
+                            {props.action}
                         </Button>
                     </Form>
                 </Col>
