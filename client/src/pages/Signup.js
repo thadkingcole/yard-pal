@@ -8,14 +8,11 @@ function Signup() {
     return(
         <Container>
             <Row>
-                <Col className="col-6 mt-4">
-                    <h6>Sign-up</h6>
-                <h6>Please enter an email address and password</h6>
-                </Col>
+                <Col className="col col-md-4 mx-auto mt-4">Please sign up by entering an email address and a desired password</Col>
             </Row>
             <Row>
                 <Col>
-                <LoginComponent />
+                <LoginComponent action="Signup" />
                 </Col>
             </Row>
         </Container>
