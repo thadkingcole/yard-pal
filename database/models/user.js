@@ -12,20 +12,27 @@ const userSchema = new Schema({
     trim: true,
     required: "Username is required",
     validate: {
-      validator: function (v) {
+      validator: (v) => {
         return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
           v
         );
       },
-      message: (props) => `${props.value} is not a valid phone number!`,
+      message: (props) => `${props.value} is not a valid email address!`,
     },
   },
   password: {
     type: String,
-    // unique: true,
     trim: true,
     required: "Password is required",
-    // TODO validation
+    validate: {
+      validator: (v) => {
+        return /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/.test(
+          v
+        );
+      },
+      message: () =>
+        "Password must be between 8 to 15 characters and contain at least one lowercase letter, one uppercase letter, one numeric digit, and one special character",
+    },
   },
   goal: {
     type: Number,
