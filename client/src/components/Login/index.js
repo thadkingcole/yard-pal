@@ -4,7 +4,7 @@ import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 
 
 
-function Login() {
+function LoginComponent() {
     return (
         <Container>
             <Row>
@@ -28,4 +28,4 @@ function Login() {
     )
 }
 
-export default Login;
+export default LoginComponent;
