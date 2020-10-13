@@ -13,7 +13,7 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/yard-pal", {
 const sellerSeed = [
   {
     username: "test@example.com",
-    password: "superSecure:)",
+    password: "SuperSecure1:)",
     goal: 100,
     items: [
       {
@@ -25,7 +25,7 @@ const sellerSeed = [
   },
   {
     username: "test1@example.com",
-    password: "lessSecure:(",
+    password: "LessSecure1:(",
     goal: 100,
     items: [
       {

@@ -37,7 +37,9 @@ router.post('/', (req, res) => {
 router.post(
   '/login',
   (req, res, next) => {
-    console.log('hit route post  /login')
+    console.log('hit route post  /login');
+    console.log('req', req);
+    console.log('res', res);
     next();
   },
   passport.authenticate('local'),
@@ -70,7 +72,7 @@ router.post('/logout', (req, res) => {
 
 // sale items add
 
-router.put('/addItems', (req, res) => {
+router.put('/addItem', (req, res) => {
   console.log('hit route put /addItems');
   if (req.user) {
     //add items to document
@@ -87,10 +89,7 @@ router.put('/addItems', (req, res) => {
     });
   } else {
     res.status(404).json({ msg: 'NO SELLER LOGGED IN' });
-
   }
-
-
 });
 
 module.exports = router;
