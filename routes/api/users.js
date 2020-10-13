@@ -7,6 +7,7 @@ const passport = require('../../passport');
 
 router.post('/', (req, res) => {
   const { username, password } = req.body;
+  console.log('fired POST')
 
   User.findOne({ username: username }, (err, user) => {
     if (err) {

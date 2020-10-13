@@ -1,7 +1,45 @@
-import React from 'react'
+import axios from 'axios';
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 
 function Signup() {
+  const history = useHistory();
+
+  const [signUpCreds, setSignUpCreds] = useState({
+    username: '',
+    password: '',
+  });
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    setSignUpCreds({ ...signUpCreds, [name]: value });
+  };
+
+  const handleSubmit = (event) => {
+    console.log('Handle Click');
+    event.preventDefault();
+
+    axios
+      .post('/api/users', {
+        
+        username: signUpCreds.username,
+        password: signUpCreds.password,
+      })
+      .then((response) => {
+        if (!response.data.error) {
+          history.replace('/Signup');
+        } else {
+          console.log('USERNAME TAKEN');
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+
   return (
     <Container>
       <Row>
@@ -12,15 +50,34 @@ function Signup() {
           <Row>
             <Col className="col col-md-6 col-lg-4 border login bg-light mx-auto mt-4">
               <Form>
-                <Form.Group controlId="formGroupEmail">
-                  <Form.Label>Email address</Form.Label>
-                  <Form.Control type="email" placeholder="Enter email" />
+                <Form.Group>
+                  <Form.Label
+                    htmlFor="inputEmail" className="sr-only"
+                  >Email address</Form.Label>
+                  <Form.Control
+                    type="email"
+                    id="inputEmail"
+                    className="form-control"
+                    name="username"
+                    placeholder="Email address"
+                    value={signUpCreds.username}
+                    onChange={handleChange}
+                  />
                 </Form.Group>
-                <Form.Group controlId="formGroupPassword">
-                  <Form.Label>Password</Form.Label>
-                  <Form.Control type="password" placeholder="Password" />
+                <Form.Group>
+                  <Form.Label
+                    htmlFor="inputEmail" className="sr-only"
+                  >Password</Form.Label>
+                  <Form.Control
+                    type="password"
+                    id="inputPassword"
+                    className="form-control"
+                    name="password"
+                    placeholder="Password"
+                    value={signUpCreds.password}
+                    onChange={handleChange} />
                 </Form.Group>
-                <Button className="float-right" id="loginSubmit" variant="primary" type="submit">
+                <Button className="btn btn-lg btn-primary btn-block" type="submit" onClick={handleSubmit}>
                   Sign Up
                 </Button>
               </Form>
@@ -31,4 +88,5 @@ function Signup() {
     </Container>
   )
 }
+
 export default Signup;
