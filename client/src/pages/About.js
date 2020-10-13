@@ -8,18 +8,18 @@ function About() {
     return (
         <Container>
             <br></br>
-            <h2>About</h2>
+            <h2 className="headerAb">About</h2>
             <br></br>
             <Row>
                 <Col className="col col-md-8 col-lg-8 col-sm-8">
                     <p>Yard Pal is designed to allow sellers to provide their inventory of items to potential buyers in their local area prior to the buyer showing up. This application will provide a more efficient way of selling items at the comfort of the buyer's home and the user will be interacting with a local seller in their area/neighborhood.</p>
                 </Col>
                 <Col className="col col-md-4 col-lg-4">
-                    <img src={YPAbout} className="rounded-circle" alt="" />
+                    <img src={YPAbout} className="rounded-circle webimg" alt="" />
                 </Col>
             </Row>
             <br />
-            <h3>Contributors</h3>
+            <h3 className="cntrb">Contributors</h3>
             <br />
             <Row>
                 <Col className="col col-md-4 col-lg-4">
@@ -27,7 +27,7 @@ function About() {
                         <p>
                             <img className="grabbedpics" src="https://avatars0.githubusercontent.com/u/64025581?s=460&u=13bdf158911b6527218703f4523b9dd75ec645b6&v=4" />
                         </p>
-                        <h4>Suresh Kumar</h4>
+                        <h4 className="authorN">Suresh Kumar</h4>
                     </div>
                     <br />
                 </Col>
@@ -70,7 +70,7 @@ function About() {
                         <p>
                             <img className="grabbedpics" src="https://avatars0.githubusercontent.com/u/61917141?s=460&u=022d23bd3cbedcd57e2b51363de5ae72908c5ccd&v=4" />
                         </p>
-                        <h4>Everett Diuguid</h4>
+                        <h4 className="authorN">Everett Diuguid</h4>
                     </div>
                     <br />
                 </Col>
@@ -83,7 +83,7 @@ function About() {
                         <p>
                             <img className="grabbedpics" src="https://avatars2.githubusercontent.com/u/62404650?s=460&u=5dab2d5149877ee31b59f206474ad31488b09ade&v=4" />
                         </p>
-                        <h4>Thad Cole</h4>
+                        <h4 className="authorN">Thad Cole</h4>
                     </div>
                     <br />
                 </Col>
@@ -126,7 +126,7 @@ function About() {
                         <p>
                             <img className="grabbedpics" src="https://avatars2.githubusercontent.com/u/55123034?s=460&u=0798b9290bccdc2abbb945542827544044a19233&v=4" />
                         </p>
-                        <h4>Ibrahim Riyami</h4>
+                        <h4 className="authorN">Ibrahim Riyami</h4>
                     </div>
                     <br />
                 </Col>

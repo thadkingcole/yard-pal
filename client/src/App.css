@@ -31,15 +31,15 @@
   border-radius: 20px;
 }
 
-h2 {
+.headerAb {
   text-align: center;
 }
 
-h3 {
+.cntrb {
   text-align: center;
 }
 
-img {
+.webimg {
   max-width: 100%;
 }
 
@@ -50,7 +50,7 @@ img {
   height: 250px;
 }
 
-h4 {
+.authorN {
   margin-left: 50px;
 }
 
