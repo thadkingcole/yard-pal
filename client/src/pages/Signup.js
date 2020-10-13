@@ -29,7 +29,7 @@ function Signup() {
       })
       .then((response) => {
         if (!response.data.error) {
-          history.replace('/Signup');
+          history.replace('/login');
         } else {
           console.log('USERNAME TAKEN');
         }
