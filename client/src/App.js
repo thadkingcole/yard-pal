@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import NavBar from './components/NavBar/index';
 import Jumbo from './components/Jumbotron/index';
 import Container from 'react-bootstrap/Container';
@@ -10,8 +10,7 @@ import Login from './pages/Login';
 // import About from './pages/About';
 import { Switch, Route, BrowserRouter } from 'react-router-dom';
 
-class App extends Component {
-  render() {
+const App = () => {
     return (
       <BrowserRouter>
         <Container>
@@ -30,6 +29,5 @@ class App extends Component {
       </BrowserRouter>
     );
   }
-}
 
 export default App;
