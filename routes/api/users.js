@@ -7,7 +7,7 @@ const passport = require('../../passport');
 
 router.post('/', (req, res) => {
   const { username, password } = req.body;
-
+  console.log('hit route post  /')
   User.findOne({ username: username }, (err, user) => {
     if (err) {
       console.log('User Create Error: ', err);
@@ -37,6 +37,7 @@ router.post('/', (req, res) => {
 router.post(
   '/login',
   (req, res, next) => {
+    console.log('hit route post  /login')
     next();
   },
   passport.authenticate('local'),
@@ -49,6 +50,7 @@ router.post(
 );
 
 router.get('/', (req, res) => {
+  console.log('hit route get /');
   if (req.user) {
     res.json({ user: req.user });
   } else {
@@ -57,12 +59,38 @@ router.get('/', (req, res) => {
 });
 
 router.post('/logout', (req, res) => {
+  console.log('hit route post /logout');
   if (req.user) {
     req.logout();
     res.status(200).json({ msg: 'LOGGED OUT' });
   } else {
     res.status(404).json({ msg: 'NO USER TO LOGOUT' });
   }
+});
+
+// sale items add
+
+router.put('/addItems', (req, res) => {
+  console.log('hit route put /addItems');
+  if (req.user) {
+    //add items to document
+    console.log("in if req.user")
+    User.findOneAndUpdate(
+      { username: req.user },
+      { $push: { items: req.body } },
+      { safe: true, upsert: true, new: true, runValidators: true }
+    ).then(dbItems => {
+      console.log("findoneandupdate success");
+      res.json(dbItems);
+    }).catch(err => {
+      res.json(err);
+    });
+  } else {
+    res.status(404).json({ msg: 'NO SELLER LOGGED IN' });
+
+  }
+
+
 });
 
 module.exports = router;
