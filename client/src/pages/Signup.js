@@ -1,21 +1,34 @@
 import React from 'react'
-import LoginComponent from '../components/Login/index'
-import Container from 'react-bootstrap/Container'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
+import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 
 function Signup() {
-    return(
-        <Container>
-            <Row>
-                <Col className="col col-md-4 mx-auto mt-4">Please sign up by entering an email address and a desired password</Col>
-            </Row>
-            <Row>
-                <Col>
-                <LoginComponent action="Signup" />
-                </Col>
-            </Row>
-        </Container>
-    )
+  return (
+    <Container>
+      <Row>
+        <Col className="col col-md-4 mx-auto mt-4">Please sign up by entering an email address and a desired password</Col>
+      </Row>
+      <Row>
+        <Col>
+          <Row>
+            <Col className="col col-md-6 col-lg-4 border login bg-light mx-auto mt-4">
+              <Form>
+                <Form.Group controlId="formGroupEmail">
+                  <Form.Label>Email address</Form.Label>
+                  <Form.Control type="email" placeholder="Enter email" />
+                </Form.Group>
+                <Form.Group controlId="formGroupPassword">
+                  <Form.Label>Password</Form.Label>
+                  <Form.Control type="password" placeholder="Password" />
+                </Form.Group>
+                <Button className="float-right" id="loginSubmit" variant="primary" type="submit">
+                  Sign Up
+                </Button>
+              </Form>
+            </Col>
+          </Row>
+        </Col>
+      </Row>
+    </Container>
+  )
 }
 export default Signup;
