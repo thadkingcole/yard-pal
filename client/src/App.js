@@ -7,7 +7,7 @@ import Col from 'react-bootstrap/Col';
 import "./App.css";
 import Signup from './pages/Signup';
 import Login from './pages/Login';
-// import About from './pages/About';
+import About from './pages/About';
 import { Switch, Route, BrowserRouter } from 'react-router-dom';
 
 class App extends Component {
@@ -25,7 +25,7 @@ class App extends Component {
         <Switch>
           <Route exact path="/Login" component={Login} />
           <Route exact path="/Signup" component={Signup} />
-          {/* <Route exact path="/About" component={About} /> */}
+          <Route exact path="/About" component={About} />
         </Switch>
       </BrowserRouter>
     );
