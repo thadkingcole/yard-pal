@@ -92,4 +92,25 @@ router.put('/addItem', (req, res) => {
   }
 });
 
+//sale item delete
+
+router.put('/delItem', (req, res) => {
+  console.log('hit route put /addItems');
+  if (req.user) {
+    //del items to document
+    console.log("in if req.user")
+    User.findOneAndUpdate(
+      { username: req.user },
+      { $pull: { items: { _id: req.params.itemId } } }, { safe: true, upsert: true },
+    ).then(dbItems => {
+      console.log("findoneandupdate for del success");
+      res.json(dbItems);
+    }).catch(err => {
+      res.json(err);
+    });
+  } else {
+    res.status(404).json({ msg: 'NO SELLER LOGGED IN' });
+  }
+});
+
 module.exports = router;
