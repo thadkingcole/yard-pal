@@ -18,7 +18,10 @@ function NavBar() {
                     eventKey="signUp">Sign-up</Nav.Link>
             </Nav.Item>
             <Nav.Item>
-                <Nav.Link eventKey="browse">Browse Items</Nav.Link>
+                <Nav.Link 
+                as={Link}
+                to="/Browse"
+                eventKey="browse">Browse Items</Nav.Link>
             </Nav.Item>
             <Nav.Item>
                 <Nav.Link

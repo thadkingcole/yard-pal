@@ -9,6 +9,7 @@ import { useStoreContext } from './store/store';
 import "./App.css";
 import Signup from './pages/Signup';
 import Login from './pages/Login';
+import Browse from './pages/Browse';
 // import About from './pages/About';
 
 
@@ -43,6 +44,7 @@ const App = () => {
         <Switch>
           <Route exact path="/Login" component={Login} />
           <Route exact path="/Signup" component={Signup} />
+          <Route exact path="/Browse" component={Browse} />
           {/* <Route exact path="/About" component={About} /> */}
         </Switch>
       </>
