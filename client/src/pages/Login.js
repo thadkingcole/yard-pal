@@ -3,7 +3,12 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { LOADING, SET_USER } from '../store/actions';
 import { useStoreContext } from '../store/store';
-import { Container, Row, Col, Form, Button } from 'react-bootstrap';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+
 
 function Login() {
   const [, /* state */ dispatch] = useStoreContext();
@@ -52,7 +57,7 @@ function Login() {
           <Row>
             <Col className="col col-md-6 col-lg-4 border login bg-light mx-auto mt-4">
               <Form>
-                <Form.Group controlId="formGroupEmail">
+                <Form.Group>
                   <Form.Label
                   htmlFor="inputEmail" className="sr-only"
                   >Email address</Form.Label>
@@ -66,7 +71,7 @@ function Login() {
                   onChange={handleChange}
                   />
                 </Form.Group>
-                <Form.Group controlId="formGroupPassword">
+                <Form.Group>
                   <Form.Label
                   htmlFor="inputEmail" className="sr-only"
                   >Password</Form.Label>

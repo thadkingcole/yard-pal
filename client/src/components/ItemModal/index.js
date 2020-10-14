@@ -1,73 +1,67 @@
-import React, { Component, useState } from 'react';
-import  {
-    Button,
-    Modal, 
-    ModalHeader,
-    ModalBody,
-    Form,
-    FormGroup,
-    Label,
-    Input
-} from 'react-boostrap';
+import React, { useState } from 'react';
+// import { Container, Row, Col, Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Label, Input } from 'react-bootstrap';
+import { Button, Modal, Form } from 'react-bootstrap';
+
 
 function ItemModal() {
-    
-    const [ modal, useModal ] = useState({
+
+    const [modalDisplay, useModal] = useState({
         modal: false,
-        item: ''
+        name: '',
+        description: '',
+        price: ''
     })
 
-    toggle = () => {
-        this.setState({
-            modal: !this.state.modal
-        });
+    const toggleActive = () => {
+        console.log('first', modalDisplay.modal);
+        useModal({ modal: !modalDisplay.modal });
     }
+    
 
-    onChange = (e) => {
-        this.setState({ [e.target.name]: e.target.value });
-    }
-    onSubmit = (e) => {
-        e.preventDefault();
-        const newItem = {
-            name: this.state.name
-        }
-        this.props.addItem(newItem);
-        this.toggle();
-    }
-    return(
+    // const onChange = (e) => {
+    //     useModal({ [e.target.name]: e.target.value });
+    // }
+
+    // const onSubmit = (e) => {
+    //     e.preventDefault();
+    //     const newItem = {
+    //         name: this.state.name
+    //     }
+    //     this.props.addItem(newItem);
+    //     this.toggle();
+    // }
+
+    return (
         <div>
             <Button
-            color="dark"
-            style={{marginBottom: '2rem' }}
-            onClick={this.toggle}
+                color="dark"
+                style={{ marginBottom: '2rem' }}
+                onClick={toggleActive}
             >
                 Add Item
             </Button>
-            <Modal
-            isOpen={this.state.modal}
-            toggle={this.toggle}>
-                    <ModalHeader toggle={this.toggle}>
-                        Add To Shopping List
-                    </ModalHeader>
-                    <ModalBody>
-                        <Form onSubmit={this.onSubmit}>
-                            <FormGroup>
-                                <Label for="item">Item</Label>
-                                <Input
+            <Modal>
+                <Modal.Header >
+                    Add To Shopping List
+                    </Modal.Header>
+                <Modal.Body>
+                    <Form>
+                        <Form.Group>
+                            <Form.Label for="item">Item</Form.Label>
+                            <Form.Control
                                 type="text"
                                 name="name"
                                 id="item"
                                 placeholder="Add Shopping Item"
-                                onChange={this.onChange}>
-                                </Input>
-                                <Button
+                            />
+                            <Button
                                 color="dark"
-                                style={{marginTop: '2rem'}}
+                                style={{ marginTop: '2rem' }}
                                 block
-                                >Add Item</Button>
-                            </FormGroup>
-                        </Form>
-                    </ModalBody>
+                            >Add Item</Button>
+                        </Form.Group>
+                    </Form>
+                </Modal.Body>
             </Modal>
         </div>
     );

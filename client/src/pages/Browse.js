@@ -1,20 +1,15 @@
 import React from 'react';
-// import ItemModal from '../components/ItemModal/index'
-import { Container, Row, Col, Form, Button } from 'react-bootstrap';
+import ItemModal from '../components/ItemModal/index'
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 function Browse() {
-    handleClick = () => {
-        console.log('click');
-    }
     return(
 <Container>
     <Row>
         <Col>
-        {/* <ItemModal /> */}
-        <Button
-        type="button"
-        onClick={handleClick}
-        >New Item</Button>
+        <ItemModal />
         </Col>
     </Row>
 </Container>

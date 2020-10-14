@@ -3,14 +3,16 @@ import React, { useEffect } from 'react';
 import { Redirect, Route, Switch, useHistory } from 'react-router-dom';
 import NavBar from './components/NavBar/index';
 import Jumbo from './components/Jumbotron/index';
-import { Container, Row, Col, Form, Button } from 'react-bootstrap';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import { LOADING, SET_USER, UNSET_USER } from './store/actions';
 import { useStoreContext } from './store/store';
 import "./App.css";
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Browse from './pages/Browse';
-// import About from './pages/About';
+
 
 
 const App = () => {
@@ -45,7 +47,6 @@ const App = () => {
           <Route exact path="/Login" component={Login} />
           <Route exact path="/Signup" component={Signup} />
           <Route exact path="/Browse" component={Browse} />
-          {/* <Route exact path="/About" component={About} /> */}
         </Switch>
       </>
     );
