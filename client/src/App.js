@@ -12,9 +12,6 @@ import "./App.css";
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import About from './pages/About';
-import { Switch, Route } from 'react-router-dom';
-
-
 
 const App = () => {
   const history = useHistory();
@@ -48,7 +45,6 @@ const App = () => {
           <Route exact path="/Login" component={Login} />
           <Route exact path="/Signup" component={Signup} />
           <Route exact path="/About" component={About} />
-          <Redirect to="/Login" />
         </Switch>
       </>
     );
