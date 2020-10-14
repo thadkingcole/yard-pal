@@ -75,7 +75,6 @@ router.post('/logout', (req, res) => {
 });
 
 // sale items add
-
 router.put('/addItem', (req, res) => {
   console.log('hit route put /addItem');
   console.log('req', req);
@@ -88,6 +87,27 @@ router.put('/addItem', (req, res) => {
       { safe: true, upsert: true, new: true, runValidators: true }
     ).then(dbItems => {
       console.log("findoneandupdate success");
+      res.json(dbItems);
+    }).catch(err => {
+      res.json(err);
+    });
+  } else {
+    res.status(404).json({ msg: 'NO SELLER LOGGED IN' });
+  }
+});
+
+//sale item delete
+router.put('/delItem', (req, res) => {
+  console.log('hit route put /delItems');
+  console.log('req', req);
+  if (req.user) {
+    //del items to document
+    console.log("in if req.user")
+    User.findOneAndUpdate(
+      { username: req.user.username },
+      { $pull: { items: { _id: req.body.itemId } } }, { safe: true, upsert: true },
+    ).then(dbItems => {
+      console.log("findoneandupdate for delete success");
       res.json(dbItems);
     }).catch(err => {
       res.json(err);
