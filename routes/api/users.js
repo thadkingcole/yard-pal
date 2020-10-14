@@ -6,6 +6,7 @@ const User = require('../../database/models/user');
 const passport = require('../../passport');
 
 router.post('/', (req, res) => {
+  console.log('req', req);
   const { username, password } = req.body;
   console.log('fired POST')
 
@@ -39,10 +40,13 @@ router.post(
   '/login',
   (req, res, next) => {
     console.log('hit route post  /login');
+    console.log('req', req);
+    console.log('res', res);
     next();
   },
   passport.authenticate('local'),
   (req, res) => {
+    console.log('req', req);
     console.log('LOGGED IN', req.user);
     res.send({
       username: req.user.username,
@@ -52,6 +56,7 @@ router.post(
 
 router.get('/', (req, res) => {
   console.log('hit route get /');
+  console.log('req', req);
   if (req.user) {
     res.json({ user: req.user });
   } else {
@@ -61,6 +66,7 @@ router.get('/', (req, res) => {
 
 router.post('/logout', (req, res) => {
   console.log('hit route post /logout');
+  console.log('req', req);
   if (req.user) {
     req.logout();
     res.status(200).json({ msg: 'LOGGED OUT' });
@@ -72,8 +78,10 @@ router.post('/logout', (req, res) => {
 // sale items add
 router.put('/addItem', (req, res) => {
   console.log('hit route put /addItem');
+  console.log('req', req);
   if (req.user) {
     //add items to document
+    console.log("in if req.user")
     User.findOneAndUpdate(
       { username: req.user.username },
       { $push: { items: req.body.item } },
@@ -92,8 +100,10 @@ router.put('/addItem', (req, res) => {
 //sale item delete
 router.put('/delItem', (req, res) => {
   console.log('hit route put /delItems');
+  console.log('req', req);
   if (req.user) {
     //del items to document
+    console.log("in if req.user")
     User.findOneAndUpdate(
       { username: req.user.username },
       { $pull: { items: { _id: req.body.itemId } } }, { safe: true, upsert: true },
