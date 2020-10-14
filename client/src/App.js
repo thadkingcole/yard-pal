@@ -14,6 +14,7 @@ import Login from './pages/Login';
 import Browse from './pages/Browse';
 
 
+import About from './pages/About';
 
 const App = () => {
   const history = useHistory();
@@ -47,6 +48,7 @@ const App = () => {
           <Route exact path="/Login" component={Login} />
           <Route exact path="/Signup" component={Signup} />
           <Route exact path="/Browse" component={Browse} />
+          <Route exact path="/About" component={About} />
         </Switch>
       </>
     );

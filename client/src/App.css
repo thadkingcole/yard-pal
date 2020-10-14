@@ -31,3 +31,47 @@
   border-radius: 20px;
 }
 
+.headerAb {
+  text-align: center;
+}
+
+.cntrb {
+  text-align: center;
+}
+
+.webimg {
+  max-width: 100%;
+}
+
+.grabbedpics {
+  max-width: 100%;
+  border-radius: 50%;
+  padding: 4px;
+  height: 250px;
+}
+
+.authorN {
+  margin-left: 50px;
+}
+
+hr {
+  border: 0;
+  width: 100%;
+  color: black;
+  height: 1;
+  background-color: black;
+  border-color: black;
+}
+
+.gitlink {
+  margin-left: 250px;
+  height: 50px;
+}
+
+.websitelink {
+  height: 50px;
+}
+
+.linkedinlink{
+  height: 50px;
+}
