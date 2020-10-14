@@ -8,7 +8,8 @@ const passport = require('../../passport');
 router.post('/', (req, res) => {
   console.log('req', req);
   const { username, password } = req.body;
-  console.log('hit route post  /')
+  console.log('fired POST')
+
   User.findOne({ username: username }, (err, user) => {
     if (err) {
       console.log('User Create Error: ', err);
