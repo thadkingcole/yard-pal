@@ -6,6 +6,7 @@ const User = require('../../database/models/user');
 const passport = require('../../passport');
 
 router.post('/', (req, res) => {
+  console.log('req', req);
   const { username, password } = req.body;
   console.log('hit route post  /')
   User.findOne({ username: username }, (err, user) => {
@@ -44,6 +45,7 @@ router.post(
   },
   passport.authenticate('local'),
   (req, res) => {
+    console.log('req', req);
     console.log('LOGGED IN', req.user);
     res.send({
       username: req.user.username,
@@ -53,6 +55,7 @@ router.post(
 
 router.get('/', (req, res) => {
   console.log('hit route get /');
+  console.log('req', req);
   if (req.user) {
     res.json({ user: req.user });
   } else {
@@ -62,6 +65,7 @@ router.get('/', (req, res) => {
 
 router.post('/logout', (req, res) => {
   console.log('hit route post /logout');
+  console.log('req', req);
   if (req.user) {
     req.logout();
     res.status(200).json({ msg: 'LOGGED OUT' });
@@ -73,37 +77,17 @@ router.post('/logout', (req, res) => {
 // sale items add
 
 router.put('/addItem', (req, res) => {
-  console.log('hit route put /addItems');
+  console.log('hit route put /addItem');
+  console.log('req', req);
   if (req.user) {
     //add items to document
     console.log("in if req.user")
     User.findOneAndUpdate(
-      { username: req.user },
-      { $push: { items: req.body } },
+      { username: req.user.username },
+      { $push: { items: req.body.item } },
       { safe: true, upsert: true, new: true, runValidators: true }
     ).then(dbItems => {
       console.log("findoneandupdate success");
-      res.json(dbItems);
-    }).catch(err => {
-      res.json(err);
-    });
-  } else {
-    res.status(404).json({ msg: 'NO SELLER LOGGED IN' });
-  }
-});
-
-//sale item delete
-
-router.put('/delItem', (req, res) => {
-  console.log('hit route put /addItems');
-  if (req.user) {
-    //del items to document
-    console.log("in if req.user")
-    User.findOneAndUpdate(
-      { username: req.user },
-      { $pull: { items: { _id: req.params.itemId } } }, { safe: true, upsert: true },
-    ).then(dbItems => {
-      console.log("findoneandupdate for del success");
       res.json(dbItems);
     }).catch(err => {
       res.json(err);
