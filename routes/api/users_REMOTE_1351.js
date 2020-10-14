@@ -38,7 +38,6 @@ router.post('/', (req, res) => {
 router.post(
   '/login',
   (req, res, next) => {
-    console.log('hit route post  /login');
     next();
   },
   passport.authenticate('local'),
@@ -51,7 +50,6 @@ router.post(
 );
 
 router.get('/', (req, res) => {
-  console.log('hit route get /');
   if (req.user) {
     res.json({ user: req.user });
   } else {
@@ -60,51 +58,11 @@ router.get('/', (req, res) => {
 });
 
 router.post('/logout', (req, res) => {
-  console.log('hit route post /logout');
   if (req.user) {
     req.logout();
     res.status(200).json({ msg: 'LOGGED OUT' });
   } else {
     res.status(404).json({ msg: 'NO USER TO LOGOUT' });
-  }
-});
-
-// sale items add
-router.put('/addItem', (req, res) => {
-  console.log('hit route put /addItem');
-  if (req.user) {
-    //add items to document
-    User.findOneAndUpdate(
-      { username: req.user.username },
-      { $push: { items: req.body.item } },
-      { safe: true, upsert: true, new: true, runValidators: true }
-    ).then(dbItems => {
-      console.log("findoneandupdate success");
-      res.json(dbItems);
-    }).catch(err => {
-      res.json(err);
-    });
-  } else {
-    res.status(404).json({ msg: 'NO SELLER LOGGED IN' });
-  }
-});
-
-//sale item delete
-router.put('/delItem', (req, res) => {
-  console.log('hit route put /delItems');
-  if (req.user) {
-    //del items to document
-    User.findOneAndUpdate(
-      { username: req.user.username },
-      { $pull: { items: { _id: req.body.itemId } } }, { safe: true, upsert: true },
-    ).then(dbItems => {
-      console.log("findoneandupdate for delete success");
-      res.json(dbItems);
-    }).catch(err => {
-      res.json(err);
-    });
-  } else {
-    res.status(404).json({ msg: 'NO SELLER LOGGED IN' });
   }
 });
 
