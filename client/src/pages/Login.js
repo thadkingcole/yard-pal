@@ -56,7 +56,7 @@ function Login() {
           <Row>
             <Col className="col col-md-6 col-lg-4 border login bg-light mx-auto mt-4">
               <Form>
-                <Form.Group controlId="formGroupEmail">
+                <Form.Group>
                   <Form.Label
                   htmlFor="inputEmail" className="sr-only"
                   >Email address</Form.Label>
@@ -70,7 +70,7 @@ function Login() {
                   onChange={handleChange}
                   />
                 </Form.Group>
-                <Form.Group controlId="formGroupPassword">
+                <Form.Group>
                   <Form.Label
                   htmlFor="inputEmail" className="sr-only"
                   >Password</Form.Label>
