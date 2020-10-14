@@ -11,7 +11,9 @@ import { useStoreContext } from './store/store';
 import "./App.css";
 import Signup from './pages/Signup';
 import Login from './pages/Login';
-// import About from './pages/About';
+import About from './pages/About';
+import { Switch, Route, BrowserRouter } from 'react-router-dom';
+
 
 
 const App = () => {
@@ -45,7 +47,7 @@ const App = () => {
         <Switch>
           <Route exact path="/Login" component={Login} />
           <Route exact path="/Signup" component={Signup} />
-          {/* <Route exact path="/About" component={About} /> */}
+          <Route exact path="/About" component={About} />
         </Switch>
       </>
     );
