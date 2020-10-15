@@ -13,19 +13,19 @@ function BrowseContainer() {
     
     return(
         <Row>
-            <Col className="col p-3 border">
-            <Row>
-                <Col className="col border">
+            <Col className="col bg-light p-3 border rounded itemTable">
+            <Row className="m-2 ">
+                <Col className="col bg-white m-1 pt-1 border rounded">
+                    <h4>Image</h4>
+                </Col>
+                <Col className="col bg-white m-1 pt-1 border rounded">
                     <h4>Item</h4>
                 </Col>
-                <Col className="col border">
+                <Col className="col bg-white m-1 pt-1 border rounded">
                     <h4>Description</h4>
                 </Col>
-                <Col className="col border">
+                <Col className="col bg-white m-1 pt-1 border rounded">
                     <h4>Price</h4>
-                </Col>
-                <Col className="col border">
-                    <h4>Image</h4>
                 </Col>
             </Row>
             <Row>

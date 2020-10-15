@@ -9,10 +9,11 @@ function Browse() {
     return (
         <Container>
             <Row>
-                <Col className="col p-3">
-                    <Row className="justify-content-center">
-                        <Col className="p-1 pl-3">
+                <Col>
+                    <Row>
+                        <Col className="d-inline-flex m-3">
                             <ItemModal />
+                            <h3 className="pleaseClick">Click here to add an item to your sale.</h3>
                         </Col>
                     </Row>
                     <Row>
