@@ -27,6 +27,12 @@
   border-radius: 20px;
   padding-top: 15px;
 }
+.signup {
+  height: 190px;
+  border-radius: 20px;
+  padding-top: 15px;
+}
+
 #loginSubmit {
   border-radius: 20px;
 }

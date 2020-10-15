@@ -29,7 +29,7 @@ const App = () => {
         history.push('/');
       } else {
         dispatch({ type: UNSET_USER });
-        history.push('/login');
+        // history.push('/login');
       }
     });
   }, [dispatch, history]);

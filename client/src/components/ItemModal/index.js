@@ -1,69 +1,56 @@
 import React, { useState } from 'react';
-// import { Container, Row, Col, Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Label, Input } from 'react-bootstrap';
-import { Button, Modal, Form } from 'react-bootstrap';
-
+import { Button, Modal, Form, Row, Col } from 'react-bootstrap';
 
 function ItemModal() {
-
-    const [modalDisplay, useModal] = useState({
-        modal: false,
-        name: '',
-        description: '',
-        price: ''
-    })
-
-    const toggleActive = () => {
-        console.log('first', modalDisplay.modal);
-        useModal({ modal: !modalDisplay.modal });
-    }
-    
-
-    // const onChange = (e) => {
-    //     useModal({ [e.target.name]: e.target.value });
-    // }
-
-    // const onSubmit = (e) => {
-    //     e.preventDefault();
-    //     const newItem = {
-    //         name: this.state.name
-    //     }
-    //     this.props.addItem(newItem);
-    //     this.toggle();
-    // }
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
     return (
-        <div>
-            <Button
-                color="dark"
-                style={{ marginBottom: '2rem' }}
-                onClick={toggleActive}
-            >
-                Add Item
-            </Button>
-            <Modal>
-                <Modal.Header >
-                    Add To Shopping List
+            <Row>
+                <Col>
+                    <Button variant="primary" onClick={handleShow}>
+                        Add Item
+                    </Button>
+                    <Modal show={show} onHide={handleClose}>
+                        <Modal.Header>
+                            Add item for Sale
                     </Modal.Header>
-                <Modal.Body>
-                    <Form>
-                        <Form.Group>
-                            <Form.Label for="item">Item</Form.Label>
-                            <Form.Control
-                                type="text"
-                                name="name"
-                                id="item"
-                                placeholder="Add Shopping Item"
-                            />
-                            <Button
-                                color="dark"
-                                style={{ marginTop: '2rem' }}
-                                block
-                            >Add Item</Button>
-                        </Form.Group>
-                    </Form>
-                </Modal.Body>
-            </Modal>
-        </div>
+                        <Modal.Body>
+                            <Form>
+                                <Form.Group>
+                                    <Form.Label for="item">Item</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        name="newItem-name"
+                                        id="newItem-name"
+                                        placeholder="Add Item"
+                                    />
+                                    <Form.Label for="item">Item Description</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        name="newItem-description"
+                                        id="newItem-description"
+                                        placeholder="Add Description"
+                                    />
+                                    <Form.Label for="item">Item Price</Form.Label>
+                                    <Form.Control
+                                        type="number"
+                                        name="newItem-price"
+                                        id="newItem-price"
+                                        placeholder="Add Price"
+                                    />
+                                    <Button
+                                        color="dark"
+                                        style={{ marginTop: '2rem' }}
+                                        onClick={handleClose}
+                                    >Add Item</Button>
+                                </Form.Group>
+                            </Form>
+                        </Modal.Body>
+                    </Modal>
+                </Col>
+            </Row>
     );
 }
 
