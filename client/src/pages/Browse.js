@@ -9,7 +9,7 @@ function Browse() {
     return (
         <Container>
             <Row>
-                <Col className="col col-md-6 p-3">
+                <Col className="col p-3">
                     <Row className="justify-content-center">
                         <Col className="p-1 pl-3">
                             <ItemModal />
