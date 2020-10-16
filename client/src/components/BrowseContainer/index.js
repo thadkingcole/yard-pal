@@ -7,13 +7,9 @@ function BrowseContainer() {
 
     useEffect(() => {
         async function fetchData() {
-            console.log('itemArray: before: ', itemArray);
             const request = await axios
                 .get('/api/users/browseItems');
-            console.log(request.data.items);
             setItemArray(request.data.items);
-            console.log('itemArray: after: ', itemArray);
-
             return request;
         }
         fetchData();
@@ -37,7 +33,7 @@ function BrowseContainer() {
                                         <td className="entry-id">{entry._id}</td>
                                         <td className="entry-name">{entry.name}</td>
                                         <td className="entry-description">{entry.description}</td>
-                                        <td className="entry-">{entry.price}</td>
+                                        <td className="entry-price"><h4>$ {entry.price}</h4></td>
                                     </tr>
                                 )}
                             </tbody>
