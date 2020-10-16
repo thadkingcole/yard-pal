@@ -6,9 +6,8 @@ const User = require('../../database/models/user');
 const passport = require('../../passport');
 
 router.post('/', (req, res) => {
-  console.log('req', req);
+
   const { username, password } = req.body;
-  console.log('fired POST')
 
   User.findOne({ username: username }, (err, user) => {
     if (err) {
@@ -39,15 +38,10 @@ router.post('/', (req, res) => {
 router.post(
   '/login',
   (req, res, next) => {
-    console.log('hit route post  /login');
-    console.log('req', req);
-    console.log('res', res);
     next();
   },
   passport.authenticate('local'),
   (req, res) => {
-    console.log('req', req);
-    console.log('LOGGED IN', req.user);
     res.send({
       username: req.user.username,
     });
@@ -55,8 +49,6 @@ router.post(
 );
 
 router.get('/', (req, res) => {
-  console.log('hit route get /');
-  console.log('req', req);
   if (req.user) {
     res.json({ user: req.user });
   } else {
@@ -65,8 +57,6 @@ router.get('/', (req, res) => {
 });
 
 router.post('/logout', (req, res) => {
-  console.log('hit route post /logout');
-  console.log('req', req);
   if (req.user) {
     req.logout();
     res.status(200).json({ msg: 'LOGGED OUT' });
@@ -77,17 +67,13 @@ router.post('/logout', (req, res) => {
 
 // sale items add
 router.put('/addItem', (req, res) => {
-  console.log('hit route put /addItem');
-  console.log('req', req);
   if (req.user) {
     //add items to document
-    console.log("in if req.user")
     User.findOneAndUpdate(
       { username: req.user.username },
       { $push: { items: req.body.item } },
       { safe: true, upsert: true, new: true, runValidators: true }
     ).then(dbItems => {
-      console.log("findoneandupdate success");
       res.json(dbItems);
     }).catch(err => {
       res.json(err);
@@ -99,16 +85,12 @@ router.put('/addItem', (req, res) => {
 
 //sale item delete
 router.put('/delItem', (req, res) => {
-  console.log('hit route put /delItems');
-  console.log('req', req);
   if (req.user) {
     //del items to document
-    console.log("in if req.user")
     User.findOneAndUpdate(
       { username: req.user.username },
       { $pull: { items: { _id: req.body.itemId } } }, { safe: true, upsert: true },
     ).then(dbItems => {
-      console.log("findoneandupdate for delete success");
       res.json(dbItems);
     }).catch(err => {
       res.json(err);
@@ -119,19 +101,27 @@ router.put('/delItem', (req, res) => {
 });
 
 //browse items
-
 router.get("/browseItems", (req, res) => {
-  console.log('hit route get /browseItems');
-  User.findOne(
-    { username: req.user.username }
+  if (req.user) {
+    //fetch items from this seller only
+    User.findOne(
+      { username: req.user.username }
 
-  ).then(dbItems => {
-    console.log('successfully fetched items');
-    console.log(dbItems)
-    res.json(dbItems);
-  }).catch(err => {
-    res.json(err);
-  });
+    ).then(dbItems => {
+      console.log('successfully fetched items');
+      res.json(dbItems);
+    }).catch(err => {
+      res.json(err);
+    });
+  } else {
+    //in this case fetch all items from all sellers
+    User.findAll().then(dbItems => {
+      console.log('successfully fetched items');
+      res.json(dbItems);
+    }).catch(err => {
+      res.json(err);
+    });
+  }
 
 });
 
