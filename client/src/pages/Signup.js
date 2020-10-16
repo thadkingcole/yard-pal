@@ -34,7 +34,7 @@ function Signup() {
       })
       .then((response) => {
         if (!response.data.error) {
-          history.replace('/Browse');
+          history.replace('/Login');
         } else {
           console.log('USERNAME TAKEN');
         }
