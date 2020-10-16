@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios'
-import { Col, Row, Button } from 'react-bootstrap';
+import { Col, Row } from 'react-bootstrap';
 
 function BrowseContainer() {
     const [itemArray, setItemArray] = useState([]);
@@ -17,7 +17,7 @@ function BrowseContainer() {
             return request;
         }
         fetchData();
-    }, []);
+    }, [itemArray]);
 
     return (
         <>
