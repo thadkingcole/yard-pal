@@ -17,6 +17,7 @@ function Signup() {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
+    console.log(event.target);
 
     setSignUpCreds({ ...signUpCreds, [name]: value });
   };
