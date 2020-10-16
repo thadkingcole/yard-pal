@@ -1,15 +1,19 @@
 import React from 'react';
 import axios from 'axios'
-import { Col, Row } from 'react-bootstrap';
+import { Col, Row, Button } from 'react-bootstrap';
 
 function BrowseContainer() {
+const handleClick = () => {
 
     axios
-    .get('/api/user:items')
+    .get('/api/users/browseItems')
     .then(items => {
-        console.log(items);
+        console.log('browse items', items);
     })
-    .catch(err => console.log(err));
+    .catch(err => console.log('get error', err));
+}
+
+    
     
     return(
         <Row>
@@ -29,7 +33,8 @@ function BrowseContainer() {
                 </Col>
             </Row>
             <Row>
-                <h1>Items will load from API here</h1>
+                <Button onClick={handleClick} >Browse Items</Button>
+                
             </Row>
             </Col>
         </Row>
