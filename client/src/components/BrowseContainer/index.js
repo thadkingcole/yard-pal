@@ -3,16 +3,20 @@ import axios from 'axios'
 import { Col, Row } from 'react-bootstrap';
 
 function BrowseContainer() {
+    // Declare itemArray as a setState variable, set to empty array
     const [itemArray, setItemArray] = useState([]);
-
+    //useEffect loads once when page renders calling async fetchData
     useEffect(() => {
         async function fetchData() {
+        // Async get request from axios
             const request = await axios
                 .get('/api/users/browseItems');
+        // setItemArray pushes request to itemArray
             setItemArray(request.data.items);
             return request;
         }
         fetchData();
+        // Calls useEffect anytime itemArray is changed
     }, [itemArray]);
 
     return (
@@ -28,6 +32,7 @@ function BrowseContainer() {
                                     <th><h4>Description</h4></th>
                                     <th><h4>Price</h4></th>
                                 </tr>
+                                {/* Map through Item array into table */}
                                 {itemArray.map((entry, index) =>
                                     <tr key={index}>
                                         <td className="entry-id">{entry._id}</td>
