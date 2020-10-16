@@ -42,6 +42,12 @@ function BrowseContainer() {
                 <Row>
                     <Button onClick={handleClick} >Browse Items</Button>
                 </Row>
+                <Row>
+                    <Col>
+                    {itemArray.map(item)}
+                    <p></p>
+                    </Col>
+                </Row>
             </Col>
         </Row>
     )
