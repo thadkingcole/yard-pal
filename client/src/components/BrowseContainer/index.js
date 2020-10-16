@@ -5,17 +5,19 @@ import { Col, Row, Button } from 'react-bootstrap';
 function BrowseContainer() {
     const [itemArray, setItemArray] = useState([]);
     let response;
-    const handleClick = (event) => {
-        event.preventDefault();
-        axios
+    async function handleClick(e) {
+        e.preventDefault();
+        await axios
         .get('/api/users/browseItems')
         .then(items => {
             response = items.data.items;
             console.log('INSIDE AXIOS', items.data.items);
             
+        }).then(() => {
+            setItemArray(itemArray => [...itemArray, response])
         })
         .catch(err => console.log('get error', err));
-        setItemArray(itemArray => [...itemArray, response])
+        
         console.log('AFTER setItemArray: ', itemArray);    
 
     }
