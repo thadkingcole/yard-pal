@@ -126,4 +126,7 @@ router.get("/browseItems", (req, res) => {
 
 });
 
+//get all users 
+router.get('/')
+
 module.exports = router;
