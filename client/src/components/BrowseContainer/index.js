@@ -4,52 +4,48 @@ import { Col, Row, Button } from 'react-bootstrap';
 
 function BrowseContainer() {
     const [itemArray, setItemArray] = useState([]);
-    let response;
-    async function handleClick(e) {
-        e.preventDefault();
-        await axios
-        .get('/api/users/browseItems')
-        .then(items => {
-            response = items.data.items;
-            console.log('INSIDE AXIOS', items.data.items);
-            
-        }).then(() => {
-            setItemArray(itemArray => [...itemArray, response])
-        })
-        .catch(err => console.log('get error', err));
-        
-        console.log('AFTER setItemArray: ', itemArray);    
 
-    }
-    
+    useEffect(() => {
+        async function fetchData() {
+            console.log('itemArray: before: ', itemArray);
+            const request = await axios
+                .get('/api/users/browseItems');
+            console.log(request.data.items);
+            setItemArray(request.data.items);
+            console.log('itemArray: after: ', itemArray);
+
+            return request;
+        }
+        fetchData();
+    }, []);
+
     return (
-        <Row>
-            <Col className="col bg-light p-3 border rounded itemTable">
-                <Row className="m-2 ">
-                    <Col className="col bg-white m-1 pt-1 border rounded">
-                        <h4>Image</h4>
-                    </Col>
-                    <Col className="col bg-white m-1 pt-1 border rounded">
-                        <h4>Item</h4>
-                    </Col>
-                    <Col className="col bg-white m-1 pt-1 border rounded">
-                        <h4>Description</h4>
-                    </Col>
-                    <Col className="col bg-white m-1 pt-1 border rounded">
-                        <h4>Price</h4>
-                    </Col>
-                </Row>
-                <Row>
-                    <Button onClick={handleClick} >Browse Items</Button>
-                </Row>
-                <Row>
-                    <Col>
-                    {itemArray.map(item)}
-                    <p></p>
-                    </Col>
-                </Row>
-            </Col>
-        </Row>
+        <>
+            <Row>
+                <Col className="col bg-light p-3 border rounded itemTable">
+                    <Row className="m-2 ">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <th><h4>Image</h4></th>
+                                    <th><h4>Item</h4></th>
+                                    <th><h4>Description</h4></th>
+                                    <th><h4>Price</h4></th>
+                                </tr>
+                                {itemArray.map((entry, index) =>
+                                    <tr key={index}>
+                                        <td className="entry-id">{entry._id}</td>
+                                        <td className="entry-name">{entry.name}</td>
+                                        <td className="entry-description">{entry.description}</td>
+                                        <td className="entry-">{entry.price}</td>
+                                    </tr>
+                                )}
+                            </tbody>
+                        </table>
+                    </Row>
+                </Col>
+            </Row>
+        </>
     )
 }
 

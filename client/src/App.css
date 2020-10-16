@@ -88,3 +88,19 @@ hr {
 .pleaseClick {
   margin-left: 20px;
 }
+table {
+  margin: auto;
+  
+}
+
+tbody {
+  width: 1000px;
+}
+
+td {
+  width: 250px;
+  height: 30px;
+  text-align: center;
+  padding-left: 10px;
+  padding-right: 10px;
+}
