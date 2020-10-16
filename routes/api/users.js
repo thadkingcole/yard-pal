@@ -108,15 +108,15 @@ router.get("/browseItems", (req, res) => {
       { username: req.user.username }
 
     ).then(dbItems => {
-      console.log('successfully fetched items');
+      console.log('successfully fetched items from this seller');
       res.json(dbItems);
     }).catch(err => {
       res.json(err);
     });
   } else {
     //in this case fetch all items from all sellers
-    User.findAll().then(dbItems => {
-      console.log('successfully fetched items');
+    User.find({}).then(dbItems => {
+      console.log('successfully fetched items from ALL sellers');
       res.json(dbItems);
     }).catch(err => {
       res.json(err);
