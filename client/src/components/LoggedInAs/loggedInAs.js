@@ -8,15 +8,16 @@ function LoggedInAs() {
     const [loggedInAs, setLoggedInAs] = useState('');
 
     useEffect(() => {
+        
         async function fetchData() {
             const request = await axios
-                .get('/api/users');
-            console.log(request.data)
+                .get('/api/users')
+            console.log('request: ', request.data)
             setLoggedInAs(request.data.user.username);
             return request;
         }
         fetchData();
-    }, [loggedInAs]);
+    }, []);
 
     return (
         <>
