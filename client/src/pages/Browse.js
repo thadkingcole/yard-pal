@@ -12,7 +12,6 @@ function Browse() {
     const [itemArray, setItemArray] = useState([]);
     //useEffect loads once when page renders calling async fetchData
     useEffect(() => {
-        console.log('useEffect: BrowserComponent')
         async function fetchData() {
             // Async get request from axios
             const request = await axios

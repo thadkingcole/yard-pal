@@ -41,25 +41,6 @@ function ItemModal({ itemArray, setItemArray }) {
             });
     };
 
-    // const imagesPreview = (input, placeToInsertImagePreview) => {
-    //     if (input.files) {
-    //       let filesAmount = input.files.length;
-    //       for (let i = 0; i < filesAmount; i++) {
-    //         let reader = new FileReader();
-    //         reader.onload = function(event) {
-    //           $($.parseHTML("<img>"))
-    //             .attr("src", event.target.result)
-    //             .appendTo(placeToInsertImagePreview);
-    //         };
-    //         reader.readAsDataURL(input.files[i]);
-    //       }
-    //     }
-    //   };
-    
-    // const uploadChange = () => {
-    //     imagesPreview(this, "div.preview-images");
-    //   };
-
     return (
         <Row>
             <Col>

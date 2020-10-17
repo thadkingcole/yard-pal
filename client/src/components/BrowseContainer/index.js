@@ -4,12 +4,11 @@ import { Col, Row } from 'react-bootstrap';
 
 function BrowseContainer({ itemArray, setItemArray }) {
     const handleDelete = (_id) => {
-        
         axios
             .put('/api/users/delItem', {
                 itemId: _id
             })
-            .then((response) => {
+            .then(() => {
                 async function fetchData() {
                     // Async get request from axios
                     const request = await axios
@@ -24,7 +23,6 @@ function BrowseContainer({ itemArray, setItemArray }) {
                 console.log(error);
             });
     }
-    
     return (
         <>
             <Row>
@@ -46,10 +44,10 @@ function BrowseContainer({ itemArray, setItemArray }) {
                                         <td className="entry-description">{entry.description}</td>
                                         <td className="entry-price"><h4>$ {entry.price}</h4></td>
                                         <button
-                                        onClick={() => handleDelete(entry._id)}
+                                            onClick={() => handleDelete(entry._id)}
                                         >X</button>
                                     </tr>
-                                    
+
                                 )}
                             </tbody>
                         </table>
