@@ -10,7 +10,8 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
 
-function Login() {
+function Login({ loggedInAs, setLoggedInAs }) {
+  
   const [, /* state */ dispatch] = useStoreContext();
   const history = useHistory();
 
@@ -38,6 +39,7 @@ function Login() {
       .then((response) => {
         if (response.status === 200) {
           dispatch({ type: SET_USER, user: response.data });
+          setLoggedInAs(response.data.username);
           history.replace('/Browse');
         }
       })

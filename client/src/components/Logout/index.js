@@ -1,12 +1,19 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
-function Logout() {
-    const handleClick = () => {
-        console.log('click');
-    }
+function Logout({ handleLogout }) {
+    
     return(
-        <Button onClick={handleClick} className="btn btn-primary ml-1 logout">Logout</Button>
+        <Container>
+            <Row>
+                <Col>
+                <Button onClick={handleLogout} className="btn btn-primary ml-1 logout">Logout</Button>
+                </Col>
+            </Row>
+        </Container>
     )
 }
 

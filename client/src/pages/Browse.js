@@ -5,7 +5,6 @@ import BrowseContainer from '../components/BrowseContainer/index'
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import LoggedInAs from '../components/LoggedInAs/loggedInAs'
 
 function Browse() {
     // Declare itemArray as a setState variable, set to empty array
@@ -34,9 +33,6 @@ function Browse() {
                                 setItemArray={setItemArray}
                                 itemArray={itemArray}
                             />
-                        </Col>
-                        <Col className="col float-right">
-                            <LoggedInAs />
                         </Col>
                     </Row>
                     <Row>
