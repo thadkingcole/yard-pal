@@ -39,9 +39,8 @@ function Login({ loggedInAs, setLoggedInAs }) {
       .then((response) => {
         if (response.status === 200) {
           dispatch({ type: SET_USER, user: response.data });
-          console.log('response post login.js ln 42: ', response);
           setLoggedInAs(response.data.username);
-          history.replace('/Browsegit pul');
+          history.replace('/Browse');
         }
       })
       .catch((error) => {
