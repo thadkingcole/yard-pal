@@ -35,6 +35,35 @@ router.post('/', (req, res) => {
   });
 });
 
+router.put("/editItem", async (req, res) => {
+  console.log('hit route put /editItem');
+  if (req.user) {
+    //edit items
+    const modifiedItem = {
+      name: req.body.name,
+      description: req.body.description,
+      price: req.body.price
+    };
+    //add items to document
+    User.findOneAndUpdate(
+      { username: req.user.username },
+      { $pull: { items: { _id: req.body.itemId } } }, { safe: true, upsert: true }).then(
+        User.findOneAndUpdate(
+          { username: req.user.username },
+          { $push: { items: modifiedItem } },
+          { safe: true, upsert: true, new: true, runValidators: true }
+        ).then(dbItems => {
+          res.json(dbItems);
+        }).catch(err => {
+          res.json(err);
+        }).catch(err => {
+          res.json(err);
+        }));
+  } else {
+    res.status(404).json({ msg: 'NO SELLER LOGGED IN' });
+  }
+});
+
 router.post(
   '/login',
   (req, res, next) => {
