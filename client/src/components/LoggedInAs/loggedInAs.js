@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-
+import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Logout  from '../Logout/index'
 
 function LoggedInAs() {
 
@@ -21,12 +20,9 @@ function LoggedInAs() {
 
     return (
         <>
-            <Col className="col pt-4">{loggedInAs}</Col>
-            <Col className="col pt-4">
-            <Logout />
-            </Col>
-            
-            
+            <Row>
+                <Col className="col">Logged in as: {loggedInAs}</Col>
+            </Row>
         </>
     )
 }
