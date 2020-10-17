@@ -35,7 +35,6 @@ router.post('/', (req, res) => {
   });
 });
 
-router.put("/editItem", async (req, res) => {
   console.log('hit route put /editItem');
   if (req.user) {
     //edit items
