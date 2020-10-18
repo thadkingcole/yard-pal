@@ -169,7 +169,7 @@ router.get("/searchUsername", (req, res) => {
   User.findOne({ username: req.body.username })
     .then((userdata) => {
       console.log(userdata._id);
-      res.redirect(`/api/users/browse/${userdata._id}`);
+      res.json(userdata._id);
     })
     .catch((err) => console.log(err));
 });
