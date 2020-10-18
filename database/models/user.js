@@ -72,7 +72,10 @@ const userSchema = new Schema({
             `${props.value} is not a valid price (<2 decimals)`,
         },
       },
-      // picture ?
+      imgUrl: {
+        type: String,
+        trim: true,
+      }
     },
   ],
 });

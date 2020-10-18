@@ -14,6 +14,7 @@ function ItemModal({ itemArray, setItemArray }) {
         name: '',
         description: '',
         price: 0,
+        imgUrl: "",
     });
 
     const handleChange = (event) => {
@@ -25,11 +26,12 @@ function ItemModal({ itemArray, setItemArray }) {
         event.preventDefault();
         setShow(false);
         axios
-            .put('/api/users/addItem', {
+            .put('/api/users/addItem', { 
                 item: {
                     name: newItemInfo.name,
                     description: newItemInfo.description,
-                    price: newItemInfo.price
+                    price: newItemInfo.price,
+                    imgUrl: newItemInfo.imgUrl,
                 }
             })
             .then((response) => {
@@ -86,23 +88,17 @@ function ItemModal({ itemArray, setItemArray }) {
                                     placeholder="Item Price"
                                     value={newItemInfo.price}
                                     onChange={handleChange} />
+                                
+                                <Form.Label>Image (URL)</Form.Label>
+                                <Form.Control
+                                    type="text"
+                                    id="imgUrl"
+                                    className="form-control"
+                                    name="imgUrl"
+                                    placeholder="https://placekitten.com/200/200"
+                                    value={newItemInfo.imgUrl}
+                                    onChange={handleChange} />
 
-                                <Form.Label>Upload Images</Form.Label>
-                                <Form className="mt-4 p-2 border shadow"
-                                    action="/upload"
-                                    method="POST"
-                                    enctype="multipart/form-data"
-                                >
-                                    <Form.Group class="form-group">
-                                        <Form.Control
-                                            type="file"
-                                            name="file"
-                                            id="input-files"
-                                            className="form-control-file border"
-                                        />
-                                    </Form.Group>
-                                    <Button type="submit" className="btn btn-primary">Submit</Button>
-                                </Form>
                                 <Button
                                     color="dark"
                                     style={{ marginTop: '2rem' }}
@@ -110,11 +106,6 @@ function ItemModal({ itemArray, setItemArray }) {
                                 >Add Item</Button>
                             </Form.Group>
                         </Form>
-                        <Row className="row">
-                            <Col class="col-sm-12">
-                                <div class="preview-images">Preview Images Here</div>
-                            </Col>
-                        </Row>
 
                     </Modal.Body>
                 </Modal>
