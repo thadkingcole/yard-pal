@@ -25,7 +25,7 @@ function Browse() {
 
     return (
         <Container>
-            <Row className="border">
+            <Row>
                 <Col>
                     <Row className="d-inline-flex">
                         <Col className="col" >

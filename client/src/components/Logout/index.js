@@ -10,7 +10,7 @@ function Logout({ handleLogout }) {
         <Container>
             <Row>
                 <Col>
-                <Button onClick={handleLogout} className="btn btn-primary ml-1 logout">Logout</Button>
+                <Button onClick={handleLogout} className="btn btn-primary m-1 logout">Logout</Button>
                 </Col>
             </Row>
         </Container>

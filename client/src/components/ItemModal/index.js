@@ -6,6 +6,11 @@ function ItemModal({ itemArray, setItemArray }) {
     const [show, setShow] = useState(false);
 
     const handleShow = () => setShow(true);
+    const closeModal = () => {
+        
+        setShow(false);
+
+    }
 
     const [newItemInfo, setNewItemInfo] = useState({
         name: '',
@@ -42,59 +47,61 @@ function ItemModal({ itemArray, setItemArray }) {
     return (
         <Row>
             <Col>
-                <Button className="mt-1" variant="primary" onClick={handleShow}>
+                <Button className="m-1" variant="primary" onClick={handleShow}>
                     Add
-                    </Button>
+                </Button>
                 <Modal show={show}>
                     <Modal.Header>
-                        Add item for Sale
+                        <Row>
+                            <Col>
+                            Add item for Sale
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col>
+                            <Button onClick={closeModal} variant="light">X</Button>
+                            </Col>
+                        </Row>
                     </Modal.Header>
                     <Modal.Body>
-                        <Form>
+                        <Form className="p-2">
                             <Form.Group>
-
-                                <Form.Label>Item</Form.Label>
+                                <Form.Label className="pt-1">Item</Form.Label>
                                 <Form.Control
                                     type="text"
                                     id="item"
-                                    className="form-control"
+                                    className="form-control pt-2"
                                     name="name"
                                     placeholder="Item Name"
                                     value={newItemInfo.name}
                                     onChange={handleChange} />
-
-                                <Form.Label>Description</Form.Label>
+                                <Form.Label className="pt-1">Description</Form.Label>
                                 <Form.Control
                                     type="text"
                                     id="description"
-                                    className="form-control"
+                                    className="form-control pt-2"
                                     name="description"
                                     placeholder="Item Description"
                                     value={newItemInfo.description}
                                     onChange={handleChange} />
-
-
-
-                                <Form.Label>Price</Form.Label>
+                                <Form.Label className="pt-1">Price</Form.Label>
                                 <Form.Control
                                     type="text"
                                     id="price"
-                                    className="form-control"
+                                    className="form-control pt-2"
                                     name="price"
                                     placeholder="Item Price"
                                     value={newItemInfo.price}
-                                    onChange={handleChange} />
-                                
-                                <Form.Label>Image (URL)</Form.Label>
+                                    onChange={handleChange} /> 
+                                <Form.Label className="pt-1">Image (URL)</Form.Label>
                                 <Form.Control
                                     type="text"
                                     id="imgUrl"
-                                    className="form-control"
+                                    className="form-control mt-1"
                                     name="imgUrl"
                                     placeholder="https://placekitten.com/200/200"
                                     value={newItemInfo.imgUrl}
                                     onChange={handleChange} />
-
                                 <Button
                                     color="dark"
                                     style={{ marginTop: '2rem' }}
@@ -102,7 +109,6 @@ function ItemModal({ itemArray, setItemArray }) {
                                 >Add Item</Button>
                             </Form.Group>
                         </Form>
-
                     </Modal.Body>
                 </Modal>
             </Col>
