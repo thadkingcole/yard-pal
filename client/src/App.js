@@ -21,8 +21,6 @@ const App = () => {
   const [state, dispatch] = useStoreContext();
   const [loggedInAs, setLoggedInAs] = useState('not logged in');
 
-  console.log(state);
-
   useEffect(() => {
     dispatch({ type: LOADING });
 

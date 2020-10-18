@@ -17,13 +17,10 @@ function Signup() {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    console.log(event.target);
-
     setSignUpCreds({ ...signUpCreds, [name]: value });
   };
 
   const handleSubmit = (event) => {
-    console.log('Handle Click');
     event.preventDefault();
 
     axios

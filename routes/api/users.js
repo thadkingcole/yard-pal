@@ -108,7 +108,7 @@ router.get("/browseItems", (req, res) => {
       { username: req.user.username }
 
     ).then(dbItems => {
-      console.log('successfully fetched items from this seller');
+      console.log(`successfully fetched items from ${req.user.username}`);
       res.json(dbItems);
     }).catch(err => {
       res.json(err);
@@ -116,7 +116,7 @@ router.get("/browseItems", (req, res) => {
   } else {
     //in this case fetch all items from all sellers
     User.find({}).then(dbItems => {
-      console.log('successfully fetched items from ALL sellers');
+      console.log('successfully fetched items from ALL sellers'); // do we really want to do that?
       res.json(dbItems);
     }).catch(err => {
       res.json(err);
@@ -129,7 +129,6 @@ router.get("/browseItems", (req, res) => {
 //sale item edit
 
 router.put("/editItem", async (req, res) => {
-  console.log('hit route put /editItem');
   if (req.user) {
     //edit items
     const modifiedItem = {

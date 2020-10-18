@@ -32,7 +32,6 @@ function ItemModal({ itemArray, setItemArray }) {
                 }
             })
             .then((response) => {
-                console.log(response.data.items);
                 setItemArray(response.data.items)
             })
             .catch((error) => {
