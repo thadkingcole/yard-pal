@@ -1,17 +1,16 @@
-const express = require('express');
+const express = require("express");
 
 const router = express.Router();
 
-const User = require('../../database/models/user');
-const passport = require('../../passport');
+const User = require("../../database/models/user");
+const passport = require("../../passport");
 
-router.post('/', (req, res) => {
-
+router.post("/", (req, res) => {
   const { username, password } = req.body;
 
   User.findOne({ username: username }, (err, user) => {
     if (err) {
-      console.log('User Create Error: ', err);
+      console.log("User Create Error: ", err);
       return;
     }
 
@@ -36,11 +35,11 @@ router.post('/', (req, res) => {
 });
 
 router.post(
-  '/login',
+  "/login",
   (req, res, next) => {
     next();
   },
-  passport.authenticate('local'),
+  passport.authenticate("local"),
   (req, res) => {
     res.send({
       username: req.user.username,
@@ -48,7 +47,7 @@ router.post(
   }
 );
 
-router.get('/', (req, res) => {
+router.get("/", (req, res) => {
   if (req.user) {
     res.json({ user: req.user });
   } else {
@@ -56,47 +55,52 @@ router.get('/', (req, res) => {
   }
 });
 
-router.post('/logout', (req, res) => {
+router.post("/logout", (req, res) => {
   if (req.user) {
     req.logout();
-    res.status(200).json({ msg: 'LOGGED OUT' });
+    res.status(200).json({ msg: "LOGGED OUT" });
   } else {
-    res.status(404).json({ msg: 'NO USER TO LOGOUT' });
+    res.status(404).json({ msg: "NO USER TO LOGOUT" });
   }
 });
 
 // sale items add
-router.put('/addItem', (req, res) => {
+router.put("/addItem", (req, res) => {
   if (req.user) {
     //add items to document
     User.findOneAndUpdate(
       { username: req.user.username },
       { $push: { items: req.body.item } },
       { safe: true, upsert: true, new: true, runValidators: true }
-    ).then(dbItems => {
-      res.json(dbItems);
-    }).catch(err => {
-      res.json(err);
-    });
+    )
+      .then((dbItems) => {
+        res.json(dbItems);
+      })
+      .catch((err) => {
+        res.json(err);
+      });
   } else {
-    res.status(404).json({ msg: 'NO SELLER LOGGED IN' });
+    res.status(404).json({ msg: "NO SELLER LOGGED IN" });
   }
 });
 
 //sale item delete
-router.put('/delItem', (req, res) => {
+router.put("/delItem", (req, res) => {
   if (req.user) {
     //del items to document
     User.findOneAndUpdate(
       { username: req.user.username },
-      { $pull: { items: { _id: req.body.itemId } } }, { safe: true, upsert: true },
-    ).then(dbItems => {
-      res.json(dbItems);
-    }).catch(err => {
-      res.json(err);
-    });
+      { $pull: { items: { _id: req.body.itemId } } },
+      { safe: true, upsert: true }
+    )
+      .then((dbItems) => {
+        res.json(dbItems);
+      })
+      .catch((err) => {
+        res.json(err);
+      });
   } else {
-    res.status(404).json({ msg: 'NO SELLER LOGGED IN' });
+    res.status(404).json({ msg: "NO SELLER LOGGED IN" });
   }
 });
 
@@ -104,27 +108,26 @@ router.put('/delItem', (req, res) => {
 router.get("/browseItems", (req, res) => {
   if (req.user) {
     //fetch items from this seller only
-    User.findOne(
-      { username: req.user.username }
-
-    ).then(dbItems => {
-      console.log(`successfully fetched items from ${req.user.username}`);
-      res.json(dbItems);
-    }).catch(err => {
-      res.json(err);
-    });
+    User.findOne({ username: req.user.username })
+      .then((dbItems) => {
+        console.log(`successfully fetched items from ${req.user.username}`);
+        res.json(dbItems);
+      })
+      .catch((err) => {
+        res.json(err);
+      });
   } else {
     //in this case fetch all items from all sellers
-    User.find({}).then(dbItems => {
-      console.log('successfully fetched items from ALL sellers'); // do we really want to do that?
-      res.json(dbItems);
-    }).catch(err => {
-      res.json(err);
-    });
+    User.find({})
+      .then((dbItems) => {
+        console.log("successfully fetched items from ALL sellers"); // do we really want to do that?
+        res.json(dbItems);
+      })
+      .catch((err) => {
+        res.json(err);
+      });
   }
-
 });
-
 
 //sale item edit
 
@@ -134,26 +137,41 @@ router.put("/editItem", async (req, res) => {
     const modifiedItem = {
       name: req.body.name,
       description: req.body.description,
-      price: req.body.price
+      price: req.body.price,
     };
     //add items to document
     User.findOneAndUpdate(
       { username: req.user.username },
-      { $pull: { items: { _id: req.body.itemId } } }, { safe: true, upsert: true }).then(
-        User.findOneAndUpdate(
-          { username: req.user.username },
-          { $push: { items: modifiedItem } },
-          { safe: true, upsert: true, new: true, runValidators: true }
-        ).then(dbItems => {
+      { $pull: { items: { _id: req.body.itemId } } },
+      { safe: true, upsert: true }
+    ).then(
+      User.findOneAndUpdate(
+        { username: req.user.username },
+        { $push: { items: modifiedItem } },
+        { safe: true, upsert: true, new: true, runValidators: true }
+      )
+        .then((dbItems) => {
           res.json(dbItems);
-        }).catch(err => {
+        })
+        .catch((err) => {
           res.json(err);
-        }).catch(err => {
+        })
+        .catch((err) => {
           res.json(err);
-        }));
+        })
+    );
   } else {
-    res.status(404).json({ msg: 'NO SELLER LOGGED IN' });
+    res.status(404).json({ msg: "NO SELLER LOGGED IN" });
   }
+});
+
+router.get("/searchUsername", (req, res) => {
+  User.findOne({ username: req.body.username })
+    .then((userdata) => {
+      console.log(userdata._id);
+      res.redirect(`/api/users/browse/${userdata._id}`);
+    })
+    .catch((err) => console.log(err));
 });
 
 module.exports = router;
