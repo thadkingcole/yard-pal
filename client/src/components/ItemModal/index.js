@@ -1,14 +1,11 @@
 import React, { useState } from 'react';
 import { Button, Modal, Form, Row, Col } from 'react-bootstrap';
 import axios from 'axios';
-import { useHistory } from 'react-router-dom'
 
 function ItemModal({ itemArray, setItemArray }) {
     const [show, setShow] = useState(false);
 
     const handleShow = () => setShow(true);
-
-    const history = useHistory();
 
     const [newItemInfo, setNewItemInfo] = useState({
         name: '',

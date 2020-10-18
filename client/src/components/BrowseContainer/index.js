@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
-import { Col, Row } from 'react-bootstrap';
+import Col from 'react-bootstrap/Col';
+import Row from "react-bootstrap/Row"
+import Button from "react-bootstrap/Button";
 
 function BrowseContainer({ itemArray, setItemArray }) {
     const handleDelete = (_id) => {
@@ -43,9 +45,11 @@ function BrowseContainer({ itemArray, setItemArray }) {
                                         <td className="entry-name">{entry.name}</td>
                                         <td className="entry-description">{entry.description}</td>
                                         <td className="entry-price"><h4>$ {entry.price}</h4></td>
-                                        <button
+                                        <td>
+                                            <Button
                                             onClick={() => handleDelete(entry._id)}
-                                        >X</button>
+                                            >X</Button>
+                                        </td>
                                     </tr>
 
                                 )}
