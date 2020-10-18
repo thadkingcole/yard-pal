@@ -166,9 +166,11 @@ router.put("/editItem", async (req, res) => {
 });
 
 router.get("/searchUsername", (req, res) => {
+  // this route accepts username on the request body
+  // then searches db for that username...
   User.findOne({ username: req.body.username })
     .then((userdata) => {
-      console.log(userdata._id);
+      // and returns the userId in json response
       res.json(userdata._id);
     })
     .catch((err) => console.log(err));
