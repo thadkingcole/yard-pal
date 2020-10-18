@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Redirect, Route, Switch, useHistory } from 'react-router-dom';
+import { Route, Switch, useHistory } from 'react-router-dom';
 import NavBar from './components/NavBar/index';
 import Jumbo from './components/Jumbotron/index';
 import Container from 'react-bootstrap/Container';
