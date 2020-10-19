@@ -17,9 +17,10 @@ const sellerSeed = [
     goal: 100,
     items: [
       {
-        name: "chair",
+        name: "apple",
         description: "very comfortable and awesome",
-        price: 20
+        price: 20,
+        imgUrl: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.fJei9NVjmP1ImM-jLn-lBQHaHa%26pid%3DApi&f=1"
       }
     ]
   },
@@ -31,7 +32,8 @@ const sellerSeed = [
       {
         name: "chair",
         description: "very comfortable and awesome",
-        price: 20
+        price: 20,
+        imgUrl: "https://images.unsplash.com/photo-1503602642458-232111445657?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
       }
     ]
   },
