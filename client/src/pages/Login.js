@@ -40,7 +40,8 @@ function Login({ loggedInAs, setLoggedInAs }) {
         if (response.status === 200) {
           dispatch({ type: SET_USER, user: response.data });
           setLoggedInAs(response.data.username);
-          history.replace('/Browse');
+          window.location.reload();
+          // history.replace('/Browse');
         }
       })
       .catch((error) => {

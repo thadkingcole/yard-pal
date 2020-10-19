@@ -1,14 +1,43 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, Modal, Form, Row, Col } from 'react-bootstrap';
+import axios from 'axios'
 
 function ItemModal({ 
-    handleSubmit, 
-    handleChange, 
-    newItemInfo,  
+    setItemArray, 
+    setShow,  
     show,  
     handleShow, 
     closeModal 
 }) {
+    //declare variables for ItemnModal
+    const [newItemInfo, setNewItemInfo] = useState({
+        name: '',
+        description: '',
+        price: 0,
+        imgUrl: "",
+    });
+       // Handle submit newItemModal
+       async function handleSubmit(e) {
+        e.preventDefault();
+        setShow(false);
+        await axios
+            .put('/api/users/addItem', {
+                item: newItemInfo
+            })
+            .then((response) => {
+                console.log('response .put AddItem:', response)
+                setItemArray(response.data.items);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    };
+
+    const handleChange = (event) => {
+        const { name, value } = event.target;
+        setNewItemInfo({ ...newItemInfo, [name]: value });
+    };
+
     return (
         <Row>
             <Col>

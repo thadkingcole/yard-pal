@@ -10,15 +10,6 @@ function BrowseContainer({ itemArray, handleDelete }) {
             <Col className="col bg-light p-3 border rounded itemTable">
                 <Row className="m-2 ">
                     <Table striped bordered hover>
-                        <thead>
-                            <tr>
-                                <th><h4>Image</h4></th>
-                                <th><h4>Item</h4></th>
-                                <th><h4>Description</h4></th>
-                                <th><h4>Price</h4></th>
-                                <th><h4>Edit/Delete</h4></th>
-                            </tr>
-                        </thead>
                         <tbody>
                             {/* Map through Item array into table */}
                             {itemArray.map((entry, index) =>

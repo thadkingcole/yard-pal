@@ -12,22 +12,11 @@ function Browse() {
     const [itemArray, setItemArray] = useState([]);
     //useEffect loads once when page renders calling async fetchData
     const { userId } = useParams()
-    //declare variables for ItemnModal
-    const [newItemInfo, setNewItemInfo] = useState({
-        name: '',
-        description: '',
-        price: 0,
-        imgUrl: "",
-    });
     // declare setState variables to show or hide itemModal
     const [show, setShow] = useState(false);
     
-    
-
     useEffect(() => {
-
         if (userId) {
-
             async function fetchData() {
                 // Async get request from axios
                 const request = await axios
@@ -38,7 +27,6 @@ function Browse() {
                 return request;
             }
             fetchData();
-
         } else {
             async function fetchData() {
                 // Async get request from axios
@@ -51,38 +39,11 @@ function Browse() {
             }
             fetchData();
         }
-        // Calls useEffect anytime itemArray is changed
     }, []);
 
-    //Show or hide newItemModal
+    //Show or hide anything inside this component
     const handleShow = () => setShow(true);
     const closeModal = () => setShow(false);
-
-    // Handle submit newItemModal
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        setShow(false);
-        axios
-            .put('/api/users/addItem', {
-                item: {
-                    name: newItemInfo.name,
-                    description: newItemInfo.description,
-                    price: newItemInfo.price,
-                    imgUrl: newItemInfo.imgUrl,
-                }
-            })
-            .then((response) => {
-                setItemArray(response.data.items)
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-    };
-
-    const handleChange = (event) => {
-        const { name, value } = event.target;
-        setNewItemInfo({ ...newItemInfo, [name]: value });
-    };
 
     const handleDelete = (_id) => {
         axios
@@ -117,10 +78,6 @@ function Browse() {
                                 closeModal={closeModal}
                                 show={show}
                                 setShow={setShow}
-                                newItemInfo={newItemInfo}
-                                setNewItemInfo={setNewItemInfo}
-                                handleChange={handleChange}
-                                handleSubmit={handleSubmit}
                                 setItemArray={setItemArray}
                                 itemArray={itemArray}
                             />
