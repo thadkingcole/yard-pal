@@ -1,49 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Button, Modal, Form, Row, Col } from 'react-bootstrap';
-import axios from 'axios';
 
-function ItemModal({ itemArray, setItemArray }) {
-    const [show, setShow] = useState(false);
-
-    const handleShow = () => setShow(true);
-    const closeModal = () => {
-        
-        setShow(false);
-
-    }
-
-    const [newItemInfo, setNewItemInfo] = useState({
-        name: '',
-        description: '',
-        price: 0,
-        imgUrl: "",
-    });
-
-    const handleChange = (event) => {
-        const { name, value } = event.target;
-        setNewItemInfo({ ...newItemInfo, [name]: value });
-    };
-
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        setShow(false);
-        axios
-            .put('/api/users/addItem', { 
-                item: {
-                    name: newItemInfo.name,
-                    description: newItemInfo.description,
-                    price: newItemInfo.price,
-                    imgUrl: newItemInfo.imgUrl,
-                }
-            })
-            .then((response) => {
-                setItemArray(response.data.items)
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-    };
-
+function ItemModal({ 
+    handleSubmit, 
+    handleChange, 
+    newItemInfo,  
+    show,  
+    handleShow, 
+    closeModal 
+}) {
     return (
         <Row>
             <Col>

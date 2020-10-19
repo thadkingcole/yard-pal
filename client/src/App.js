@@ -31,7 +31,6 @@ const App = () => {
         history.push('/Browse');
       } else {
         dispatch({ type: UNSET_USER });
-        console.log('unset user @ app.js ln 44');
         history.push('/login');
       }
     });
