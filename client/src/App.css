@@ -96,6 +96,15 @@ table {
 tbody {
   width: 1000px;
 }
+th {
+  width: 250px;
+  height: 30px;
+  text-align: center;
+  padding-left: 40px;
+  padding-right: 40px;
+  margin-left: 40px;
+  margin-right: 40px;
+}
 td {
   width: 250px;
   height: 30px;
@@ -114,9 +123,6 @@ td {
 .entry-description {
   padding-left: 30px;
   text-align: left;
-}
-.entry-id {
-
 }
 .logout {
   height: 40px;
