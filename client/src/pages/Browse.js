@@ -12,8 +12,7 @@ function Browse() {
     const [itemArray, setItemArray] = useState([]);
     //useEffect loads once when page renders calling async fetchData
     const { userId } = useParams()
-    console.log('user id: ', userId);
-
+    
     useEffect(() => {
 
         if (userId) {
@@ -35,7 +34,7 @@ function Browse() {
                 const request = await axios
                     .get('/api/users/browseItems');
                 // setItemArray pushes request to itemArray
-                console.log('request browse.js ', request);
+                console.log('request api/browseItems: ', request);
                 setItemArray(request.data[0]);
                 return request;
             }
@@ -43,6 +42,28 @@ function Browse() {
         }
         // Calls useEffect anytime itemArray is changed
     }, []);
+
+    const handleDelete = (_id) => {
+        axios
+            .put('/api/users/delItem', {
+                itemId: _id
+            })
+            .then(() => {
+                async function fetchData() {
+                    // Async get request from axios
+                    const request = await axios
+                        .get('/api/users/browseItems');
+                    // setItemArray pushes request to itemArray
+                    console.log('resuest handleDelete BROWSE: ', request.data[0])
+                    setItemArray(request.data[0]);
+                    return request;
+                }
+                fetchData();
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }
 
     return (
         <Container>
@@ -64,6 +85,7 @@ function Browse() {
                             <p key={index}>{username}</p>
                             )} */}
                             <BrowseContainer
+                                handleDelete={handleDelete}
                                 itemArray={itemArray}
                                 setItemArray={setItemArray}
                             />

@@ -5,27 +5,7 @@ import Row from "react-bootstrap/Row"
 import Button from "react-bootstrap/Button";
 import Table from 'react-bootstrap/Table';
 
-function BrowseContainer({ itemArray, setItemArray }) {
-    const handleDelete = (_id) => {
-        axios
-            .put('/api/users/delItem', {
-                itemId: _id
-            })
-            .then(() => {
-                async function fetchData() {
-                    // Async get request from axios
-                    const request = await axios
-                        .get('/api/users/browseItems');
-                    // setItemArray pushes request to itemArray
-                    setItemArray(request.data.items);
-                    return request;
-                }
-                fetchData();
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-    }
+function BrowseContainer({ itemArray, handleDelete }) {
     return (
         <Row>
             <Col className="col bg-light p-3 border rounded itemTable">
