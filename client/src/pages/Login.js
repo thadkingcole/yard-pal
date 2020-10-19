@@ -39,7 +39,7 @@ function Login({ loggedInAs, setLoggedInAs }) {
       .then((response) => {
         if (response.status === 200) {
           dispatch({ type: SET_USER, user: response.data });
-          setLoggedInAs(response.data.username);
+          setLoggedInAs({msg: response.data.username});
           window.location.reload();
           // history.replace('/Browse');
         }

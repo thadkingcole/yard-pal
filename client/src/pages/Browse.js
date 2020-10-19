@@ -7,7 +7,8 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-function Browse() {
+function Browse({ loggedInAs }) {
+    console.log('loggedInAs passed from props to Browse.js: ', loggedInAs);
     // Declare itemArray as a setState variable, set to empty array
     const [itemArray, setItemArray] = useState([]);
     //useEffect loads once when page renders calling async fetchData
