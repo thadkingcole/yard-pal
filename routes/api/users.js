@@ -138,6 +138,7 @@ router.put("/editItem", async (req, res) => {
       name: req.body.name,
       description: req.body.description,
       price: req.body.price,
+      imgUrl: req.body.imgUrl
     };
     //add items to document
     User.findOneAndUpdate(
