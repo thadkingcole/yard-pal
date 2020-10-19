@@ -11,6 +11,7 @@ import { useStoreContext } from './store/store';
 import "./App.css";
 import Signup from './pages/Signup';
 import Login from './pages/Login';
+import Search from './pages/Search';
 import Browse from './pages/Browse';
 import Logout from './components/Logout/index'
 import LoggedInAs from './components/LoggedInAs/loggedInAs'
@@ -83,6 +84,7 @@ const App = () => {
         <Route exact path="/Signup" component={Signup} />
         <Route exact path="/Browse" render={props => <Browse {...props} loggedInAs={loggedInAs} />} />
         <Route exact path="/About" component={About} />
+        <Route exact path="/Search" component={Search} />
 
         {/* <Route exact path="/Browse/:userId" component={Browse} /> */}
       </Switch>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import axios from 'axios'
 import ItemModal from '../components/ItemModal/index'
 import BrowseContainer from '../components/BrowseContainer/index'
@@ -8,6 +8,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 function Browse({ loggedInAs }) {
+    const history = useHistory();
     console.log('loggedInAs passed from props to Browse.js: ', loggedInAs);
     // Declare itemArray as a setState variable, set to empty array
     const [itemArray, setItemArray] = useState([]);
@@ -15,20 +16,14 @@ function Browse({ loggedInAs }) {
     const { userId } = useParams()
     // declare setState variables to show or hide itemModal
     const [show, setShow] = useState(false);
+    //display browser container
+    const [showItems, setShowItems] = useState(false);
     
     useEffect(() => {
-        if (userId) {
-            async function fetchData() {
-                // Async get request from axios
-                const request = await axios
-                    .get(`/api/users/browse/${userId}`);
-                // setItemArray pushes request to itemArray
-                console.log('request (if userId) browse.js ', request);
-                setItemArray(request.data[0]);
-                return request;
-            }
-            fetchData();
+        if (!loggedInAs.isLoggedOn) {
+            history.push('/Search');
         } else {
+            setShowItems(true)
             async function fetchData() {
                 // Async get request from axios
                 const request = await axios
@@ -45,7 +40,7 @@ function Browse({ loggedInAs }) {
     //Show or hide anything inside this component
     const handleShow = () => setShow(true);
     const closeModal = () => setShow(false);
-
+    
     const handleDelete = (_id) => {
         axios
             .put('/api/users/delItem', {
@@ -91,7 +86,7 @@ function Browse({ loggedInAs }) {
                             {/* {itemArray.map((username, index) => 
                             <p key={index}>{username}</p>
                             )} */}
-                            <BrowseContainer
+                            <BrowseContainer 
                                 handleDelete={handleDelete}
                                 itemArray={itemArray}
                                 setItemArray={setItemArray}

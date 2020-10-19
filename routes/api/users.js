@@ -179,10 +179,11 @@ router.put("/editItem", async (req, res) => {
   }
 });
 
-router.get("/searchUsername", (req, res) => {
+router.post("/searchUsername", (req, res) => {
+  console.log('req.body from api/userName: ', req.body)
   // this route accepts username on the request body
   // then searches db for that username...
-  User.findOne({ username: req.body.username })
+  User.findOne({ username: req.body.user })
     .then((userdata) => {
       // and returns the userId in json response
       res.json(userdata._id);
