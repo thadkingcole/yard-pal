@@ -2,8 +2,9 @@ const express = require("express");
 
 const router = express.Router();
 
-const User = require("../../database/models/user");
-const passport = require("../../passport");
+const User = require('../../database/models/user');
+const passport = require('../../passport');
+const sellers = [];
 
 router.post("/", (req, res) => {
   const { username, password } = req.body;
@@ -104,29 +105,42 @@ router.put("/delItem", (req, res) => {
   }
 });
 
-//browse items
+router.get('/browse/:userId', (req, res) => {
+  User.findById(req.params.userId)
+    .then(dbItems => {
+      res.json(dbItems.items);
+      console.log(dbItems.items)
+
+    }).catch(err => console.log(err));
+})
+
+//browse items 
 router.get("/browseItems", (req, res) => {
+  //check to see if user is logged in 
   if (req.user) {
     //fetch items from this seller only
-    User.findOne({ username: req.user.username })
-      .then((dbItems) => {
-        console.log(`successfully fetched items from ${req.user.username}`);
-        res.json(dbItems);
-      })
-      .catch((err) => {
-        res.json(err);
-      });
-  } else {
-    //in this case fetch all items from all sellers
-    User.find({})
-      .then((dbItems) => {
-        console.log("successfully fetched items from ALL sellers"); // do we really want to do that?
-        res.json(dbItems);
-      })
-      .catch((err) => {
-        res.json(err);
-      });
+    User.findOne(
+      { username: req.user.username }
+
+    ).then(dbItems => {
+      console.log(`successfully fetched items from ${req.user.username}`);
+      res.json([dbItems.items, req.user]);
+    }).catch(err => {
+      res.json(err);
+    });
   }
+
+  // else {
+  //   //in this case fetch all items from all sellers
+  //   User.find({}).then(dbItems => {
+  //     dbItems.forEach(user => sellers.push(user.username));
+  //     console.log('successfully fetched ALL seller usernames'); // do we really want to do that?
+  //     res.json([sellers, req.user]);
+  //   }).catch(err => {
+  //     res.json(err);
+  //   });
+  // }
+
 });
 
 //sale item edit

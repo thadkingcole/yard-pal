@@ -8,7 +8,7 @@ function LoggedInAs({ loggedInAs }) {
         <>
             <Container>
                 <Row>
-                    <Col className="col">Logged in as: {loggedInAs}</Col>
+                    <Col className="col m-1">Logged in as: {loggedInAs}</Col>
                 </Row>
             </Container>
         </>

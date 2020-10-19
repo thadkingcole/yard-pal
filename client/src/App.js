@@ -20,7 +20,7 @@ const App = () => {
   const history = useHistory();
   const [state, dispatch] = useStoreContext();
   const [loggedInAs, setLoggedInAs] = useState('not logged in');
-
+  console.log('using state', (state));
   useEffect(() => {
     dispatch({ type: LOADING });
 
@@ -47,7 +47,8 @@ const App = () => {
         history.push('/Login');
         console.log(response);
       })
-    }
+  }
+
 
   return (
     <>
@@ -64,6 +65,8 @@ const App = () => {
         <Route exact path="/Signup" component={Signup} />
         <Route exact path="/Browse" component={Browse} />
         <Route exact path="/About" component={About} />
+        
+        <Route exact path="/Browse/:userId" component={Browse} />
       </Switch>
       <LoggedInAs
         loggedInAs={loggedInAs}
