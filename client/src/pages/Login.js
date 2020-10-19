@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-import { useHistory, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { LOADING, SET_USER } from '../store/actions';
 import { useStoreContext } from '../store/store';
 import Container from 'react-bootstrap/Container';
@@ -9,11 +9,9 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
-
 function Login({ loggedInAs, setLoggedInAs }) {
   
   const [, /* state */ dispatch] = useStoreContext();
-  const history = useHistory();
 
   const [loginCreds, setLoginCreds] = useState({
     username: '',
@@ -41,7 +39,6 @@ function Login({ loggedInAs, setLoggedInAs }) {
           dispatch({ type: SET_USER, user: response.data });
           setLoggedInAs({msg: response.data.username});
           window.location.reload();
-          // history.replace('/Browse');
         }
       })
       .catch((error) => {
@@ -50,8 +47,6 @@ function Login({ loggedInAs, setLoggedInAs }) {
       });
   };
   
-
-
   return (
     <Container>
       <Row>

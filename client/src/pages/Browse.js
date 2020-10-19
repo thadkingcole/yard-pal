@@ -9,27 +9,22 @@ import Col from 'react-bootstrap/Col';
 
 function Browse({ loggedInAs }) {
     const history = useHistory();
-    console.log('loggedInAs passed from props to Browse.js: ', loggedInAs);
     // Declare itemArray as a setState variable, set to empty array
     const [itemArray, setItemArray] = useState([]);
     //useEffect loads once when page renders calling async fetchData
     const { userId } = useParams()
     // declare setState variables to show or hide itemModal
     const [show, setShow] = useState(false);
-    //display browser container
-    const [showItems, setShowItems] = useState(false);
     
     useEffect(() => {
         if (!loggedInAs.isLoggedOn) {
             history.push('/Search');
         } else {
-            setShowItems(true)
             async function fetchData() {
                 // Async get request from axios
                 const request = await axios
                     .get('/api/users/browseItems');
                 // setItemArray pushes request to itemArray
-                console.log('request api/browseItems: ', request);
                 setItemArray(request.data[0]);
                 return request;
             }

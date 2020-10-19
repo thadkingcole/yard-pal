@@ -24,9 +24,6 @@ const App = () => {
     msg: 'not logged in',
     isLoggedOn: false
   });
-  console.log('loggedinas: ', loggedInAs)
-  console.log('loggedinas.isloggedon: ', loggedInAs.isLoggedOn)
-  console.log('loggedinas.msg: ', loggedInAs.msg)
 
   useEffect(() => {
     dispatch({ type: LOADING });
@@ -67,7 +64,6 @@ const App = () => {
         }
       })
   }
-
 
   return (
     <>
