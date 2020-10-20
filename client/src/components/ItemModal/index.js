@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import { Button, Modal, Form, Row, Col } from 'react-bootstrap';
 import axios from 'axios'
 
-function ItemModal({ 
-    setItemArray, 
-    setShow,  
-    show,  
-    handleShow, 
-    closeModal 
+function ItemModal({
+    setItemArray,
+    setShow,
+    show,
+    handleShow,
+    closeModal
 }) {
     //declare variables for ItemnModal
     const [newItemInfo, setNewItemInfo] = useState({
@@ -16,8 +16,8 @@ function ItemModal({
         price: 0,
         imgUrl: "",
     });
-       // Handle submit newItemModal
-       async function handleSubmit(e) {
+    // Handle submit newItemModal
+    async function handleSubmit(e) {
         e.preventDefault();
         setShow(false);
         await axios
@@ -48,12 +48,12 @@ function ItemModal({
                     <Modal.Header>
                         <Row>
                             <Col>
-                            Add item for Sale
+                                Add item for Sale
                             </Col>
                         </Row>
                         <Row>
                             <Col>
-                            <Button onClick={closeModal} variant="light">X</Button>
+                                <Button onClick={closeModal} variant="light">X</Button>
                             </Col>
                         </Row>
                     </Modal.Header>
@@ -86,7 +86,7 @@ function ItemModal({
                                     name="price"
                                     placeholder="Item Price"
                                     value={newItemInfo.price}
-                                    onChange={handleChange} /> 
+                                    onChange={handleChange} />
                                 <Form.Label className="pt-1">Image (URL)</Form.Label>
                                 <Form.Control
                                     type="text"

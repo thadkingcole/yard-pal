@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useHistory } from "react-router-dom";
 import axios from 'axios'
 import ItemModal from '../components/ItemModal/index'
+// import InterestModal from '../components/InterestModal/index'
 import BrowseContainer from '../components/BrowseContainer/index'
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -15,7 +16,8 @@ function Browse({ loggedInAs }) {
     const { userId } = useParams()
     // declare setState variables to show or hide itemModal
     const [show, setShow] = useState(false);
-    
+
+    // const [showInterest, setShowInterest] = useState(false);
     useEffect(() => {
         if (!loggedInAs.isLoggedOn) {
             history.push('/Search');
@@ -35,7 +37,9 @@ function Browse({ loggedInAs }) {
     //Show or hide anything inside this component
     const handleShow = () => setShow(true);
     const closeModal = () => setShow(false);
-    
+
+
+    // const handleShowInterest = () => setShowInterest(true);
     const handleDelete = (_id) => {
         axios
             .put('/api/users/delItem', {
@@ -81,14 +85,24 @@ function Browse({ loggedInAs }) {
                             {/* {itemArray.map((username, index) => 
                             <p key={index}>{username}</p>
                             )} */}
-                            <BrowseContainer 
+                            <BrowseContainer
                                 handleDelete={handleDelete}
                                 itemArray={itemArray}
                                 setItemArray={setItemArray}
                             />
                         </Col>
                     </Row>
+                    <Row className="d-inline-flex">
+                        <Col className="col" >
+                        </Col>
+                    </Row>
                 </Col>
+                {/* <InterestModal
+                    handleShowInterest={handleShowInterest}
+                    closeModal={closeModal}
+                    show={showInterest}
+                    setShow={setShowInterest}
+                /> */}
             </Row>
         </Container>
     )
