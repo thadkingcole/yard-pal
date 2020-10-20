@@ -1,10 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Col from 'react-bootstrap/Col';
 import Row from "react-bootstrap/Row"
 import Button from "react-bootstrap/Button";
 import Table from 'react-bootstrap/Table';
+import InterestModal from '../InterestModal'
 
 function BrowseContainer({ itemArray, handleDelete }) {
+
+    const [showInterest, setShowInterest] = useState(false);
+    const handleShowInterest = () => setShowInterest(true);
+    const closeInterestModal = () => {
+        setShowInterest(false)
+    }
     return (
         <Row>
             <Col className="col bg-light p-3 border rounded itemTable">
@@ -16,8 +23,8 @@ function BrowseContainer({ itemArray, handleDelete }) {
                                 <tr key={index}>
                                     <td className="entry-img">
                                         <img
-                                        className="shadow" 
-                                        src={entry.imgUrl} alt={entry.name} width="100" height="100" /></td>
+                                            className="shadow"
+                                            src={entry.imgUrl} alt={entry.name} width="100" height="100" /></td>
                                     <td className="entry-name">{entry.name}</td>
                                     <td className="entry-description">{entry.description}</td>
                                     <td className="entry-price"><h4>$ {entry.price}</h4></td>
@@ -32,6 +39,12 @@ function BrowseContainer({ itemArray, handleDelete }) {
                                             id="edit-btn"
                                             onClick={() => handleDelete(entry._id)}
                                         >Edit</Button>
+                                        <InterestModal
+                                            handleShowInterest={handleShowInterest}
+                                            show={showInterest}
+                                            setShow={setShowInterest}
+                                            closeInterestModal={closeInterestModal}
+                                        />
                                     </td>
                                 </tr>
 
