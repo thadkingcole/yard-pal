@@ -71,8 +71,12 @@ const App = () => {
     <>
       <Container>
         <Row>
+          <Col className="pt-3">
+          <Jumbo />
+          </Col>
+        </Row>
+        <Row>
           <Col>
-            <Jumbo />
             <NavBar />
           </Col>
         </Row>
@@ -85,11 +89,21 @@ const App = () => {
         <Route exact path="/Search" component={Search} />
         <Route exact path="/Browse/:userId" render={props => <Search {...props} loggedInAs={loggedInAs} />} />
       </Switch>
-      <LoggedInAs
-        loggedInAs={loggedInAs}
-      />
-      <Logout
-        handleLogout={handleLogout} />
+      <Container>
+        <Row className="d-inline-flex mb-4">
+          <Col>
+            <LoggedInAs
+              loggedInAs={loggedInAs}
+            />
+          </Col>
+          <Col>
+            <Logout
+              handleLogout={handleLogout} />
+          </Col>
+        </Row>
+      </Container>
+
+
     </>
   );
 }
