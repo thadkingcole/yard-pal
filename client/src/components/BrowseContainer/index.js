@@ -4,6 +4,7 @@ import Row from "react-bootstrap/Row"
 import Button from "react-bootstrap/Button";
 import Table from 'react-bootstrap/Table';
 import InterestModal from '../InterestModal'
+import EditModal from '../EditModal'
 
 function BrowseContainer({ itemArray, handleDelete, loggedInAs }) {
 
@@ -11,6 +12,17 @@ function BrowseContainer({ itemArray, handleDelete, loggedInAs }) {
     const handleShowInterest = () => setShowInterest(true);
     const closeInterestModal = () => {
         setShowInterest(false)
+    }
+    const [editEntry, setEditEntry] = useState()
+    const [showEdit, setShowEdit] = useState(false);
+    const handleShowEdit = () => setShowEdit(true);
+    const closeEditModal = () => {
+        setShowEdit(false)
+    }
+    const handleEdit = (entry) => {
+        console.log('at handleEdit: ', entry);
+        setEditEntry(entry)
+        handleShowEdit();
     }
     return (
         <Row>
@@ -39,8 +51,15 @@ function BrowseContainer({ itemArray, handleDelete, loggedInAs }) {
                                             <Button
                                                 className="d-block mx-auto mt-2"
                                                 id="edit-btn"
-                                                onClick={() => handleDelete(entry._id)}
+                                                onClick={() => handleEdit(entry._id)}
                                             >Edit</Button>
+                                            <EditModal
+                                            entry={entry.name}
+                                            handleShowEdit={handleShowEdit}
+                                            show={showEdit}
+                                            setShow={setShowEdit}
+                                            closeEditModal={closeEditModal}
+                                            />
                                         </> :
                                         <>
                                         <InterestModal
@@ -49,7 +68,9 @@ function BrowseContainer({ itemArray, handleDelete, loggedInAs }) {
                                             setShow={setShowInterest}
                                             closeInterestModal={closeInterestModal}
                                             />
+                                            
                                         </>)}
+
                                     </td>
                                 </tr>
 
