@@ -6,7 +6,7 @@ import Table from 'react-bootstrap/Table';
 import InterestModal from '../InterestModal'
 import EditModal from '../EditModal'
 
-function BrowseContainer({ itemArray, handleDelete, loggedInAs }) {
+function BrowseContainer({ itemArray, handleDelete, loggedInAs, setItemArray }) {
 
     const [showInterest, setShowInterest] = useState(false);
     const handleShowInterest = () => setShowInterest(true);
@@ -19,6 +19,14 @@ function BrowseContainer({ itemArray, handleDelete, loggedInAs }) {
     const closeEditModal = () => {
         setShowEdit(false)
     }
+
+    const [editItemInfo, setEditItemInfo] = useState({
+        name: '',
+        description: '',
+        price: 0,
+        imgUrl: '',
+        itemId: ''
+    });
 
     return (
         <Row>
@@ -47,9 +55,21 @@ function BrowseContainer({ itemArray, handleDelete, loggedInAs }) {
                                                 <Button
                                                     className="d-block mx-auto mt-2"
                                                     id="edit-btn"
-                                                    onClick={() => handleShowEdit(true)}
+                                                    onClick={() => {
+                                                        handleShowEdit();
+                                                        setEditItemInfo({
+                                                        name: entry.name, 
+                                                        description: entry.description,
+                                                        price: entry.price,
+                                                        imgUrl: entry.imgUrl,
+                                                        itemId: entry._id
+                                                        })}}
                                                 >Edit</Button>
                                                 <EditModal
+                                                    setItemArray={setItemArray}
+                                                    entry={entry._id}
+                                                    editItemInfo={editItemInfo}
+                                                    setEditItemInfo={setEditItemInfo}
                                                     handleShowEdit={handleShowEdit}
                                                     show={showEdit}
                                                     setShow={setShowEdit}

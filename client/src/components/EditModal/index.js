@@ -3,19 +3,14 @@ import { Button, Modal, Form, Row, Col } from 'react-bootstrap';
 import axios from 'axios'
 
 function EditModal({
+    editItemInfo,
+    setEditItemInfo,
     setItemArray,
     setShow,
     show,
     closeEditModal
 }) {
-    //declare variables for EditItenModal
-    const [editItemInfo, setEditItemInfo] = useState({
-        name: '',
-        description: '',
-        price: 0,
-        imgUrl: '',
-    });
-
+    
     // Handle submit EditItemModal
     async function handleSubmit(e) {
         e.preventDefault();
@@ -24,8 +19,8 @@ function EditModal({
         await axios
             .put('/api/users/editItem', editItemInfo)
             .then((response) => {
-                console.log('edit item: ', response)
-                // setItemArray(response.data.items);
+                console.log('edit item: ', response.data.items)
+                setItemArray(response.data.items);
             })
             .catch((error) => {
                 console.log(error);
@@ -35,6 +30,7 @@ function EditModal({
             description: "",
             price: 0,
             imgUrl: "",
+            itemId: ''
         })
     };
 
