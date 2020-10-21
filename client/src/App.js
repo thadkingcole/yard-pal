@@ -90,15 +90,15 @@ const App = () => {
         <Route exact path="/Browse/:userId" render={props => <Search {...props} loggedInAs={loggedInAs} />} />
       </Switch>
       <Container>
-        <Row className="d-inline-flex mb-4">
-          <Col>
+        <Row className="d-inline-flex border rounded logout mt-2 mb-4 p-1 pb-2 bg-light">
+          <Col className="col pt-1">
+            <Logout
+              handleLogout={handleLogout} />
+          </Col>
+          <Col className="col">
             <LoggedInAs
               loggedInAs={loggedInAs}
             />
-          </Col>
-          <Col>
-            <Logout
-              handleLogout={handleLogout} />
           </Col>
         </Row>
       </Container>

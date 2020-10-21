@@ -1,13 +1,15 @@
 import React from 'react';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 
 function LoggedInAs({ loggedInAs }) {
-    
+
     return (
         <>
-    <p>Logged in as: {loggedInAs.msg}</p>
+            <div className="loggedInAs">logged in as:</div>
+            <div>
+                <span className="border rounded p-1 bg-white">{loggedInAs.msg}</span>
+            </div>
+
+
         </>
     )
 }
