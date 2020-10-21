@@ -20,7 +20,6 @@ function Browse({ loggedInAs }) {
     // const [showInterest, setShowInterest] = useState(false);
     useEffect(() => {
         if (!loggedInAs.isLoggedOn) {
-            console.log("no one is logged in")
             history.push('/Search');
         } else {
             async function fetchData() {
@@ -52,7 +51,6 @@ function Browse({ loggedInAs }) {
                     const request = await axios
                         .get('/api/users/browseItems');
                     // setItemArray pushes request to itemArray
-                    console.log('resuest handleDelete BROWSE: ', request.data[0])
                     setItemArray(request.data[0]);
                     return request;
                 }

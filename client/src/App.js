@@ -30,7 +30,6 @@ const App = () => {
     async function fetchData() {
       await axios.get('/api/users').then(response => {
         if (response.data.user) {
-          console.log('response api/users: ', response)
           dispatch({ type: SET_USER, user: response.data.user });
           setLoggedInAs({
             msg: response.data.user.username,
@@ -57,7 +56,6 @@ const App = () => {
           msg: "not logged in",
           isLoggedOn: false
         })
-        console.log('response .POST:a/api/users/logout: ', response);
         if(response.status === 200) {
           alert('Logout Successful!');
           history.push('/Login');

@@ -106,12 +106,9 @@ router.put("/delItem", (req, res) => {
 });
 
 router.get('/browse/:userId', (req, res) => {
-  console.log("USERID backend", req.params.userId)
   User.findById(req.params.userId)
     .then(dbItems => {
       res.json(dbItems.items);
-      console.log(dbItems.items)
-
     }).catch(err => console.log(err));
 })
 
@@ -130,18 +127,6 @@ router.get("/browseItems", (req, res) => {
       res.json(err);
     });
   }
-
-  // else {
-  //   //in this case fetch all items from all sellers
-  //   User.find({}).then(dbItems => {
-  //     dbItems.forEach(user => sellers.push(user.username));
-  //     console.log('successfully fetched ALL seller usernames'); // do we really want to do that?
-  //     res.json([sellers, req.user]);
-  //   }).catch(err => {
-  //     res.json(err);
-  //   });
-  // }
-
 });
 
 //sale item edit
@@ -182,7 +167,6 @@ router.put("/editItem", async (req, res) => {
 });
 
 router.post("/searchUsername", (req, res) => {
-  console.log('req.body from api/userName: ', req.body)
   // this route accepts username on the request body
   // then searches db for that username...
   User.findOne({ username: req.body.user })

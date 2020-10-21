@@ -15,10 +15,8 @@ function Search({ loggedInAs }) {
 
   useEffect(() => {
     if (userId) {
-      console.log("I'm doing stuff here :)");
       async function fetchData() {
         const request = await axios.get(`/api/users/browse/${userId}`);
-        console.log("this is the request that will make me super happy\n",request);
         setItemArray(request.data);
         return request;
       }

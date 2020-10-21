@@ -11,14 +11,11 @@ function SearchBar() {
     const handleClick = (e) => {
         e.preventDefault();
         const user = username;
-        console.log(user);
         async function fetchData() {
             await axios.post('/api/users/searchUsername', { user })
                 .then(response => {
-                    console.log('response /api/users/searchUsername: ', response);
                     const userId = response.data;
                     history.push(`/browse/${userId}`)
-                    console.log('userId', userId);
                 })
                 .catch(err => console.log('catch error /api/users/searchUsername: ', err))
         }

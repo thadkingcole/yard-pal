@@ -25,7 +25,6 @@ function ItemModal({
                 item: newItemInfo
             })
             .then((response) => {
-                console.log('response .put AddItem:', response)
                 setItemArray(response.data.items);
             })
             .catch((error) => {
