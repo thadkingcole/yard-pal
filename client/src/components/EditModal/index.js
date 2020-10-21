@@ -9,12 +9,11 @@ function EditModal({
     closeEditModal
 }) {
     //declare variables for EditItenModal
-    const [newItemInfo, setNewItemInfo] = useState({
-        // name: entry.name,
-        // description: entry.desription,
-        // price: entry.price,
-        // imgUrl: entry.imgUrl,
-        // itemId: entry._id
+    const [editItemInfo, setEditItemInfo] = useState({
+        name: '',
+        description: '',
+        price: 0,
+        imgUrl: '',
     });
 
     // Handle submit EditItemModal
@@ -23,14 +22,15 @@ function EditModal({
         setShow(false);
 
         await axios
-            .put('/api/users/editItem', newItemInfo)
+            .put('/api/users/editItem', editItemInfo)
             .then((response) => {
-                setItemArray(response.data.items);
+                console.log('edit item: ', response)
+                // setItemArray(response.data.items);
             })
             .catch((error) => {
                 console.log(error);
             });
-        setNewItemInfo({
+        setEditItemInfo({
             name: "",
             description: "",
             price: 0,
@@ -40,7 +40,7 @@ function EditModal({
 
     const handleChange = (event) => {
         const { name, value } = event.target;
-        setNewItemInfo({ ...newItemInfo, [name]: value });
+        setEditItemInfo({ ...editItemInfo, [name]: value });
     };
 
     return (
@@ -69,7 +69,7 @@ function EditModal({
                                     className="form-control pt-2"
                                     name="name"
                                     placeholder="Item Name"
-                                    value={newItemInfo.name}
+                                    value={editItemInfo.name}
                                     onChange={handleChange} />
                                 <Form.Label className="pt-1">Description</Form.Label>
                                 <Form.Control
@@ -78,7 +78,7 @@ function EditModal({
                                     className="form-control pt-2"
                                     name="description"
                                     placeholder="Item Description"
-                                    value={newItemInfo.description}
+                                    value={editItemInfo.description}
                                     onChange={handleChange} />
                                 <Form.Label className="pt-1">Price</Form.Label>
                                 <Form.Control
@@ -87,7 +87,7 @@ function EditModal({
                                     className="form-control pt-2"
                                     name="price"
                                     placeholder="Item Price"
-                                    value={newItemInfo.price}
+                                    value={editItemInfo.price}
                                     onChange={handleChange} />
                                 <Form.Label className="pt-1">Image (URL)</Form.Label>
                                 <Form.Control
@@ -96,7 +96,7 @@ function EditModal({
                                     className="form-control mt-1"
                                     name="imgUrl"
                                     placeholder="https://placekitten.com/200/200"
-                                    value={newItemInfo.imgUrl}
+                                    value={editItemInfo.imgUrl}
                                     onChange={handleChange} />
                                 <Button
                                     color="dark"

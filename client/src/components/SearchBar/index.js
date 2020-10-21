@@ -16,6 +16,7 @@ function SearchBar() {
                 .then(response => {
                     const userId = response.data;
                     history.push(`/browse/${userId}`)
+                    setUsername('');
                 })
                 .catch(err => console.log('catch error /api/users/searchUsername: ', err))
         }

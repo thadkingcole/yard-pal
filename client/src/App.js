@@ -48,19 +48,23 @@ const App = () => {
 
   const handleLogout = (event) => {
     event.preventDefault();
-    axios.post('/api/users/logout', {
-      user: loggedInAs.msg
-    })
-      .then((response) => {
-        setLoggedInAs({
-          msg: "not logged in",
-          isLoggedOn: false
-        })
-        if(response.status === 200) {
-          alert('Logout Successful!');
-          history.push('/Login');
-        }
+    if (!loggedInAs.isLoggedOn) {
+      alert('not logged on!')
+    } else {
+      axios.post('/api/users/logout', {
+        user: loggedInAs.msg
       })
+        .then((response) => {
+          setLoggedInAs({
+            msg: "not logged in",
+            isLoggedOn: false
+          })
+          if (response.status === 200) {
+            alert('Logout Successful!');
+            history.push('/Login');
+          }
+        }).catch(err => console.log(err));
+    }
   }
 
   return (
