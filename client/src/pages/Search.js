@@ -7,7 +7,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import BrowseContainer from "../components/BrowseContainer";
 
-function Search() {
+function Search({ loggedInAs }) {
   const [itemArray, setItemArray] = useState([]);
 
   const { userId } = useParams();
@@ -41,6 +41,7 @@ function Search() {
       {userId && (
         <Row>
           <BrowseContainer
+            loggedInAs={loggedInAs}
             itemArray={itemArray}
             setItemArray={setItemArray}
             userId={userId}

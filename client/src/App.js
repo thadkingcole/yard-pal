@@ -81,7 +81,7 @@ const App = () => {
         <Route exact path="/Browse" render={props => <Browse {...props} loggedInAs={loggedInAs} />} />
         <Route exact path="/About" component={About} />
         <Route exact path="/Search" component={Search} />
-        <Route exact path="/Browse/:userId" component={Search} />
+        <Route exact path="/Browse/:userId" render={props => <Search {...props} loggedInAs={loggedInAs} />} />
       </Switch>
       <LoggedInAs
         loggedInAs={loggedInAs}

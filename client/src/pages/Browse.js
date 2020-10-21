@@ -87,6 +87,7 @@ function Browse({ loggedInAs }) {
                             <p key={index}>{username}</p>
                             )} */}
                             <BrowseContainer
+                                loggedInAs={loggedInAs}
                                 handleDelete={handleDelete}
                                 itemArray={itemArray}
                                 setItemArray={setItemArray}
