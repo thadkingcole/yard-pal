@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useHistory } from "react-router-dom";
 import axios from 'axios'
 import ItemModal from '../components/ItemModal/index'
-// import InterestModal from '../components/InterestModal/index'
 import BrowseContainer from '../components/BrowseContainer/index'
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -17,7 +16,6 @@ function Browse({ loggedInAs }) {
     // declare setState variables to show or hide itemModal
     const [show, setShow] = useState(false);
 
-    // const [showInterest, setShowInterest] = useState(false);
     useEffect(() => {
         if (!loggedInAs.isLoggedOn) {
             history.push('/Search');
@@ -37,7 +35,6 @@ function Browse({ loggedInAs }) {
     //Show or hide anything inside this component
     const handleShow = () => setShow(true);
     const closeModal = () => setShow(false);
-
 
     // const handleShowInterest = () => setShowInterest(true);
     const handleDelete = (_id) => {
@@ -60,7 +57,6 @@ function Browse({ loggedInAs }) {
                 console.log(error);
             });
     }
-
     return (
         <Container>
             <Row>
@@ -79,11 +75,6 @@ function Browse({ loggedInAs }) {
                     </Row>
                     <Row>
                         <Col>
-                            {/* ternary operator switching between either search query for username or map item array, if search for username, 
-                            onClick will pass username into route and return the username which will redirect to browse/:userId), or send please log in*/}
-                            {/* {itemArray.map((username, index) => 
-                            <p key={index}>{username}</p>
-                            )} */}
                             <BrowseContainer
                                 loggedInAs={loggedInAs}
                                 handleDelete={handleDelete}
@@ -93,17 +84,7 @@ function Browse({ loggedInAs }) {
                             />
                         </Col>
                     </Row>
-                    <Row className="d-inline-flex">
-                        <Col className="col" >
-                        </Col>
-                    </Row>
                 </Col>
-                {/* <InterestModal
-                    handleShowInterest={handleShowInterest}
-                    closeModal={closeModal}
-                    show={showInterest}
-                    setShow={setShowInterest}
-                /> */}
             </Row>
         </Container>
     )

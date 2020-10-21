@@ -11,8 +11,7 @@ function Search({ loggedInAs }) {
   const [itemArray, setItemArray] = useState([]);
 
   const { userId } = useParams();
-  console.log("this is the one we want", userId);
-
+  
   useEffect(() => {
     if (userId) {
       async function fetchData() {

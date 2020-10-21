@@ -13,17 +13,13 @@ function BrowseContainer({ itemArray, handleDelete, loggedInAs }) {
     const closeInterestModal = () => {
         setShowInterest(false)
     }
-    const [editEntry, setEditEntry] = useState()
+
     const [showEdit, setShowEdit] = useState(false);
     const handleShowEdit = () => setShowEdit(true);
     const closeEditModal = () => {
         setShowEdit(false)
     }
-    const handleEdit = (entry) => {
-        console.log('at handleEdit: ', entry);
-        setEditEntry(entry)
-        handleShowEdit();
-    }
+
     return (
         <Row>
             <Col className="col bg-light p-3 border rounded itemTable">
@@ -41,39 +37,35 @@ function BrowseContainer({ itemArray, handleDelete, loggedInAs }) {
                                     <td className="entry-description">{entry.description}</td>
                                     <td className="entry-price"><h4>$ {entry.price}</h4></td>
                                     <td>
-                                        {(loggedInAs.isLoggedOn ? 
-                                        <>
-                                            <Button
-                                                className="d-block mx-auto"
-                                                id="delete-btn"
-                                                onClick={() => handleDelete(entry._id)}
-                                            >X</Button>
-                                            <Button
-                                                className="d-block mx-auto mt-2"
-                                                id="edit-btn"
-                                                onClick={() => handleEdit(entry._id)}
-                                            >Edit</Button>
-                                            <EditModal
-                                            entry={entry.name}
-                                            handleShowEdit={handleShowEdit}
-                                            show={showEdit}
-                                            setShow={setShowEdit}
-                                            closeEditModal={closeEditModal}
-                                            />
-                                        </> :
-                                        <>
-                                        <InterestModal
-                                            handleShowInterest={handleShowInterest}
-                                            show={showInterest}
-                                            setShow={setShowInterest}
-                                            closeInterestModal={closeInterestModal}
-                                            />
-                                            
-                                        </>)}
-
+                                        {(loggedInAs.isLoggedOn ?
+                                            <>
+                                                <Button
+                                                    className="d-block mx-auto"
+                                                    id="delete-btn"
+                                                    onClick={() => handleDelete(entry._id)}
+                                                >X</Button>
+                                                <Button
+                                                    className="d-block mx-auto mt-2"
+                                                    id="edit-btn"
+                                                    onClick={() => handleShowEdit(true)}
+                                                >Edit</Button>
+                                                <EditModal
+                                                    handleShowEdit={handleShowEdit}
+                                                    show={showEdit}
+                                                    setShow={setShowEdit}
+                                                    closeEditModal={closeEditModal}
+                                                />
+                                            </> :
+                                            <>
+                                                <InterestModal
+                                                    handleShowInterest={handleShowInterest}
+                                                    show={showInterest}
+                                                    setShow={setShowInterest}
+                                                    closeInterestModal={closeInterestModal}
+                                                />
+                                            </>)}
                                     </td>
                                 </tr>
-
                             )}
                         </tbody>
                     </Table>

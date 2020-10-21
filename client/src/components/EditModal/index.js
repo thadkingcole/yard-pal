@@ -3,13 +3,11 @@ import { Button, Modal, Form, Row, Col } from 'react-bootstrap';
 import axios from 'axios'
 
 function EditModal({
-    entry,
     setItemArray,
     setShow,
     show,
     closeEditModal
 }) {
-    console.log("edit entry.name: ", entry)
     //declare variables for EditItenModal
     const [newItemInfo, setNewItemInfo] = useState({
         // name: entry.name,
