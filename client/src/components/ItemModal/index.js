@@ -46,9 +46,7 @@ function ItemModal({
     return (
         <Row>
             <Col>
-                <Button className="m-1" variant="primary" onClick={handleShow}>
-                    Add
-                </Button>
+                
                 <Modal show={show}>
                     <Modal.Header>
                         <Row>

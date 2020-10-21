@@ -3,6 +3,7 @@ import { useParams, useHistory } from "react-router-dom";
 import axios from 'axios'
 import ItemModal from '../components/ItemModal/index'
 import BrowseContainer from '../components/BrowseContainer/index'
+import ControlPanel from '../components/ControlPanel/index'
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -36,6 +37,8 @@ function Browse({ loggedInAs }) {
     const handleShow = () => setShow(true);
     const closeModal = () => setShow(false);
 
+   
+
     // const handleShowInterest = () => setShowInterest(true);
     const handleDelete = (_id) => {
         axios
@@ -59,6 +62,15 @@ function Browse({ loggedInAs }) {
     }
     return (
         <Container>
+            <Row>
+                <Col>
+                <ControlPanel 
+                
+                itemArray={itemArray}
+                handleShow={handleShow}
+                 />
+                </Col>
+            </Row>
             <Row>
                 <Col>
                     <Row className="d-inline-flex">

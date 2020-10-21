@@ -1,9 +1,8 @@
 import React from 'react';
 import { Button, Modal, Form, Row, Col } from 'react-bootstrap';
 
-function InterestModal({
-    show,
-    handleShowInterest,
+function ViewInterestModal({
+    showViewInterest,
     closeViewInterestModal
 }) {
     // Handle submit InterestModal
@@ -14,10 +13,7 @@ function InterestModal({
     return (
         <Row>
             <Col>
-                <Button className="m-2" variant="primary" onClick={handleShowInterest}>
-                    Reserve Item
-                </Button>
-                <Modal show={show}>
+                <Modal show={showViewInterest}>
                     <Modal.Header>
                         <Row>
                             <Col>
@@ -31,7 +27,7 @@ function InterestModal({
                         </Row>
                     </Modal.Header>
                     <Modal.Body>
-                        <Form className="p-2" id="intf">
+                        {/* <Form className="p-2" id="intf">
                             <Form.Label className="pt-2">Name</Form.Label>
                             <Form.Control
                                 type="text"
@@ -61,7 +57,7 @@ function InterestModal({
                                 style={{ marginTop: '2rem' }}
                                 onClick={handleSubmit}
                             >Submit Form</Button>
-                        </Form>
+                        </Form> */}
                     </Modal.Body>
                 </Modal>
             </Col>
@@ -69,4 +65,4 @@ function InterestModal({
     );
 }
 
-export default InterestModal;
+export default ViewInterestModal;

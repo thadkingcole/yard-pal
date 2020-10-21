@@ -114,3 +114,19 @@ td {
   padding: 6px;
   white-space: nowrap;
 }
+.controlPanel {
+height: 210px;
+width: 100%;
+border-radius: 20px;
+margin-top: 10px;
+margin-left: 5px;
+}
+.innerControlPanel {
+  position: absolute;
+  height: 90%;
+  width: 96%;
+  border-radius: 20px;
+  margin-top: 10px;
+  margin-left: 0px;
+  }
+  
