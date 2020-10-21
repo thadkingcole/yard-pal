@@ -21,7 +21,7 @@ const App = () => {
   const history = useHistory();
   const [state, dispatch] = useStoreContext();
   const [loggedInAs, setLoggedInAs] = useState({
-    msg: 'logged out',
+    msg: 'not logged in',
     isLoggedOn: false
   });
 
@@ -56,7 +56,7 @@ const App = () => {
       })
         .then((response) => {
           setLoggedInAs({
-            msg: "logged out",
+            msg: "not logged in",
             isLoggedOn: false
           })
           if (response.status === 200) {
