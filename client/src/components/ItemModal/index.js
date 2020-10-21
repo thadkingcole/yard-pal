@@ -31,6 +31,12 @@ function ItemModal({
             .catch((error) => {
                 console.log(error);
             });
+        setNewItemInfo({
+            name: "",
+            description: "",
+            price: 0,
+            imgUrl: "",
+        })
     };
 
     const handleChange = (event) => {
