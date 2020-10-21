@@ -15,11 +15,9 @@ function EditModal({
     async function handleSubmit(e) {
         e.preventDefault();
         setShow(false);
-
         await axios
             .put('/api/users/editItem', editItemInfo)
             .then((response) => {
-                console.log('edit item: ', response.data.items)
                 setItemArray(response.data.items);
             })
             .catch((error) => {
