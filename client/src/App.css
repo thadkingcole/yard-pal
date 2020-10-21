@@ -100,10 +100,15 @@ td {
   padding-left: 30px;
   text-align: left;
 }
-.logoutBtn {
-  margin-top: 2px;
+.logout {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-top: 15px;
+  
 }
 .loggedInAs {
-  font-size: 15px;
-  margin-left: 5px;
+  height: 38px;
+  width: 100%;
+  padding: 6px;
+  white-space: nowrap;
 }

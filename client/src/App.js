@@ -21,7 +21,7 @@ const App = () => {
   const history = useHistory();
   const [state, dispatch] = useStoreContext();
   const [loggedInAs, setLoggedInAs] = useState({
-    msg: 'not logged in',
+    msg: 'logged out',
     isLoggedOn: false
   });
 
@@ -56,7 +56,7 @@ const App = () => {
       })
         .then((response) => {
           setLoggedInAs({
-            msg: "not logged in",
+            msg: "logged out",
             isLoggedOn: false
           })
           if (response.status === 200) {
@@ -90,8 +90,8 @@ const App = () => {
         <Route exact path="/Browse/:userId" render={props => <Search {...props} loggedInAs={loggedInAs} />} />
       </Switch>
       <Container>
-        <Row className="d-inline-flex border rounded logout mt-2 mb-4 p-1 pb-2 bg-light">
-          <Col className="col pt-1">
+        <Row className="d-inline-flex border rounded logout bg-light">
+          <Col className="col">
             <Logout
               handleLogout={handleLogout} />
           </Col>
