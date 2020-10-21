@@ -20,6 +20,7 @@ function Browse({ loggedInAs }) {
     // const [showInterest, setShowInterest] = useState(false);
     useEffect(() => {
         if (!loggedInAs.isLoggedOn) {
+            console.log("no one is logged in")
             history.push('/Search');
         } else {
             async function fetchData() {
@@ -89,6 +90,7 @@ function Browse({ loggedInAs }) {
                                 handleDelete={handleDelete}
                                 itemArray={itemArray}
                                 setItemArray={setItemArray}
+                                userId={userId}
                             />
                         </Col>
                     </Row>

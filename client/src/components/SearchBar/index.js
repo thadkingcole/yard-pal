@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import axios from 'axios'
 import { Button } from 'react-bootstrap'
 import { Form } from 'react-bootstrap';
+import { useHistory } from "react-router-dom";
 
 function SearchBar() {
+    const history = useHistory();
     const [username, setUsername] = useState('');
     const handleChange = (e) => setUsername(e.target.value);
     const handleClick = (e) => {
@@ -15,6 +17,7 @@ function SearchBar() {
                 .then(response => {
                     console.log('response /api/users/searchUsername: ', response);
                     const userId = response.data;
+                    history.push(`/browse/${userId}`)
                     console.log('userId', userId);
                 })
                 .catch(err => console.log('catch error /api/users/searchUsername: ', err))

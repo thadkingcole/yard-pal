@@ -106,6 +106,7 @@ router.put("/delItem", (req, res) => {
 });
 
 router.get('/browse/:userId', (req, res) => {
+  console.log("USERID backend", req.params.userId)
   User.findById(req.params.userId)
     .then(dbItems => {
       res.json(dbItems.items);
