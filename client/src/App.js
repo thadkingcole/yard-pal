@@ -48,27 +48,35 @@ const App = () => {
 
   const handleLogout = (event) => {
     event.preventDefault();
-    axios.post('/api/users/logout', {
-      user: loggedInAs.msg
-    })
-      .then((response) => {
-        setLoggedInAs({
-          msg: "not logged in",
-          isLoggedOn: false
-        })
-        if(response.status === 200) {
-          alert('Logout Successful!');
-          history.push('/Login');
-        }
+    if (!loggedInAs.isLoggedOn) {
+      alert('not logged on!')
+    } else {
+      axios.post('/api/users/logout', {
+        user: loggedInAs.msg
       })
+        .then((response) => {
+          setLoggedInAs({
+            msg: "not logged in",
+            isLoggedOn: false
+          })
+          if (response.status === 200) {
+            alert('Logout Successful!');
+            history.push('/Login');
+          }
+        }).catch(err => console.log(err));
+    }
   }
 
   return (
     <>
       <Container>
         <Row>
+          <Col className="pt-3">
+          <Jumbo />
+          </Col>
+        </Row>
+        <Row>
           <Col>
-            <Jumbo />
             <NavBar />
           </Col>
         </Row>
@@ -81,11 +89,21 @@ const App = () => {
         <Route exact path="/Search" component={Search} />
         <Route exact path="/Browse/:userId" render={props => <Search {...props} loggedInAs={loggedInAs} />} />
       </Switch>
-      <LoggedInAs
-        loggedInAs={loggedInAs}
-      />
-      <Logout
-        handleLogout={handleLogout} />
+      <Container>
+        <Row className="d-inline-flex mb-4">
+          <Col>
+            <LoggedInAs
+              loggedInAs={loggedInAs}
+            />
+          </Col>
+          <Col>
+            <Logout
+              handleLogout={handleLogout} />
+          </Col>
+        </Row>
+      </Container>
+
+
     </>
   );
 }

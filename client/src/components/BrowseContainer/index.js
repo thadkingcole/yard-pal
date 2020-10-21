@@ -4,14 +4,30 @@ import Row from "react-bootstrap/Row"
 import Button from "react-bootstrap/Button";
 import Table from 'react-bootstrap/Table';
 import InterestModal from '../InterestModal'
+import EditModal from '../EditModal'
 
-function BrowseContainer({ itemArray, handleDelete, loggedInAs }) {
+function BrowseContainer({ itemArray, handleDelete, loggedInAs, setItemArray }) {
 
     const [showInterest, setShowInterest] = useState(false);
     const handleShowInterest = () => setShowInterest(true);
     const closeInterestModal = () => {
         setShowInterest(false)
     }
+
+    const [showEdit, setShowEdit] = useState(false);
+    const handleShowEdit = () => setShowEdit(true);
+    const closeEditModal = () => {
+        setShowEdit(false)
+    }
+
+    const [editItemInfo, setEditItemInfo] = useState({
+        name: '',
+        description: '',
+        price: 0,
+        imgUrl: '',
+        itemId: ''
+    });
+
     return (
         <Row>
             <Col className="col bg-light p-3 border rounded itemTable">
@@ -29,30 +45,46 @@ function BrowseContainer({ itemArray, handleDelete, loggedInAs }) {
                                     <td className="entry-description">{entry.description}</td>
                                     <td className="entry-price"><h4>$ {entry.price}</h4></td>
                                     <td>
-                                        {(loggedInAs.isLoggedOn ? 
-                                        <>
-                                            <Button
-                                                className="d-block mx-auto"
-                                                id="delete-btn"
-                                                onClick={() => handleDelete(entry._id)}
-                                            >X</Button>
-                                            <Button
-                                                className="d-block mx-auto mt-2"
-                                                id="edit-btn"
-                                                onClick={() => handleDelete(entry._id)}
-                                            >Edit</Button>
-                                        </> :
-                                        <>
-                                        <InterestModal
-                                            handleShowInterest={handleShowInterest}
-                                            show={showInterest}
-                                            setShow={setShowInterest}
-                                            closeInterestModal={closeInterestModal}
-                                            />
-                                        </>)}
+                                        {(loggedInAs.isLoggedOn ?
+                                            <>
+                                                <Button
+                                                    className="d-block mx-auto"
+                                                    id="delete-btn"
+                                                    onClick={() => handleDelete(entry._id)}
+                                                >X</Button>
+                                                <Button
+                                                    className="d-block mx-auto mt-2"
+                                                    id="edit-btn"
+                                                    onClick={() => {
+                                                        handleShowEdit();
+                                                        setEditItemInfo({
+                                                        name: entry.name, 
+                                                        description: entry.description,
+                                                        price: entry.price,
+                                                        imgUrl: entry.imgUrl,
+                                                        itemId: entry._id
+                                                        })}}
+                                                >Edit</Button>
+                                                <EditModal
+                                                    setItemArray={setItemArray}
+                                                    editItemInfo={editItemInfo}
+                                                    setEditItemInfo={setEditItemInfo}
+                                                    handleShowEdit={handleShowEdit}
+                                                    show={showEdit}
+                                                    setShow={setShowEdit}
+                                                    closeEditModal={closeEditModal}
+                                                />
+                                            </> :
+                                            <>
+                                                <InterestModal
+                                                    handleShowInterest={handleShowInterest}
+                                                    show={showInterest}
+                                                    setShow={setShowInterest}
+                                                    closeInterestModal={closeInterestModal}
+                                                />
+                                            </>)}
                                     </td>
                                 </tr>
-
                             )}
                         </tbody>
                     </Table>

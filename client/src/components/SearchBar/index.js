@@ -16,6 +16,7 @@ function SearchBar() {
                 .then(response => {
                     const userId = response.data;
                     history.push(`/browse/${userId}`)
+                    setUsername('');
                 })
                 .catch(err => console.log('catch error /api/users/searchUsername: ', err))
         }
@@ -23,7 +24,8 @@ function SearchBar() {
     }
     return (
         <Form>
-            <Form.Group>
+            <Form.Group
+                className="searchForm d-inline-flex p-1">
                 <Form.Label></Form.Label>
                 <Form.Control
                     type="text"
@@ -37,7 +39,7 @@ function SearchBar() {
                 <Button
                     type="submit"
                     id="usernameSub"
-                    className="m-2"
+                    className="ml-2"
                     onClick={handleClick}
                 >Search</Button>
             </Form.Group>
