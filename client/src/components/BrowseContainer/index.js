@@ -5,7 +5,7 @@ import Button from "react-bootstrap/Button";
 import Table from 'react-bootstrap/Table';
 import InterestModal from '../InterestModal'
 
-function BrowseContainer({ itemArray, handleDelete }) {
+function BrowseContainer({ itemArray, handleDelete, loggedInAs }) {
 
     const [showInterest, setShowInterest] = useState(false);
     const handleShowInterest = () => setShowInterest(true);
@@ -29,22 +29,27 @@ function BrowseContainer({ itemArray, handleDelete }) {
                                     <td className="entry-description">{entry.description}</td>
                                     <td className="entry-price"><h4>$ {entry.price}</h4></td>
                                     <td>
-                                        <Button
-                                            className="d-block mx-auto"
-                                            id="delete-btn"
-                                            onClick={() => handleDelete(entry._id)}
-                                        >X</Button>
-                                        <Button
-                                            className="d-block mx-auto mt-2"
-                                            id="edit-btn"
-                                            onClick={() => handleDelete(entry._id)}
-                                        >Edit</Button>
+                                        {(loggedInAs.isLoggedOn ? 
+                                        <>
+                                            <Button
+                                                className="d-block mx-auto"
+                                                id="delete-btn"
+                                                onClick={() => handleDelete(entry._id)}
+                                            >X</Button>
+                                            <Button
+                                                className="d-block mx-auto mt-2"
+                                                id="edit-btn"
+                                                onClick={() => handleDelete(entry._id)}
+                                            >Edit</Button>
+                                        </> :
+                                        <>
                                         <InterestModal
                                             handleShowInterest={handleShowInterest}
                                             show={showInterest}
                                             setShow={setShowInterest}
                                             closeInterestModal={closeInterestModal}
-                                        />
+                                            />
+                                        </>)}
                                     </td>
                                 </tr>
 

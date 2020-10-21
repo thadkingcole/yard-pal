@@ -51,7 +51,6 @@ function Browse({ loggedInAs }) {
                     const request = await axios
                         .get('/api/users/browseItems');
                     // setItemArray pushes request to itemArray
-                    console.log('resuest handleDelete BROWSE: ', request.data[0])
                     setItemArray(request.data[0]);
                     return request;
                 }
@@ -86,9 +85,11 @@ function Browse({ loggedInAs }) {
                             <p key={index}>{username}</p>
                             )} */}
                             <BrowseContainer
+                                loggedInAs={loggedInAs}
                                 handleDelete={handleDelete}
                                 itemArray={itemArray}
                                 setItemArray={setItemArray}
+                                userId={userId}
                             />
                         </Col>
                     </Row>

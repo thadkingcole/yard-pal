@@ -2,20 +2,20 @@ import React, { useState } from 'react';
 import axios from 'axios'
 import { Button } from 'react-bootstrap'
 import { Form } from 'react-bootstrap';
+import { useHistory } from "react-router-dom";
 
 function SearchBar() {
+    const history = useHistory();
     const [username, setUsername] = useState('');
     const handleChange = (e) => setUsername(e.target.value);
     const handleClick = (e) => {
         e.preventDefault();
         const user = username;
-        console.log(user);
         async function fetchData() {
             await axios.post('/api/users/searchUsername', { user })
                 .then(response => {
-                    console.log('response /api/users/searchUsername: ', response);
                     const userId = response.data;
-                    console.log('userId', userId);
+                    history.push(`/browse/${userId}`)
                 })
                 .catch(err => console.log('catch error /api/users/searchUsername: ', err))
         }

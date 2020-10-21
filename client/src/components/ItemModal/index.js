@@ -25,12 +25,17 @@ function ItemModal({
                 item: newItemInfo
             })
             .then((response) => {
-                console.log('response .put AddItem:', response)
                 setItemArray(response.data.items);
             })
             .catch((error) => {
                 console.log(error);
             });
+        setNewItemInfo({
+            name: "",
+            description: "",
+            price: 0,
+            imgUrl: "",
+        })
     };
 
     const handleChange = (event) => {
