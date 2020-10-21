@@ -11,7 +11,7 @@ function Search({ loggedInAs }) {
   const [itemArray, setItemArray] = useState([]);
 
   const { userId } = useParams();
-  
+
   useEffect(() => {
     if (userId) {
       async function fetchData() {
@@ -27,11 +27,6 @@ function Search({ loggedInAs }) {
     <Container>
       <Row>
         <Col className="pt-2">
-          <h4>Search for a items by username</h4>
-        </Col>
-      </Row>
-      <Row>
-        <Col className="col-6 border rounded">
           <SearchBar />
         </Col>
       </Row>
