@@ -67,7 +67,6 @@ function BrowseContainer({ itemArray, handleDelete, loggedInAs, setItemArray }) 
                                                 >Edit</Button>
                                                 <EditModal
                                                     setItemArray={setItemArray}
-                                                    entry={entry._id}
                                                     editItemInfo={editItemInfo}
                                                     setEditItemInfo={setEditItemInfo}
                                                     handleShowEdit={handleShowEdit}
