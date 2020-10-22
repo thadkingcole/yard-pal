@@ -21,12 +21,13 @@ function ItemModal({
     // Handle submit newItemModal
     async function handleSubmit(e) {
         e.preventDefault();
-        dispatch({ type: SHOW_ADD, showAdd: false })
+        closeModal();
         await axios
             .put('/api/users/addItem', {
                 item: newItemInfo
             })
             .then((response) => {
+                console.log('response PUT Additem: ', response)
                 dispatch({
                     type: SET_ITEM_ARRAY,
                     items: response.data.items

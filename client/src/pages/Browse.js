@@ -10,7 +10,8 @@ import Col from 'react-bootstrap/Col';
 import { SHOW_ADD } from '../store/actions';
 
 function Browse({ loggedInAs, state, dispatch }) {
-    console.log('state app.js', state);
+    console.log('loggedInAs: ', loggedInAs)
+    console.log('state browse.js', state);
     const history = useHistory();
     // Declare itemArray as a setState variable, set to empty array
     const [itemArray, setItemArray] = useState([]);
@@ -27,8 +28,7 @@ function Browse({ loggedInAs, state, dispatch }) {
                     .get('/api/users/browseItems');
                     console.log('useeffect request, ', request.data[0])
                 // setItemArray pushes request to itemArray
-                setItemArray(request.data[0]);
-                return request;
+                setItemArray(request.data[0]); 
             }
             fetchData();
         }
@@ -49,8 +49,8 @@ function Browse({ loggedInAs, state, dispatch }) {
                     const request = await axios
                         .get('/api/users/browseItems');
                     // setItemArray pushes request to itemArray
+                    console.log()
                     setItemArray(request.data[0]);
-                    return request;
                 }
                 fetchData();
             })
@@ -62,11 +62,13 @@ function Browse({ loggedInAs, state, dispatch }) {
         <Container>
             <Row>
                 <Col>
+                {(state.loggedInAs.isLoggedOn && 
                 <ControlPanel 
                 
                 itemArray={itemArray}
                 handleShow={handleShow}
                  />
+                )}
                 </Col>
             </Row>
             <Row>
