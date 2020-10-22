@@ -7,16 +7,16 @@ import ControlPanel from '../components/ControlPanel/index'
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import { SHOW_ADD } from '../store/actions';
 
-function Browse({ loggedInAs }) {
+function Browse({ loggedInAs, state, dispatch }) {
+    console.log('state app.js', state);
     const history = useHistory();
     // Declare itemArray as a setState variable, set to empty array
     const [itemArray, setItemArray] = useState([]);
     //useEffect loads once when page renders calling async fetchData
     const { userId } = useParams()
-    // declare setState variables to show or hide itemModal
-    const [show, setShow] = useState(false);
-
+  
     useEffect(() => {
         if (!loggedInAs.isLoggedOn) {
             history.push('/Search');
@@ -25,6 +25,7 @@ function Browse({ loggedInAs }) {
                 // Async get request from axios
                 const request = await axios
                     .get('/api/users/browseItems');
+                    console.log('useeffect request, ', request.data[0])
                 // setItemArray pushes request to itemArray
                 setItemArray(request.data[0]);
                 return request;
@@ -34,12 +35,9 @@ function Browse({ loggedInAs }) {
     }, []);
 
     //Show or hide anything inside this component
-    const handleShow = () => setShow(true);
-    const closeModal = () => setShow(false);
+    const handleShow = () => { dispatch({ type: SHOW_ADD, showAdd: true }) }  
+    const closeModal = () => { dispatch({ type: SHOW_ADD, showAdd: false }) }
 
-   
-
-    // const handleShowInterest = () => setShowInterest(true);
     const handleDelete = (_id) => {
         axios
             .put('/api/users/delItem', {
@@ -76,10 +74,11 @@ function Browse({ loggedInAs }) {
                     <Row className="d-inline-flex">
                         <Col className="col" >
                             <ItemModal
+                                state={state}
+                                dispatch={dispatch} 
                                 handleShow={handleShow}
                                 closeModal={closeModal}
-                                show={show}
-                                setShow={setShow}
+                                show={state.showAdd}
                                 setItemArray={setItemArray}
                                 itemArray={itemArray}
                             />

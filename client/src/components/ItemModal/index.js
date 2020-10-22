@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import { Button, Modal, Form, Row, Col } from 'react-bootstrap';
 import axios from 'axios'
+import { SHOW_ADD, SET_ITEM_ARRAY } from '../../store/actions';
 
 function ItemModal({
     setItemArray,
-    setShow,
     show,
-    handleShow,
-    closeModal
+    closeModal,
+    dispatch,
+    itemArray,
+    state
 }) {
     //declare variables for ItemnModal
     const [newItemInfo, setNewItemInfo] = useState({
@@ -19,23 +21,21 @@ function ItemModal({
     // Handle submit newItemModal
     async function handleSubmit(e) {
         e.preventDefault();
-        setShow(false);
+        dispatch({ type: SHOW_ADD, showAdd: false })
         await axios
             .put('/api/users/addItem', {
                 item: newItemInfo
             })
             .then((response) => {
-                setItemArray(response.data.items);
+                dispatch({
+                    type: SET_ITEM_ARRAY,
+                    items: response.data.items
+                })
+                console.log('state after SET_ITEM_ARRAY', state)
             })
             .catch((error) => {
                 console.log(error);
             });
-        setNewItemInfo({
-            name: "",
-            description: "",
-            price: 0,
-            imgUrl: "",
-        })
     };
 
     const handleChange = (event) => {

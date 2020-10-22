@@ -9,7 +9,7 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
-function Login({ loggedInAs, setLoggedInAs }) {
+function Login() {
   
   const [, /* state */ dispatch] = useStoreContext();
 
@@ -37,7 +37,6 @@ function Login({ loggedInAs, setLoggedInAs }) {
       .then((response) => {
         if (response.status === 200) {
           dispatch({ type: SET_USER, user: response.data });
-          setLoggedInAs({msg: response.data.username});
           window.location.reload();
         }
       })
