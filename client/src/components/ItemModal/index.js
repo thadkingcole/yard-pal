@@ -28,10 +28,7 @@ function ItemModal({
             })
             .then((response) => {
                 console.log('response PUT Additem: ', response)
-                dispatch({
-                    type: SET_ITEM_ARRAY,
-                    items: response.data.items
-                })
+                setNewItemInfo(response.data.items)
                 console.log('state after SET_ITEM_ARRAY', state)
             })
             .catch((error) => {
