@@ -3,6 +3,9 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import YPAbout from '../images/yardPAbout.png'
+import GitIcon from '../images/githubsmall.png'
+import LiIcon from '../images/linkedin.png'
+import WebIcon from '../images/website-icon.png'
 
 function About() {
     return (
@@ -36,13 +39,13 @@ function About() {
                     <br />
                     <p>
                         <a target="_blank" rel="noopener noreferrer" href="https://github.com/s-suresh-kumar">
-                            <img className="gitlink" src="https://stagewp.sharethis.com/wp-content/uploads/2018/02/github.png" alt="GitLinkS" />
+                            <img className="gitlink" src={GitIcon} alt="GitLinkS" />
                         </a>
                         <a target="_blank" rel="noopener noreferrer" href="github.com">
-                            <img className="websitelink" src="https://hatfieldmedia.com/wp-content/uploads/2019/05/Hatfield-Website-Circular-Icons1.png" alt="PortS" />
+                            <img className="websitelink" src={WebIcon} alt="PortS" />
                         </a>
                         <a target="_blank" rel="noopener noreferrer" href="github.com">
-                            <img className="linkedinlink" src="https://media.glassdoor.com/sqll/34865/linkedin-squarelogo-1559685522766.png" alt="LinS" />
+                            <img className="linkedinlink" src={LiIcon} alt="LinS" />
                         </a>
                     </p>
                 </Col>
@@ -55,13 +58,13 @@ function About() {
                     <br />
                     <p>
                         <a target="_blank" rel="noopener noreferrer" href="https://github.com/diuguide">
-                            <img className="gitlink" src="https://stagewp.sharethis.com/wp-content/uploads/2018/02/github.png" alt="GitLinkE" />
+                            <img className="gitlink" src={GitIcon} alt="GitLinkE" />
                         </a>
                         <a target="_blank" rel="noopener noreferrer" href="https://diuguide.github.io/portfolio_react/">
-                            <img className="websitelink" src="https://hatfieldmedia.com/wp-content/uploads/2019/05/Hatfield-Website-Circular-Icons1.png" alt="PortE" />
+                            <img className="websitelink" src={WebIcon} alt="PortE" />
                         </a>
                         <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/everett-diuguid-583632197/">
-                            <img className="linkedinlink" src="https://media.glassdoor.com/sqll/34865/linkedin-squarelogo-1559685522766.png" alt="LinE" />
+                            <img className="linkedinlink" src={LiIcon} alt="LinE" />
                         </a>
                     </p>
                 </Col>
@@ -96,13 +99,13 @@ function About() {
                     <br />
                     <p>
                         <a target="_blank" rel="noopener noreferrer" href="https://github.com/thadkingcole">
-                            <img className="gitlink" src="https://stagewp.sharethis.com/wp-content/uploads/2018/02/github.png" alt="GitLinkT" />
+                            <img className="gitlink" src={GitIcon} alt="GitLinkT" />
                         </a>
                         <a target="_blank" rel="noopener noreferrer" href="https://thadkingcole.github.io">
-                            <img className="websitelink" src="https://hatfieldmedia.com/wp-content/uploads/2019/05/Hatfield-Website-Circular-Icons1.png" alt="PortT" />
+                            <img className="websitelink" src={WebIcon} alt="PortT" />
                         </a>
                         <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/thaddeuscole/">
-                            <img className="linkedinlink" src="https://media.glassdoor.com/sqll/34865/linkedin-squarelogo-1559685522766.png" alt="LinT" />
+                            <img className="linkedinlink" src={LiIcon} alt="LinT" />
                         </a>
                     </p>
                 </Col>
@@ -115,13 +118,13 @@ function About() {
                     <br />
                     <p>
                         <a target="_blank" rel="noopener noreferrer" href="https://github.com/iariyami">
-                            <img className="gitlink" src="https://stagewp.sharethis.com/wp-content/uploads/2018/02/github.png" alt="GitLinkI" />
+                            <img className="gitlink" src={GitIcon} alt="GitLinkI" />
                         </a>
                         <a target="_blank" rel="noopener noreferrer" href="github.com">
-                            <img className="websitelink" src="https://hatfieldmedia.com/wp-content/uploads/2019/05/Hatfield-Website-Circular-Icons1.png" alt="PortI" />
+                            <img className="websitelink" src={WebIcon} alt="PortI" />
                         </a>
                         <a target="_blank" rel="noopener noreferrer" href="github.com">
-                            <img className="linkedinlink" src="https://media.glassdoor.com/sqll/34865/linkedin-squarelogo-1559685522766.png" alt="LinI" />
+                            <img className="linkedinlink" src={LiIcon} alt="LinI" />
                         </a>
                     </p>
                 </Col>
