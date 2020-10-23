@@ -31,6 +31,7 @@ const App = () => {
       await axios.get('/api/users').then(response => {
         if (response.data.user) {
           dispatch({ type: SET_USER, user: response.data.user });
+          
           setLoggedInAs({
             msg: response.data.user.username,
             isLoggedOn: true
@@ -40,7 +41,6 @@ const App = () => {
           dispatch({ type: UNSET_USER });
           history.push('/login');
         }
-
       })
     }
     fetchData();
