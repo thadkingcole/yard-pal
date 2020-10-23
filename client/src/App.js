@@ -41,7 +41,6 @@ const App = () => {
           dispatch({ type: UNSET_USER });
           history.push('/login');
         }
-
       })
     }
     fetchData();

@@ -38,7 +38,7 @@ function Signup() {
           alert(`${response.data.username} is now signed up, please log in`);
           history.replace('/Login');
         } else if (response.data.error) {
-          setErrorCode('Please choose a different username');
+          setErrorCode('Username must be a valid email address');
           
         } else {
           setErrorCode('You must use a valid email address and a password between 8 to 15 characters. Your password must contain at least one lowercase letter, one uppercase letter, one numeric digit, and one special character')
