@@ -9,13 +9,14 @@ import Button from 'react-bootstrap/Button';
 
 function Signup() {
   const history = useHistory();
-
+  const [ errorCode, setErrorCode ] = useState('');
   const [signUpCreds, setSignUpCreds] = useState({
     username: '',
     password: '',
   });
 
   const handleChange = (event) => {
+    setErrorCode('');
     const { name, value } = event.target;
     setSignUpCreds({ ...signUpCreds, [name]: value });
   };
@@ -30,10 +31,18 @@ function Signup() {
         password: signUpCreds.password,
       })
       .then((response) => {
-        if (!response.data.error) {
+        console.log('response signup: ', response)
+        if (!response.data.error && !response.data.errors) {
+          console.log('signup success');
+          setErrorCode('');
+          alert(`${response.data.username} is now signed up, please log in`);
           history.replace('/Login');
+        } else if (response.data.error) {
+          setErrorCode('Username must be a valid email address');
+          
         } else {
-          console.log('USERNAME TAKEN');
+          setErrorCode('You must use a valid email address and a password between 8 to 15 characters. Your password must contain at least one lowercase letter, one uppercase letter, one numeric digit, and one special character')
+          
         }
       })
       .catch((error) => {
@@ -82,6 +91,15 @@ function Signup() {
                 <Button className="btn btn-lg btn-primary btn-block" type="submit" onClick={handleSubmit}>
                   Sign Up
                 </Button>
+                {(errorCode &&
+                  <Row>
+
+                  <Col className="border rounded mt-4 errorCode">
+                  <div>{errorCode}</div>
+                  </Col>
+                </Row>
+                  )}
+                
               </Form>
             </Col>
           </Row>
