@@ -75,7 +75,36 @@ const userSchema = new Schema({
       imgUrl: {
         type: String,
         trim: true,
-      }
+      },
+      interest: [
+        {
+          name: {
+            type: String,
+            trim: true,
+            required: "A name is required to show interest",
+          },
+          email: {
+            type: String,
+            trim: true,
+            required: "An email is required to show interest",
+            validate: {
+              validator: (v) => {
+                // validates 99.99% of emails
+                return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
+                  v
+                );
+              },
+              message: (props) =>
+                `${props.value} is not a valid email address!`,
+            },
+          },
+          message: {
+            type: String,
+            trim: true,
+            required: "A message is required to show interest",
+          },
+        },
+      ],
     },
   ],
 });
