@@ -35,16 +35,21 @@ function About() {
                     <br />
                 </Col>
                 <Col className="col col-md-8 col-lg-8">
-                    <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+                    <ul>
+                        <li>Responsible for backend routes, as part of backend development team.</li>
+                        <li>Responsible for GitHub Responsitory creation, branch protection and Heroku Deployment with automatic deployment</li>
+                        <li>Actively participated in project conception, planning & execution (using trello) with team members.</li>
+                        <li>Co-contributed to team deliverables such as Proposal, MVP, Presentation material as needed along with team members</li>
+                    </ul>
                     <br />
                     <p>
                         <a target="_blank" rel="noopener noreferrer" href="https://github.com/s-suresh-kumar">
                             <img className="gitlink" src={GitIcon} alt="GitLinkS" />
                         </a>
-                        <a target="_blank" rel="noopener noreferrer" href="github.com">
+                        <a target="_blank" rel="noopener noreferrer" href="https://s-suresh-kumar.github.io/my-portfolio/">
                             <img className="websitelink" src={WebIcon} alt="PortS" />
                         </a>
-                        <a target="_blank" rel="noopener noreferrer" href="github.com">
+                        <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/suresh-s-kumar/">
                             <img className="linkedinlink" src={LiIcon} alt="LinS" />
                         </a>
                     </p>
