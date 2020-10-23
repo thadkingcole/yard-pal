@@ -36,9 +36,9 @@ function About() {
                 </Col>
                 <Col className="col col-md-8 col-lg-8">
                     <ul>
-                        <li>Responsible for backend routes, as part of backend development team.</li>
+                        <li>Responsible for backend routes, as part of backend development team</li>
                         <li>Responsible for GitHub Responsitory creation, branch protection and Heroku Deployment with automatic deployment</li>
-                        <li>Actively participated in project conception, planning & execution (using trello) with team members.</li>
+                        <li>Actively participated in project conception, planning & execution (using trello) with team members</li>
                         <li>Co-contributed to team deliverables such as Proposal, MVP, Presentation material as needed along with team members</li>
                     </ul>
                     <br />
