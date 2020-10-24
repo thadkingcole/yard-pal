@@ -64,7 +64,6 @@ function Browse({ loggedInAs, state, dispatch }) {
                 <Col>
                 {(state.loggedInAs.isLoggedOn && 
                 <ControlPanel 
-                
                 itemArray={itemArray}
                 handleShow={handleShow}
                  />
@@ -75,14 +74,11 @@ function Browse({ loggedInAs, state, dispatch }) {
                 <Col>
                     <Row className="d-inline-flex">
                         <Col className="col" >
-                            <ItemModal
-                                state={state}
-                                dispatch={dispatch} 
+                            <ItemModal 
                                 handleShow={handleShow}
                                 closeModal={closeModal}
                                 show={state.showAdd}
                                 setItemArray={setItemArray}
-                                itemArray={itemArray}
                             />
                         </Col>
                     </Row>

@@ -1,15 +1,11 @@
 import React, { useState } from 'react';
 import { Button, Modal, Form, Row, Col } from 'react-bootstrap';
 import axios from 'axios'
-import { SHOW_ADD, SET_ITEM_ARRAY } from '../../store/actions';
 
 function ItemModal({
     setItemArray,
     show,
     closeModal,
-    dispatch,
-    itemArray,
-    state
 }) {
     //declare variables for ItemnModal
     const [newItemInfo, setNewItemInfo] = useState({
