@@ -15,16 +15,13 @@ const ControlPanel = ({
                 <Col>
                     <Row className="d-inline-flex">
                         <Col>
-                            <h6>Control Panel</h6>
-                        </Col>
-                        <Col>
                             <Button
                                 variant="primary"
                                 onClick={handleShow}>
                                 Add
                             </Button>
                         </Col>
-                        <Col>
+                        <Col className="searchCount">
                             {(itemArray &&
                                 <h6>Displaying {itemArrayLength} items</h6>
                             )}

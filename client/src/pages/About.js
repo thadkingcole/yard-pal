@@ -3,6 +3,9 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import YPAbout from '../images/yardPAbout.png'
+import GitIcon from '../images/githubsmall.png'
+import LiIcon from '../images/linkedin.png'
+import WebIcon from '../images/website-icon.png'
 
 function About() {
     return (
@@ -32,17 +35,22 @@ function About() {
                     <br />
                 </Col>
                 <Col className="col col-md-8 col-lg-8">
-                    <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+                    <ul>
+                        <li>Responsible for backend routes, as part of backend development team</li>
+                        <li>Responsible for GitHub Responsitory creation, branch protection and Heroku Deployment with automatic deployment</li>
+                        <li>Actively participated in project conception, planning & execution (using trello) with team members</li>
+                        <li>Co-contributed to team deliverables such as Proposal, MVP, Presentation material as needed along with team members</li>
+                    </ul>
                     <br />
                     <p>
                         <a target="_blank" rel="noopener noreferrer" href="https://github.com/s-suresh-kumar">
-                            <img className="gitlink" src="https://stagewp.sharethis.com/wp-content/uploads/2018/02/github.png" alt="GitLinkS" />
+                            <img className="gitlink" src={GitIcon} alt="GitLinkS" />
                         </a>
-                        <a target="_blank" rel="noopener noreferrer" href="github.com">
-                            <img className="websitelink" src="https://hatfieldmedia.com/wp-content/uploads/2019/05/Hatfield-Website-Circular-Icons1.png" alt="PortS" />
+                        <a target="_blank" rel="noopener noreferrer" href="https://s-suresh-kumar.github.io/my-portfolio/">
+                            <img className="websitelink" src={WebIcon} alt="PortS" />
                         </a>
-                        <a target="_blank" rel="noopener noreferrer" href="github.com">
-                            <img className="linkedinlink" src="https://media.glassdoor.com/sqll/34865/linkedin-squarelogo-1559685522766.png" alt="LinS" />
+                        <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/suresh-s-kumar/">
+                            <img className="linkedinlink" src={LiIcon} alt="LinS" />
                         </a>
                     </p>
                 </Col>
@@ -55,13 +63,13 @@ function About() {
                     <br />
                     <p>
                         <a target="_blank" rel="noopener noreferrer" href="https://github.com/diuguide">
-                            <img className="gitlink" src="https://stagewp.sharethis.com/wp-content/uploads/2018/02/github.png" alt="GitLinkE" />
+                            <img className="gitlink" src={GitIcon} alt="GitLinkE" />
                         </a>
                         <a target="_blank" rel="noopener noreferrer" href="https://diuguide.github.io/portfolio_react/">
-                            <img className="websitelink" src="https://hatfieldmedia.com/wp-content/uploads/2019/05/Hatfield-Website-Circular-Icons1.png" alt="PortE" />
+                            <img className="websitelink" src={WebIcon} alt="PortE" />
                         </a>
                         <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/everett-diuguid-583632197/">
-                            <img className="linkedinlink" src="https://media.glassdoor.com/sqll/34865/linkedin-squarelogo-1559685522766.png" alt="LinE" />
+                            <img className="linkedinlink" src={LiIcon} alt="LinE" />
                         </a>
                     </p>
                 </Col>
@@ -88,17 +96,21 @@ function About() {
                     <br />
                 </Col>
                 <Col className="col col-md-8 col-lg-8">
-                    <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+                    <ul>
+                        <li>Designed database models</li>
+                        <li>Assisted with backend development</li>
+                        <li>Not ready to convert to the metric "meter sale"</li>
+                    </ul>
                     <br />
                     <p>
                         <a target="_blank" rel="noopener noreferrer" href="https://github.com/thadkingcole">
-                            <img className="gitlink" src="https://stagewp.sharethis.com/wp-content/uploads/2018/02/github.png" alt="GitLinkT" />
+                            <img className="gitlink" src={GitIcon} alt="GitLinkT" />
                         </a>
-                        <a target="_blank" rel="noopener noreferrer" href="github.com">
-                            <img className="websitelink" src="https://hatfieldmedia.com/wp-content/uploads/2019/05/Hatfield-Website-Circular-Icons1.png" alt="PortT" />
+                        <a target="_blank" rel="noopener noreferrer" href="https://thadkingcole.github.io">
+                            <img className="websitelink" src={WebIcon} alt="PortT" />
                         </a>
-                        <a target="_blank" rel="noopener noreferrer" href="github.com">
-                            <img className="linkedinlink" src="https://media.glassdoor.com/sqll/34865/linkedin-squarelogo-1559685522766.png" alt="LinT" />
+                        <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/thaddeuscole/">
+                            <img className="linkedinlink" src={LiIcon} alt="LinT" />
                         </a>
                     </p>
                 </Col>
@@ -111,13 +123,13 @@ function About() {
                     <br />
                     <p>
                         <a target="_blank" rel="noopener noreferrer" href="https://github.com/iariyami">
-                            <img className="gitlink" src="https://stagewp.sharethis.com/wp-content/uploads/2018/02/github.png" alt="GitLinkI" />
+                            <img className="gitlink" src={GitIcon} alt="GitLinkI" />
                         </a>
                         <a target="_blank" rel="noopener noreferrer" href="github.com">
-                            <img className="websitelink" src="https://hatfieldmedia.com/wp-content/uploads/2019/05/Hatfield-Website-Circular-Icons1.png" alt="PortI" />
+                            <img className="websitelink" src={WebIcon} alt="PortI" />
                         </a>
                         <a target="_blank" rel="noopener noreferrer" href="github.com">
-                            <img className="linkedinlink" src="https://media.glassdoor.com/sqll/34865/linkedin-squarelogo-1559685522766.png" alt="LinI" />
+                            <img className="linkedinlink" src={LiIcon} alt="LinI" />
                         </a>
                     </p>
                 </Col>

@@ -12,6 +12,7 @@ import Button from 'react-bootstrap/Button';
 function Login() {
   
   const [, /* state */ dispatch] = useStoreContext();
+  const [ errorCode, setErrorCode ] = useState('');
 
   const [loginCreds, setLoginCreds] = useState({
     username: '',
@@ -26,22 +27,22 @@ function Login() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
     dispatch({ type: LOADING });
-
     axios
       .post('/api/users/login', {
         username: loginCreds.username,
         password: loginCreds.password,
       })
       .then((response) => {
+        console.log('response login: ', response)
         if (response.status === 200) {
+          setErrorCode('');
           dispatch({ type: SET_USER, user: response.data });
           window.location.reload();
-        }
+        } 
       })
       .catch((error) => {
-        console.log('login error: ');
+        setErrorCode('Incorrect username or password, please try again or signup');
         console.log(error);
       });
   };
@@ -90,6 +91,14 @@ function Login() {
                 <Link className="btn btn-lg btn-primary btn-block" type="submit" as={Link} to="/Signup" >
                   Sign Up
                 </Link>
+                {(errorCode &&
+                  <Row>
+
+                  <Col className="border rounded mt-4 errorCode">
+                  <div>{errorCode}</div>
+                  </Col>
+                </Row>
+                  )}
               </Form>
             </Col>
           </Row>

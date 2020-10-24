@@ -116,10 +116,12 @@ td {
 }
 .controlPanel {
 width: 100%;
-border: 5px solid #f7f7f7;
 margin-top: 10px;
 white-space: nowrap;
-border-radius: 10px;
+
+}
+.searchCount {
+margin-top: 9px;
 }
 
   
