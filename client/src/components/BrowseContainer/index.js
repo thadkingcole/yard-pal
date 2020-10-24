@@ -5,6 +5,7 @@ import Button from "react-bootstrap/Button";
 import Table from 'react-bootstrap/Table';
 import InterestModal from '../InterestModal'
 import EditModal from '../EditModal'
+import ViewInterestModal from '../ViewInterestModal/index'
 
 function BrowseContainer({ itemArray, handleDelete, loggedInAs, setItemArray }) {
 
@@ -20,6 +21,13 @@ function BrowseContainer({ itemArray, handleDelete, loggedInAs, setItemArray }) 
         setShowEdit(false)
     }
 
+    //Show or hide ViewInterestModal
+    const [showViewInterest, setShowViewInterest] = useState(false);
+    const handleShowViewInterest = () => setShowViewInterest(true);
+    const closeViewInterestModal = () => {
+        setShowViewInterest(false)
+    }
+
     const [editItemInfo, setEditItemInfo] = useState({
         name: '',
         description: '',
@@ -30,8 +38,8 @@ function BrowseContainer({ itemArray, handleDelete, loggedInAs, setItemArray }) 
 
     return (
         <Row>
-            <Col className="col bg-light p-3 border rounded itemTable">
-                <Row className="m-2 ">
+            <Col className="col bg-light border rounded itemTable">
+                <Row className="">
                     <Table striped bordered hover>
                         <tbody>
                             {/* Map through Item array into table */}
@@ -51,20 +59,27 @@ function BrowseContainer({ itemArray, handleDelete, loggedInAs, setItemArray }) 
                                                     className="d-block mx-auto"
                                                     id="delete-btn"
                                                     onClick={() => handleDelete(entry._id)}
-                                                >X</Button>
+                                                >Delete</Button>
                                                 <Button
-                                                    className="d-block mx-auto mt-2"
+                                                    className="d-block mx-auto mt-1 mb-1"
                                                     id="edit-btn"
                                                     onClick={() => {
                                                         handleShowEdit();
                                                         setEditItemInfo({
-                                                        name: entry.name, 
-                                                        description: entry.description,
-                                                        price: entry.price,
-                                                        imgUrl: entry.imgUrl,
-                                                        itemId: entry._id
-                                                        })}}
+                                                            name: entry.name,
+                                                            description: entry.description,
+                                                            price: entry.price,
+                                                            imgUrl: entry.imgUrl,
+                                                            itemId: entry._id
+                                                        })
+                                                    }}
                                                 >Edit</Button>
+                                                <Button
+                                                    onClick={handleShowViewInterest}
+                                                    className=""
+                                                    variant="primary">
+                                                    View Interest
+                                                </Button>
                                                 <EditModal
                                                     setItemArray={setItemArray}
                                                     editItemInfo={editItemInfo}
@@ -74,6 +89,10 @@ function BrowseContainer({ itemArray, handleDelete, loggedInAs, setItemArray }) 
                                                     setShow={setShowEdit}
                                                     closeEditModal={closeEditModal}
                                                 />
+                                                <ViewInterestModal
+                showViewInterest={showViewInterest}
+                closeViewInterestModal={closeViewInterestModal}
+            />
                                             </> :
                                             <>
                                                 <InterestModal

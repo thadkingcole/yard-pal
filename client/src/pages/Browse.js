@@ -3,19 +3,20 @@ import { useParams, useHistory } from "react-router-dom";
 import axios from 'axios'
 import ItemModal from '../components/ItemModal/index'
 import BrowseContainer from '../components/BrowseContainer/index'
+import ControlPanel from '../components/ControlPanel/index'
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import { SHOW_ADD } from '../store/actions';
 
-function Browse({ loggedInAs }) {
+function Browse({ loggedInAs, state, dispatch, handleLogout }) {
+
     const history = useHistory();
     // Declare itemArray as a setState variable, set to empty array
     const [itemArray, setItemArray] = useState([]);
     //useEffect loads once when page renders calling async fetchData
     const { userId } = useParams()
-    // declare setState variables to show or hide itemModal
-    const [show, setShow] = useState(false);
-
+  
     useEffect(() => {
         if (!loggedInAs.isLoggedOn) {
             history.push('/Search');
@@ -25,18 +26,16 @@ function Browse({ loggedInAs }) {
                 const request = await axios
                     .get('/api/users/browseItems');
                 // setItemArray pushes request to itemArray
-                setItemArray(request.data[0]);
-                return request;
+                setItemArray(request.data[0]); 
             }
             fetchData();
         }
     }, []);
 
     //Show or hide anything inside this component
-    const handleShow = () => setShow(true);
-    const closeModal = () => setShow(false);
+    const handleShow = () => { dispatch({ type: SHOW_ADD, showAdd: true }) }  
+    const closeModal = () => { dispatch({ type: SHOW_ADD, showAdd: false }) }
 
-    // const handleShowInterest = () => setShowInterest(true);
     const handleDelete = (_id) => {
         axios
             .put('/api/users/delItem', {
@@ -48,8 +47,8 @@ function Browse({ loggedInAs }) {
                     const request = await axios
                         .get('/api/users/browseItems');
                     // setItemArray pushes request to itemArray
+                    console.log()
                     setItemArray(request.data[0]);
-                    return request;
                 }
                 fetchData();
             })
@@ -61,15 +60,25 @@ function Browse({ loggedInAs }) {
         <Container>
             <Row>
                 <Col>
+                {(state.loggedInAs.isLoggedOn && 
+                <ControlPanel
+                state={state}
+                handleLogout={handleLogout}
+                itemArray={itemArray}
+                handleShow={handleShow}
+                 />
+                )}
+                </Col>
+            </Row>
+            <Row>
+                <Col>
                     <Row className="d-inline-flex">
                         <Col className="col" >
-                            <ItemModal
+                            <ItemModal 
                                 handleShow={handleShow}
                                 closeModal={closeModal}
-                                show={show}
-                                setShow={setShow}
+                                show={state.showAdd}
                                 setItemArray={setItemArray}
-                                itemArray={itemArray}
                             />
                         </Col>
                     </Row>

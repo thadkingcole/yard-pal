@@ -114,3 +114,14 @@ td {
   padding: 6px;
   white-space: nowrap;
 }
+.controlPanel {
+width: 100%;
+margin-top: 10px;
+white-space: nowrap;
+
+}
+.searchCount {
+margin-top: 9px;
+}
+
+  

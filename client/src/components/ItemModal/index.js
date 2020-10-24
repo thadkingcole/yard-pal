@@ -4,10 +4,8 @@ import axios from 'axios'
 
 function ItemModal({
     setItemArray,
-    setShow,
     show,
-    handleShow,
-    closeModal
+    closeModal,
 }) {
     //declare variables for ItemnModal
     const [newItemInfo, setNewItemInfo] = useState({
@@ -19,23 +17,17 @@ function ItemModal({
     // Handle submit newItemModal
     async function handleSubmit(e) {
         e.preventDefault();
-        setShow(false);
+        closeModal();
         await axios
             .put('/api/users/addItem', {
                 item: newItemInfo
             })
             .then((response) => {
-                setItemArray(response.data.items);
+                setItemArray(response.data.items)
             })
             .catch((error) => {
                 console.log(error);
             });
-        setNewItemInfo({
-            name: "",
-            description: "",
-            price: 0,
-            imgUrl: "",
-        })
     };
 
     const handleChange = (event) => {
@@ -46,9 +38,7 @@ function ItemModal({
     return (
         <Row>
             <Col>
-                <Button className="m-1" variant="primary" onClick={handleShow}>
-                    Add
-                </Button>
+                
                 <Modal show={show}>
                     <Modal.Header>
                         <Row>
