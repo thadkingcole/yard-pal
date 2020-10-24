@@ -135,7 +135,7 @@ function BrowseContainer({ itemArray, handleDelete, loggedInAs, setItemArray }) 
                                                         }})
                                                     }}
                                                     >
-                                                    Reserve Item
+                                                    Interested?
                                                 </Button>
                                                 <InterestModal
                                                 state={state}
