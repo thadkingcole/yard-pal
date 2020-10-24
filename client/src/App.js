@@ -19,7 +19,7 @@ import About from './pages/About';
 const App = () => {
   const history = useHistory();
   const [state, dispatch] = useStoreContext();
-
+  
   useEffect(() => {
     dispatch({ type: LOADING });
     async function fetchData() {
@@ -29,7 +29,7 @@ const App = () => {
           history.push('/Browse');
         } else {
           dispatch({ type: UNSET_USER });
-          history.push('/login');
+          history.push('/Browse');
         }
       })
     }

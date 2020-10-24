@@ -8,9 +8,7 @@ function InterestModal({
     show,
     closeInterestModal,
 }) {
-    const [ state, dispatch ] = useStoreContext();
-    console.log('state after click BEFORE ONCHANGE: ', state)
-
+    const [state, dispatch] = useStoreContext();
     const [interestArray, setInterestArray] = useState({
         name: '',
         email: '',
@@ -18,45 +16,36 @@ function InterestModal({
     })
 
     async function handleSubmit(e) {
-        console.log('click handlesubmit')
         e.preventDefault();
         closeInterestModal();
         await axios
             .put('/api/users/addInterest', state.interestItem)
             .then((response) => {
-                console.log('response PUT interestModal: ', response)
+                console.log('success');
             })
             .catch((error) => {
                 console.log(error);
             });
-            dispatch({ type: INTEREST_INFO, interestItem: {
-                name: '',
-                description: '',
-                price: '',
-                imgUrl: '',
-                itemId: '',
-                interest: '',
-            }})
+        window.location.reload()
     };
 
     const handleConfirm = () => {
-        dispatch({ type: INTEREST_INFO, interestItem: {
-            name: state.interestItem.name,
-            description: state.interestItem.description,
-            price: state.interestItem.price,
-            imgUrl: state.interestItem.imgUrl,
-            itemId: state.interestItem._id,
-            interest: interestArray,
-        }})
-        console.log('handleConfirm: ', state.interestItem);
+        dispatch({
+            type: INTEREST_INFO, interestItem: {
+                name: state.interestItem.name,
+                description: state.interestItem.description,
+                price: state.interestItem.price,
+                imgUrl: state.interestItem.imgUrl,
+                itemId: state.interestItem.itemId,
+                interest: interestArray,
+                username: state.user_name,
+            }
+        })
     };
-const handleChange = (event) => {
-            const { name, value } = event.target;
-            setInterestArray({ ...interestArray, [name]: value });
-            console.log('onChange interestArray: ', interestArray)
-        };
-        
-    console.log('interestArray', interestArray)
+    const handleChange = (event) => {
+        const { name, value } = event.target;
+        setInterestArray({ ...interestArray, [name]: value });
+    };
     return (
         <Row>
             <Col>

@@ -10,7 +10,6 @@ function EditModal({
     show,
     closeEditModal
 }) {
-    console.log('edit item info edit modal: ', editItemInfo)
     // Handle submit EditItemModal
     async function handleSubmit(e) {
         e.preventDefault();

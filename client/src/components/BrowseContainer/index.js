@@ -38,7 +38,7 @@ function BrowseContainer({ itemArray, handleDelete, loggedInAs, setItemArray }) 
         imgUrl: '',
         itemId: ''
     });
-
+    
     return (
         <Row>
             <Col className="col bg-light border rounded itemTable">
@@ -46,7 +46,8 @@ function BrowseContainer({ itemArray, handleDelete, loggedInAs, setItemArray }) 
                     <Table striped bordered hover>
                         <tbody>
                             {/* Map through Item array into table */}
-                            {itemArray.map((entry, index) =>
+                            {itemArray.map((entry, index) => 
+            
                                 <tr key={index}>
                                     <td className="entry-img">
                                         <img
@@ -78,9 +79,25 @@ function BrowseContainer({ itemArray, handleDelete, loggedInAs, setItemArray }) 
                                                     }}
                                                 >Edit</Button>
                                                 <Button
-                                                    onClick={handleShowViewInterest}
-                                                    className=""
-                                                    variant="primary">
+                                                    className="m-2"
+                                                    variant="primary"
+                                                    onClick={() => {
+                                                        handleShowViewInterest();
+                                                        dispatch({ type: INTEREST_INFO, interestItem: {
+                                                            name: entry.name,
+                                                            description: entry.description,
+                                                            price: entry.price,
+                                                            imgUrl: entry.imgUrl,
+                                                            itemId: entry._id,
+                                                            interest: [{
+                                                                name: entry.interest[0].name || '',
+                                                                email: entry.interest[0].email || '',
+                                                                message: entry.interest[0].message || '',
+                                                            }]
+                                                        }})
+                                                    }}
+                                                    
+                                                    >
                                                     View Interest
                                                 </Button>
                                                 <EditModal
@@ -93,6 +110,7 @@ function BrowseContainer({ itemArray, handleDelete, loggedInAs, setItemArray }) 
                                                     closeEditModal={closeEditModal}
                                                 />
                                                 <ViewInterestModal
+                                                    
                                                     showViewInterest={showViewInterest}
                                                     closeViewInterestModal={closeViewInterestModal}
                                                 />
@@ -115,9 +133,7 @@ function BrowseContainer({ itemArray, handleDelete, loggedInAs, setItemArray }) 
                                                                 message: ''
                                                             }]
                                                         }})
-                                                        console.log('state after reserve interest onClick', state);
                                                     }}
-                                                    
                                                     >
                                                     Reserve Item
                                                 </Button>

@@ -3,13 +3,17 @@ import axios from 'axios'
 import { Button } from 'react-bootstrap'
 import { Form } from 'react-bootstrap';
 import { useHistory } from "react-router-dom";
+import { SET_USER_NAME } from '../../store/actions';
+import { useStoreContext } from '../../store/store';
 
 function SearchBar() {
     const history = useHistory();
     const [username, setUsername] = useState('');
+    const [ state, dispatch ] = useStoreContext();
     const handleChange = (e) => setUsername(e.target.value);
     const handleClick = (e) => {
         e.preventDefault();
+        dispatch({ type: SET_USER_NAME, user_name: username });
         const user = username;
         async function fetchData() {
             await axios.post('/api/users/searchUsername', { user })

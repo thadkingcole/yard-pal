@@ -178,16 +178,14 @@ router.post("/searchUsername", (req, res) => {
 });
 
 router.put("/addInterest", async (req, res) => {
-  console.log('req.body on addInterest: ', req.body)
   const modifiedItem = {
     name: req.body.name,
     description: req.body.description,
     price: req.body.price,
     imgUrl: req.body.imgUrl,
-    interest: req.body.interest,
+    interest: [req.body.interest],
   };
-    
-    
+
     //add items to document
     User.findOneAndUpdate(
       { username: req.body.username },
@@ -200,15 +198,12 @@ router.put("/addInterest", async (req, res) => {
         { safe: true, upsert: true, new: true, runValidators: true }
       )
         .then((dbItems) => {
-          console.log('dbitems addInterest: ', dbItems)
           res.json(dbItems);
         })
         .catch((err) => {
-          console.log('error addinterest: ', err)
           res.json(err);
         })
         .catch((err) => {
-          console.log('error addinterest two: ', err)
           res.json(err);
         })
     );
