@@ -10,7 +10,6 @@ function EditModal({
     show,
     closeEditModal
 }) {
-    
     // Handle submit EditItemModal
     async function handleSubmit(e) {
         e.preventDefault();

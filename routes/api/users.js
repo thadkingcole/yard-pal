@@ -177,4 +177,36 @@ router.post("/searchUsername", (req, res) => {
     .catch((err) => console.log(err));
 });
 
+router.put("/addInterest", async (req, res) => {
+  const modifiedItem = {
+    name: req.body.name,
+    description: req.body.description,
+    price: req.body.price,
+    imgUrl: req.body.imgUrl,
+    interest: [req.body.interest],
+  };
+
+    //add items to document
+    User.findOneAndUpdate(
+      { username: req.body.username },
+      { $pull: { items: { _id: req.body.itemId } } },
+      { safe: true, upsert: true }
+    ).then(
+      User.findOneAndUpdate(
+        { username: req.body.username },
+        { $push: { items: modifiedItem } },
+        { safe: true, upsert: true, new: true, runValidators: true }
+      )
+        .then((dbItems) => {
+          res.json(dbItems);
+        })
+        .catch((err) => {
+          res.json(err);
+        })
+        .catch((err) => {
+          res.json(err);
+        })
+    );
+});
+
 module.exports = router;

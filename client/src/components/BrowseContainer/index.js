@@ -6,9 +6,12 @@ import Table from 'react-bootstrap/Table';
 import InterestModal from '../InterestModal'
 import EditModal from '../EditModal'
 import ViewInterestModal from '../ViewInterestModal/index'
+import { INTEREST_INFO } from '../../store/actions';
+import { useStoreContext } from '../../store/store';
 
 function BrowseContainer({ itemArray, handleDelete, loggedInAs, setItemArray }) {
 
+    const [ state, dispatch ] = useStoreContext();
     const [showInterest, setShowInterest] = useState(false);
     const handleShowInterest = () => setShowInterest(true);
     const closeInterestModal = () => {
@@ -35,7 +38,7 @@ function BrowseContainer({ itemArray, handleDelete, loggedInAs, setItemArray }) 
         imgUrl: '',
         itemId: ''
     });
-
+    
     return (
         <Row>
             <Col className="col bg-light border rounded itemTable">
@@ -43,7 +46,8 @@ function BrowseContainer({ itemArray, handleDelete, loggedInAs, setItemArray }) 
                     <Table striped bordered hover>
                         <tbody>
                             {/* Map through Item array into table */}
-                            {itemArray.map((entry, index) =>
+                            {itemArray.map((entry, index) => 
+            
                                 <tr key={index}>
                                     <td className="entry-img">
                                         <img
@@ -75,9 +79,25 @@ function BrowseContainer({ itemArray, handleDelete, loggedInAs, setItemArray }) 
                                                     }}
                                                 >Edit</Button>
                                                 <Button
-                                                    onClick={handleShowViewInterest}
-                                                    className=""
-                                                    variant="primary">
+                                                    className="m-2"
+                                                    variant="primary"
+                                                    onClick={() => {
+                                                        handleShowViewInterest();
+                                                        dispatch({ type: INTEREST_INFO, interestItem: {
+                                                            name: entry.name,
+                                                            description: entry.description,
+                                                            price: entry.price,
+                                                            imgUrl: entry.imgUrl,
+                                                            itemId: entry._id,
+                                                            interest: [{
+                                                                name: entry.interest[0].name || '',
+                                                                email: entry.interest[0].email || '',
+                                                                message: entry.interest[0].message || '',
+                                                            }]
+                                                        }})
+                                                    }}
+                                                    
+                                                    >
                                                     View Interest
                                                 </Button>
                                                 <EditModal
@@ -90,13 +110,38 @@ function BrowseContainer({ itemArray, handleDelete, loggedInAs, setItemArray }) 
                                                     closeEditModal={closeEditModal}
                                                 />
                                                 <ViewInterestModal
-                showViewInterest={showViewInterest}
-                closeViewInterestModal={closeViewInterestModal}
-            />
+                                                    
+                                                    showViewInterest={showViewInterest}
+                                                    closeViewInterestModal={closeViewInterestModal}
+                                                />
                                             </> :
                                             <>
+                                                <Button
+                                                    className="m-2"
+                                                    variant="primary"
+                                                    onClick={() => {
+                                                        handleShowInterest();
+                                                        dispatch({ type: INTEREST_INFO, interestItem: {
+                                                            name: entry.name,
+                                                            description: entry.description,
+                                                            price: entry.price,
+                                                            imgUrl: entry.imgUrl,
+                                                            itemId: entry._id,
+                                                            interest: [{
+                                                                name: '',
+                                                                email: '',
+                                                                message: ''
+                                                            }]
+                                                        }})
+                                                    }}
+                                                    >
+                                                    Interested?
+                                                </Button>
                                                 <InterestModal
-                                                    handleShowInterest={handleShowInterest}
+                                                state={state}
+                                                    username={loggedInAs.msg}
+                                                    editItemInfo={editItemInfo}
+                                                    handleShowViewInterest={handleShowViewInterest}
                                                     show={showInterest}
                                                     setShow={setShowInterest}
                                                     closeInterestModal={closeInterestModal}
