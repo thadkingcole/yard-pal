@@ -37,13 +37,6 @@ const reducer = (state, action) => {
         showAdd: action.showAdd,
       };
 
-    case SET_ITEM_ARRAY:
-      return {
-        ...state,
-        items: action.items,
-        loading: false,
-      };
-
     default:
       return state;
   }
@@ -58,7 +51,6 @@ const StoreProvider = ({ value = [], ...props }) => {
       msg: 'not logged on'
     },
     showAdd: false,
-    items: [],
   });
 
   return <Provider value={[state, dispatch]} {...props} />;

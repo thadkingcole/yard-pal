@@ -1,14 +1,10 @@
 import React from 'react';
-import { Button, Modal, Form, Row, Col } from 'react-bootstrap';
+import { Button, Modal, Row, Col } from 'react-bootstrap';
 
 function ViewInterestModal({
     showViewInterest,
     closeViewInterestModal
 }) {
-    // Handle submit InterestModal
-    async function handleSubmit(f) {
-        f.preventDefault();
-    };
 
     return (
         <Row>
