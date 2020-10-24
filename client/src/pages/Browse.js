@@ -9,7 +9,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { SHOW_ADD } from '../store/actions';
 
-function Browse({ loggedInAs, state, dispatch }) {
+function Browse({ loggedInAs, state, dispatch, handleLogout }) {
 
     const history = useHistory();
     // Declare itemArray as a setState variable, set to empty array
@@ -61,7 +61,9 @@ function Browse({ loggedInAs, state, dispatch }) {
             <Row>
                 <Col>
                 {(state.loggedInAs.isLoggedOn && 
-                <ControlPanel 
+                <ControlPanel
+                state={state}
+                handleLogout={handleLogout}
                 itemArray={itemArray}
                 handleShow={handleShow}
                  />

@@ -13,8 +13,7 @@ import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Search from './pages/Search';
 import Browse from './pages/Browse';
-import Logout from './components/Logout/index'
-import LoggedInAs from './components/LoggedInAs/loggedInAs'
+
 import About from './pages/About';
 
 const App = () => {
@@ -72,22 +71,14 @@ const App = () => {
       <Switch>
         <Route exact path="/Login" component={Login} />
         <Route exact path="/Signup" component={Signup} />
-        <Route exact path="/Browse" render={props => <Browse {...props} dispatch={dispatch} state={state} loggedInAs={state.loggedInAs} />} />
+        <Route exact path="/Browse" render={props => <Browse {...props} dispatch={dispatch} state={state} loggedInAs={state.loggedInAs} handleLogout={handleLogout}/>} />
         <Route exact path="/About" component={About} />
         <Route exact path="/Search" component={Search} />
         <Route exact path="/Browse/:userId" render={props => <Search {...props} loggedInAs={state.loggedInAs} />} />
       </Switch>
       <Container>
         <Row className="d-inline-flex border logout bg-light">
-          <Col className="col">
-            <Logout
-              handleLogout={handleLogout} />
-          </Col>
-          <Col className="col">
-            <LoggedInAs
-              loggedInAs={state.loggedInAs}
-            />
-          </Col>
+          
         </Row>
       </Container>
 
