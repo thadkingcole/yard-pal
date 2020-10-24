@@ -49,9 +49,6 @@ function InterestModal({
     return (
         <Row>
             <Col>
-                <Button className="m-2" variant="primary" onClick={handleShowInterest}>
-                    Interested?
-                </Button>
                 <Modal show={show}>
                     <Modal.Header>
                         <Row>
