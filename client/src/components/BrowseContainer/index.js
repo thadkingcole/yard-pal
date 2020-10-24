@@ -6,9 +6,12 @@ import Table from 'react-bootstrap/Table';
 import InterestModal from '../InterestModal'
 import EditModal from '../EditModal'
 import ViewInterestModal from '../ViewInterestModal/index'
+import { INTEREST_INFO } from '../../store/actions';
+import { useStoreContext } from '../../store/store';
 
 function BrowseContainer({ itemArray, handleDelete, loggedInAs, setItemArray }) {
 
+    const [ state, dispatch ] = useStoreContext();
     const [showInterest, setShowInterest] = useState(false);
     const handleShowInterest = () => setShowInterest(true);
     const closeInterestModal = () => {
@@ -100,19 +103,26 @@ function BrowseContainer({ itemArray, handleDelete, loggedInAs, setItemArray }) 
                                                     variant="primary"
                                                     onClick={() => {
                                                         handleShowInterest();
-                                                        setEditItemInfo({
+                                                        dispatch({ type: INTEREST_INFO, interestItem: {
                                                             name: entry.name,
                                                             description: entry.description,
                                                             price: entry.price,
                                                             imgUrl: entry.imgUrl,
-                                                            itemId: entry._id
-                                                        })
+                                                            itemId: entry._id,
+                                                            interest: [{
+                                                                name: '',
+                                                                email: '',
+                                                                message: ''
+                                                            }]
+                                                        }})
+                                                        console.log('state after reserve interest onClick', state);
                                                     }}
                                                     
                                                     >
                                                     Reserve Item
                                                 </Button>
                                                 <InterestModal
+                                                state={state}
                                                     username={loggedInAs.msg}
                                                     editItemInfo={editItemInfo}
                                                     handleShowViewInterest={handleShowViewInterest}

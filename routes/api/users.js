@@ -178,43 +178,40 @@ router.post("/searchUsername", (req, res) => {
 });
 
 router.put("/addInterest", async (req, res) => {
-  console.log('fired put: req: ', req.body);
-  User.findOne({ username: req.body.username }).then(response => {
-    console.log('response nnn', response)
-  res.json(response)
-  }).catch(err => console.log(err))
-
-    //edit items
-    // const interestItem = {
-    //   name: req.body.name,
-    //   email: req.body.email,
-    //   message: req.body.message,
-    // };
+  console.log('req.body on addInterest: ', req.body)
+  const modifiedItem = {
+    name: req.body.name,
+    description: req.body.description,
+    price: req.body.price,
+    imgUrl: req.body.imgUrl,
+    interest: req.body.interest,
+  };
     
-    // //add items to document
-    // User.findOneAndUpdate(
-    //   { username: req.body.username },
-    //   { $pull: { items: { _id: req.body.itemId } } },
-    //   { safe: true, upsert: true }
-    // ).then(
-    //   User.findAndModify(
-    //     { username: req.body.username },
-    //     { $set: { items: interestItem }},
-    //     { safe: true, upsert: true, new: true, runValidators: true, multi: true }
-    //   )
-    //     .then((dbItems) => {
-    //       console.log('dbitems addInterest: ', dbItems)
-    //       res.json(dbItems);
-    //     })
-    //     .catch((err) => {
-    //       console.log('error addinterest: ', err)
-    //       res.json(err);
-    //     })
-    //     .catch((err) => {
-    //       console.log('error addinterest two: ', err)
-    //       res.json(err);
-    //     })
-    // );
+    
+    //add items to document
+    User.findOneAndUpdate(
+      { username: req.body.username },
+      { $pull: { items: { _id: req.body.itemId } } },
+      { safe: true, upsert: true }
+    ).then(
+      User.findOneAndUpdate(
+        { username: req.body.username },
+        { $push: { items: modifiedItem } },
+        { safe: true, upsert: true, new: true, runValidators: true }
+      )
+        .then((dbItems) => {
+          console.log('dbitems addInterest: ', dbItems)
+          res.json(dbItems);
+        })
+        .catch((err) => {
+          console.log('error addinterest: ', err)
+          res.json(err);
+        })
+        .catch((err) => {
+          console.log('error addinterest two: ', err)
+          res.json(err);
+        })
+    );
 });
 
 module.exports = router;

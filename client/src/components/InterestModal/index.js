@@ -1,42 +1,62 @@
 import React, { useState } from 'react';
 import { Button, Modal, Form, Row, Col } from 'react-bootstrap';
 import axios from 'axios';
+import { INTEREST_INFO } from '../../store/actions';
+import { useStoreContext } from '../../store/store';
 
 function InterestModal({
     show,
     closeInterestModal,
-    username,
-    editItemInfo
 }) {
-    console.log('itemId: ', editItemInfo.itemId)
-    const [interestInfo, setInterestInfo] = useState({
+    const [ state, dispatch ] = useStoreContext();
+    console.log('state after click BEFORE ONCHANGE: ', state)
+
+    const [interestArray, setInterestArray] = useState({
         name: '',
         email: '',
         message: '',
-        username: 'everett.diuguid@gmail.com',
-        itemId: '',
-        
-    });
-    // Handle submit newItemModal
-    async function handleSubmit(e) {
+    })
 
+    async function handleSubmit(e) {
+        console.log('click handlesubmit')
         e.preventDefault();
         closeInterestModal();
         await axios
-            .put('/api/users/addInterest', interestInfo)
+            .put('/api/users/addInterest', state.interestItem)
             .then((response) => {
                 console.log('response PUT interestModal: ', response)
             })
             .catch((error) => {
                 console.log(error);
             });
+            dispatch({ type: INTEREST_INFO, interestItem: {
+                name: '',
+                description: '',
+                price: '',
+                imgUrl: '',
+                itemId: '',
+                interest: '',
+            }})
     };
 
-    const handleChange = (event) => {
-        const { name, value } = event.target;
-        setInterestInfo({ ...interestInfo, [name]: value });
+    const handleConfirm = () => {
+        dispatch({ type: INTEREST_INFO, interestItem: {
+            name: state.interestItem.name,
+            description: state.interestItem.description,
+            price: state.interestItem.price,
+            imgUrl: state.interestItem.imgUrl,
+            itemId: state.interestItem._id,
+            interest: interestArray,
+        }})
+        console.log('handleConfirm: ', state.interestItem);
     };
-
+const handleChange = (event) => {
+            const { name, value } = event.target;
+            setInterestArray({ ...interestArray, [name]: value });
+            console.log('onChange interestArray: ', interestArray)
+        };
+        
+    console.log('interestArray', interestArray)
     return (
         <Row>
             <Col>
@@ -62,7 +82,7 @@ function InterestModal({
                                 className="form-control"
                                 name="name"
                                 placeholder="Your name"
-                                value={interestInfo.name}
+                                value={interestArray.name}
                                 onChange={handleChange}
                             />
                             <Form.Label className="pt-1">Your Email</Form.Label>
@@ -72,7 +92,7 @@ function InterestModal({
                                 className="form-control"
                                 name="email"
                                 placeholder="Your Email"
-                                value={interestInfo.email}
+                                value={interestArray.email}
                                 onChange={handleChange}
                             />
                             <Form.Label className="pt-1">Item or item description</Form.Label>
@@ -82,19 +102,14 @@ function InterestModal({
                                 className="form-control"
                                 name="message"
                                 placeholder="Item"
-                                value={interestInfo.message}
+                                value={interestArray.message}
                                 onChange={handleChange}
                             />
-                            <Form.Label className="pt-1">{editItemInfo.itemId} Please copy and paste this id into the form</Form.Label>
-                            <Form.Control
-                                type="input"
-                                id="itemId"
-                                className="form-control"
-                                name="itemId"
-                                placeholder="Item"
-                                value={interestInfo.itemId}
-                                onChange={handleChange}
-                            />
+                            <Button
+                                color="dark"
+                                style={{ marginTop: '2rem' }}
+                                onClick={handleConfirm}
+                            >Confirm Interest</Button>
                             <Button
                                 color="dark"
                                 style={{ marginTop: '2rem' }}

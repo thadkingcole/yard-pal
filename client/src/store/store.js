@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useReducer } from 'react';
-import { LOGIN, LOGOUT, SET_USER, UNSET_USER, SHOW_ADD, SET_ITEM_ARRAY } from './actions';
+import { LOGIN, LOGOUT, SET_USER, UNSET_USER, SHOW_ADD, INTEREST_INFO } from './actions';
 
 const StoreContext = createContext();
 const { Provider } = StoreContext;
@@ -37,6 +37,12 @@ const reducer = (state, action) => {
         showAdd: action.showAdd,
       };
 
+    case INTEREST_INFO:
+      return {
+        ...state,
+        interestItem: action.interestItem,
+      }
+
     default:
       return state;
   }
@@ -51,6 +57,14 @@ const StoreProvider = ({ value = [], ...props }) => {
       msg: 'not logged on'
     },
     showAdd: false,
+    interestItem: {
+      name: '',
+        description: '',
+        price: '',
+        imgUrl: '',
+        itemId: '',
+        interest: '',
+    }
   });
 
   return <Provider value={[state, dispatch]} {...props} />;
