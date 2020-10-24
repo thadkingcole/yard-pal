@@ -50,6 +50,8 @@ function InterestModal({
                             />
                             <Form.Label className="pt-1">Message</Form.Label>
                             <Form.Control
+                                as="textarea"
+                                rows={4}
                                 type="text"
                                 id="message"
                                 className="form-control pt-2"

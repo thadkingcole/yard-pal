@@ -123,7 +123,7 @@ function About() {
                         <li>Front end development team</li>
                         <li>Created the layout for the About page</li>
                         <li>Designed the Interest modal and button</li>
-                        <li>Contributed to the project management tools, MVP, and assisted in presentation development</li>
+                        <li>Contributed to the project management tools, MVP, and assisted with presentation materials</li>
                     </ul>
                     <br />
                     <p>
