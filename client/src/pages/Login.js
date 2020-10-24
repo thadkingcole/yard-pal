@@ -20,8 +20,8 @@ function Login() {
   });
 
   const handleChange = (event) => {
+    setErrorCode('');
     const { name, value } = event.target;
-
     setLoginCreds({ ...loginCreds, [name]: value });
   };
 
