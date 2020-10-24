@@ -19,13 +19,13 @@ import About from './pages/About';
 const App = () => {
   const history = useHistory();
   const [state, dispatch] = useStoreContext();
- 
+
   useEffect(() => {
     dispatch({ type: LOADING });
     async function fetchData() {
       await axios.get('/api/users').then(response => {
         if (response.data.user) {
-          dispatch({ type: SET_USER, user: response.data.user, msg: response.data.user.username } );
+          dispatch({ type: SET_USER, user: response.data.user, msg: response.data.user.username });
           history.push('/Browse');
         } else {
           dispatch({ type: UNSET_USER });
@@ -45,7 +45,7 @@ const App = () => {
         user: state.loggedInAs.msg
       })
         .then((response) => {
-          dispatch({ type: SET_USER, user: null, msg: 'not logged on'})
+          dispatch({ type: SET_USER, user: null, msg: 'not logged on' })
           if (response.status === 200) {
             alert('Logout Successful!');
             history.push('/Login');
@@ -59,7 +59,7 @@ const App = () => {
       <Container>
         <Row>
           <Col className="pt-3">
-          <Jumbo />
+            <Jumbo />
           </Col>
         </Row>
         <Row>
@@ -71,18 +71,11 @@ const App = () => {
       <Switch>
         <Route exact path="/Login" component={Login} />
         <Route exact path="/Signup" component={Signup} />
-        <Route exact path="/Browse" render={props => <Browse {...props} dispatch={dispatch} state={state} loggedInAs={state.loggedInAs} handleLogout={handleLogout}/>} />
+        <Route exact path="/Browse" render={props => <Browse {...props} dispatch={dispatch} state={state} loggedInAs={state.loggedInAs} handleLogout={handleLogout} />} />
         <Route exact path="/About" component={About} />
         <Route exact path="/Search" component={Search} />
         <Route exact path="/Browse/:userId" render={props => <Search {...props} loggedInAs={state.loggedInAs} />} />
       </Switch>
-      <Container>
-        <Row className="d-inline-flex border logout bg-light">
-          
-        </Row>
-      </Container>
-
-
     </>
   );
 }
