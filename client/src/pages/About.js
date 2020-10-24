@@ -50,7 +50,7 @@ function About() {
                             <img className="websitelink" src={WebIcon} alt="PortS" />
                         </a>
                         <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/suresh-s-kumar/">
-                            <img className="linkedinlink" src={LiIcon} alt="LinS" />
+                            <img className="linkedinlink" src={LiIcon} alt="Icon made by Freepik from flaticon.com" />
                         </a>
                     </p>
                 </Col>
@@ -69,7 +69,7 @@ function About() {
                             <img className="websitelink" src={WebIcon} alt="PortE" />
                         </a>
                         <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/everett-diuguid-583632197/">
-                            <img className="linkedinlink" src={LiIcon} alt="LinE" />
+                            <img className="linkedinlink" src={LiIcon} alt="Icon made by Freepik from flaticon.com" />
                         </a>
                     </p>
                 </Col>
@@ -110,7 +110,7 @@ function About() {
                             <img className="websitelink" src={WebIcon} alt="PortT" />
                         </a>
                         <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/thaddeuscole/">
-                            <img className="linkedinlink" src={LiIcon} alt="LinT" />
+                            <img className="linkedinlink" src={LiIcon} alt="Icon made by Freepik from flaticon.com" />
                         </a>
                     </p>
                 </Col>
@@ -134,7 +134,7 @@ function About() {
                             <img className="websitelink" src={WebIcon} alt="PortI" />
                         </a>
                         <a target="_blank" rel="noopener noreferrer" href="github.com">
-                            <img className="linkedinlink" src={LiIcon} alt="LinI" />
+                            <img className="linkedinlink" src={LiIcon} alt="Icon made by Freepik from flaticon.com" />
                         </a>
                     </p>
                 </Col>
