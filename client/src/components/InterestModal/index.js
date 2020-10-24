@@ -4,7 +4,7 @@ import { Button, Modal, Form, Row, Col } from 'react-bootstrap';
 function InterestModal({
     show,
     handleShowInterest,
-    closeViewInterestModal
+    closeInterestModal
 }) {
     // Handle submit InterestModal
     async function handleSubmit(f) {
@@ -26,7 +26,7 @@ function InterestModal({
                         </Row>
                         <Row>
                             <Col>
-                                <Button onClick={closeViewInterestModal} variant="light">X</Button>
+                                <Button onClick={closeInterestModal} variant="light">X</Button>
                             </Col>
                         </Row>
                     </Modal.Header>
