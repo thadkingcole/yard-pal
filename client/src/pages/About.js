@@ -50,7 +50,7 @@ function About() {
                             <img className="websitelink" src={WebIcon} alt="PortS" />
                         </a>
                         <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/suresh-s-kumar/">
-                            <img className="linkedinlink" src={LiIcon} alt="LinS" />
+                            <img className="linkedinlink" src={LiIcon} alt="Icon made by Freepik from flaticon.com" />
                         </a>
                     </p>
                 </Col>
@@ -69,7 +69,7 @@ function About() {
                             <img className="websitelink" src={WebIcon} alt="PortE" />
                         </a>
                         <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/everett-diuguid-583632197/">
-                            <img className="linkedinlink" src={LiIcon} alt="LinE" />
+                            <img className="linkedinlink" src={LiIcon} alt="Icon made by Freepik from flaticon.com" />
                         </a>
                     </p>
                 </Col>
@@ -110,7 +110,7 @@ function About() {
                             <img className="websitelink" src={WebIcon} alt="PortT" />
                         </a>
                         <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/thaddeuscole/">
-                            <img className="linkedinlink" src={LiIcon} alt="LinT" />
+                            <img className="linkedinlink" src={LiIcon} alt="Icon made by Freepik from flaticon.com" />
                         </a>
                     </p>
                 </Col>
@@ -119,7 +119,12 @@ function About() {
             <br />
             <Row>
                 <Col className="col col-md-8 col-lg-8">
-                    <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+                    <ul>
+                        <li>Front end development team</li>
+                        <li>Created the layout for the About page</li>
+                        <li>Designed the Interest modal and button</li>
+                        <li>Contributed to the project management tools, MVP, and assisted with presentation materials</li>
+                    </ul>
                     <br />
                     <p>
                         <a target="_blank" rel="noopener noreferrer" href="https://github.com/iariyami">
@@ -129,7 +134,7 @@ function About() {
                             <img className="websitelink" src={WebIcon} alt="PortI" />
                         </a>
                         <a target="_blank" rel="noopener noreferrer" href="github.com">
-                            <img className="linkedinlink" src={LiIcon} alt="LinI" />
+                            <img className="linkedinlink" src={LiIcon} alt="Icon made by Freepik from flaticon.com" />
                         </a>
                     </p>
                 </Col>

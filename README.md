@@ -5,18 +5,18 @@
 
 - Yard Pal is an online web application that brings your local yard sales to your computer or device. With this application, you can view your local yard sales or host your own yard sale safely from your home. This way the sellers and buyers can safely communicate with each other and follow social-distancing guidelines. 
 
-![](client/src/images/YPDeployScreen.png)(https://yard-pal.herokuapp.com/)
+[![screenshot](./client/src/images/YPDeployScreen.png)](https://yard-pal.herokuapp.com/)
 
 ## Table of Contents
 
 - [Installation](#installation)
 - [Usage](#usage)
-- [Contributors](#contributing)
+- [Contributors](#contributors)
 - [License](#license)
 
 ## Installation
 
-- In order to access this application, all you need to do is click the hyperlink or picture of the application above and you will be directed to the website.
+- In order to access this application, all you need to do is navigate to <https://yard-pal.herokuapp.com/>, or click the hyperlink or picture of the application above and you will be directed to the website.
 
 [back to Table of Contents](#table-of-contents)
 
@@ -30,10 +30,10 @@
 
 ## Contributors
 
-- [Everett](https://github.com/diuguide/)
-- [Ibrahim](https://github.com/iariyami)
-- [Suresh](https://github.com/s-suresh-kumar)
-- [Thad](https://github.com/thadkingcole)
+- [Everett](https://github.com/diuguide/) - front-end form modals & browse items page
+- [Ibrahim](https://github.com/iariyami) - front-end form modals & about page
+- [Suresh](https://github.com/s-suresh-kumar) - back-end server & routes
+- [Thad](https://github.com/thadkingcole) - back-end server & routes
 
 [back to Table of Contents](#table-of-contents)
 
