@@ -35,10 +35,12 @@ const ControlPanel = ({
                                 loggedInAs={state.loggedInAs}
                             />
                         </Col>
-                        <Col className="col justify-content-right">
+                        {(state.loggedInAs.isLoggedOn &&
+                        <Col className="col">
                             <Logout
                                 handleLogout={handleLogout} />
-                        </Col>
+                        </Col>    
+                            )}
                     </Row>
                 </Col>
             </Row>
