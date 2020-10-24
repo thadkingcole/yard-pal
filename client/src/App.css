@@ -118,15 +118,11 @@ td {
 height: 100px;
 width: 100%;
 border-radius: 20px;
-margin-top: 10px;
-margin-left: 5px;
+padding-left: 20px;
 }
 .innerControlPanel {
-  position: absolute;
-  height: 90%;
-  width: 96%;
+  height: 100%;
+  width: 100%;
   border-radius: 20px;
-  margin-top: 5px;
-  margin-left: 0px;
-  }
+}
   

@@ -47,7 +47,9 @@ const ControlPanel = ({
                             </Button>
                                 </Col>
                                 <Col>
-                                    {/* <h6>Number of Items: {itemArrayLength}</h6> */}
+                                    {(itemArray && 
+                                       <h6>Number of Items: {itemArrayLength}</h6> 
+                                        )} 
                                 </Col>
                             </Row>
                         </Col>

@@ -27,9 +27,7 @@ function ItemModal({
                 item: newItemInfo
             })
             .then((response) => {
-                console.log('response PUT Additem: ', response)
-                setNewItemInfo(response.data.items)
-                console.log('state after SET_ITEM_ARRAY', state)
+                setItemArray(response.data.items)
             })
             .catch((error) => {
                 console.log(error);
