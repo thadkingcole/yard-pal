@@ -15,7 +15,7 @@ function InterestModal({
         <Row>
             <Col>
                 <Button className="m-2" variant="primary" onClick={handleShowInterest}>
-                    Reserve Item
+                    Interested?
                 </Button>
                 <Modal show={show}>
                     <Modal.Header>
@@ -48,13 +48,13 @@ function InterestModal({
                                 name="email"
                                 placeholder="Your Email"
                             />
-                            <Form.Label className="pt-1">Item for Reservation</Form.Label>
+                            <Form.Label className="pt-1">Message</Form.Label>
                             <Form.Control
                                 type="text"
-                                id="itemresrve"
+                                id="message"
                                 className="form-control pt-2"
-                                name="itemreserve"
-                                placeholder="Please list one item only"
+                                name="message"
+                                placeholder="Message for seller"
                             />
                             <Button
                                 color="dark"
