@@ -10,8 +10,7 @@ import Col from 'react-bootstrap/Col';
 import { SHOW_ADD } from '../store/actions';
 
 function Browse({ loggedInAs, state, dispatch }) {
-    console.log('loggedInAs: ', loggedInAs)
-    console.log('state browse.js', state);
+
     const history = useHistory();
     // Declare itemArray as a setState variable, set to empty array
     const [itemArray, setItemArray] = useState([]);
@@ -26,7 +25,6 @@ function Browse({ loggedInAs, state, dispatch }) {
                 // Async get request from axios
                 const request = await axios
                     .get('/api/users/browseItems');
-                    console.log('useeffect request, ', request.data[0])
                 // setItemArray pushes request to itemArray
                 setItemArray(request.data[0]); 
             }

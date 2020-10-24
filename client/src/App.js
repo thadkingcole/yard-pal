@@ -21,12 +21,10 @@ const App = () => {
   const history = useHistory();
   const [state, dispatch] = useStoreContext();
  
-  
   useEffect(() => {
     dispatch({ type: LOADING });
     async function fetchData() {
       await axios.get('/api/users').then(response => {
-        console.log('response app.js api/users: ', response)
         if (response.data.user) {
           dispatch({ type: SET_USER, user: response.data.user, msg: response.data.user.username } );
           history.push('/Browse');
