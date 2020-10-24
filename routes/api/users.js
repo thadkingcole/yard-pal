@@ -138,7 +138,8 @@ router.put("/editItem", async (req, res) => {
       name: req.body.name,
       description: req.body.description,
       price: req.body.price,
-      imgUrl: req.body.imgUrl
+      imgUrl: req.body.imgUrl,
+      interest: [req.body.interest]
     };
     //add items to document
     User.findOneAndUpdate(
@@ -186,27 +187,27 @@ router.put("/addInterest", async (req, res) => {
     interest: [req.body.interest],
   };
 
-    //add items to document
+  //add items to document
+  User.findOneAndUpdate(
+    { username: req.body.username },
+    { $pull: { items: { _id: req.body.itemId } } },
+    { safe: true, upsert: true }
+  ).then(
     User.findOneAndUpdate(
       { username: req.body.username },
-      { $pull: { items: { _id: req.body.itemId } } },
-      { safe: true, upsert: true }
-    ).then(
-      User.findOneAndUpdate(
-        { username: req.body.username },
-        { $push: { items: modifiedItem } },
-        { safe: true, upsert: true, new: true, runValidators: true }
-      )
-        .then((dbItems) => {
-          res.json(dbItems);
-        })
-        .catch((err) => {
-          res.json(err);
-        })
-        .catch((err) => {
-          res.json(err);
-        })
-    );
+      { $push: { items: modifiedItem } },
+      { safe: true, upsert: true, new: true, runValidators: true }
+    )
+      .then((dbItems) => {
+        res.json(dbItems);
+      })
+      .catch((err) => {
+        res.json(err);
+      })
+      .catch((err) => {
+        res.json(err);
+      })
+  );
 });
 
 module.exports = router;
