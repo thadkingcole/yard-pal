@@ -11,7 +11,7 @@ import { useStoreContext } from '../../store/store';
 
 function BrowseContainer({ itemArray, handleDelete, loggedInAs, setItemArray }) {
 
-    const [ state, dispatch ] = useStoreContext();
+    const [state, dispatch] = useStoreContext();
     const [showInterest, setShowInterest] = useState(false);
     const handleShowInterest = () => setShowInterest(true);
     const closeInterestModal = () => {
@@ -38,7 +38,7 @@ function BrowseContainer({ itemArray, handleDelete, loggedInAs, setItemArray }) 
         imgUrl: '',
         itemId: ''
     });
-    
+
     return (
         <Row>
             <Col className="col bg-light border rounded itemTable">
@@ -46,8 +46,8 @@ function BrowseContainer({ itemArray, handleDelete, loggedInAs, setItemArray }) 
                     <Table striped bordered hover>
                         <tbody>
                             {/* Map through Item array into table */}
-                            {itemArray.map((entry, index) => 
-            
+                            {itemArray.map((entry, index) =>
+
                                 <tr key={index}>
                                     <td className="entry-img">
                                         <img
@@ -78,28 +78,30 @@ function BrowseContainer({ itemArray, handleDelete, loggedInAs, setItemArray }) 
                                                         })
                                                     }}
                                                 >Edit</Button>
-                                                <Button
+                                                {(entry.interest.length > 0) && <Button
                                                     className="m-2"
                                                     variant="primary"
                                                     onClick={() => {
                                                         handleShowViewInterest();
-                                                        dispatch({ type: INTEREST_INFO, interestItem: {
-                                                            name: entry.name,
-                                                            description: entry.description,
-                                                            price: entry.price,
-                                                            imgUrl: entry.imgUrl,
-                                                            itemId: entry._id,
-                                                            interest: [{
-                                                                name: entry.interest[0].name || '',
-                                                                email: entry.interest[0].email || '',
-                                                                message: entry.interest[0].message || '',
-                                                            }]
-                                                        }})
+                                                        dispatch({
+                                                            type: INTEREST_INFO, interestItem: {
+                                                                name: entry.name,
+                                                                description: entry.description,
+                                                                price: entry.price,
+                                                                imgUrl: entry.imgUrl,
+                                                                itemId: entry._id,
+                                                                interest: [{
+                                                                    name: entry.interest[0].name || '',
+                                                                    email: entry.interest[0].email || '',
+                                                                    message: entry.interest[0].message || '',
+                                                                }]
+                                                            }
+                                                        })
                                                     }}
-                                                    
-                                                    >
+
+                                                >
                                                     View Interest
-                                                </Button>
+                                                </Button>}
                                                 <EditModal
                                                     setItemArray={setItemArray}
                                                     editItemInfo={editItemInfo}
@@ -110,7 +112,7 @@ function BrowseContainer({ itemArray, handleDelete, loggedInAs, setItemArray }) 
                                                     closeEditModal={closeEditModal}
                                                 />
                                                 <ViewInterestModal
-                                                    
+
                                                     showViewInterest={showViewInterest}
                                                     closeViewInterestModal={closeViewInterestModal}
                                                 />
@@ -121,24 +123,26 @@ function BrowseContainer({ itemArray, handleDelete, loggedInAs, setItemArray }) 
                                                     variant="primary"
                                                     onClick={() => {
                                                         handleShowInterest();
-                                                        dispatch({ type: INTEREST_INFO, interestItem: {
-                                                            name: entry.name,
-                                                            description: entry.description,
-                                                            price: entry.price,
-                                                            imgUrl: entry.imgUrl,
-                                                            itemId: entry._id,
-                                                            interest: [{
-                                                                name: '',
-                                                                email: '',
-                                                                message: ''
-                                                            }]
-                                                        }})
+                                                        dispatch({
+                                                            type: INTEREST_INFO, interestItem: {
+                                                                name: entry.name,
+                                                                description: entry.description,
+                                                                price: entry.price,
+                                                                imgUrl: entry.imgUrl,
+                                                                itemId: entry._id,
+                                                                interest: [{
+                                                                    name: '',
+                                                                    email: '',
+                                                                    message: ''
+                                                                }]
+                                                            }
+                                                        })
                                                     }}
-                                                    >
+                                                >
                                                     Interested?
                                                 </Button>
                                                 <InterestModal
-                                                state={state}
+                                                    state={state}
                                                     username={loggedInAs.msg}
                                                     editItemInfo={editItemInfo}
                                                     handleShowViewInterest={handleShowViewInterest}
