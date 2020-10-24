@@ -90,13 +90,32 @@ function BrowseContainer({ itemArray, handleDelete, loggedInAs, setItemArray }) 
                                                     closeEditModal={closeEditModal}
                                                 />
                                                 <ViewInterestModal
-                showViewInterest={showViewInterest}
-                closeViewInterestModal={closeViewInterestModal}
-            />
+                                                    showViewInterest={showViewInterest}
+                                                    closeViewInterestModal={closeViewInterestModal}
+                                                />
                                             </> :
                                             <>
+                                                <Button
+                                                    className="m-2"
+                                                    variant="primary"
+                                                    onClick={() => {
+                                                        handleShowInterest();
+                                                        setEditItemInfo({
+                                                            name: entry.name,
+                                                            description: entry.description,
+                                                            price: entry.price,
+                                                            imgUrl: entry.imgUrl,
+                                                            itemId: entry._id
+                                                        })
+                                                    }}
+                                                    
+                                                    >
+                                                    Reserve Item
+                                                </Button>
                                                 <InterestModal
-                                                    handleShowInterest={handleShowInterest}
+                                                    username={loggedInAs.msg}
+                                                    editItemInfo={editItemInfo}
+                                                    handleShowViewInterest={handleShowViewInterest}
                                                     show={showInterest}
                                                     setShow={setShowInterest}
                                                     closeInterestModal={closeInterestModal}
