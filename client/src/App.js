@@ -48,7 +48,7 @@ const App = () => {
           dispatch({ type: SET_USER, user: null, msg: 'not logged on' })
           if (response.status === 200) {
             alert('Logout Successful!');
-            history.push('/Login');
+            window.location.reload();
           }
         }).catch(err => console.log(err));
     }
