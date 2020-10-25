@@ -18,7 +18,8 @@ function ItemModal({
     async function handleSubmit(e) {
         e.preventDefault();
         closeModal();
-        await axios
+        if (newItemInfo.name) {
+            await axios
             .put('/api/users/addItem', {
                 item: newItemInfo
             })
@@ -34,7 +35,8 @@ function ItemModal({
                 price: 0,
                 imgUrl: "",
             })
-    };
+        };
+    }
 
     const handleChange = (event) => {
         const { name, value } = event.target;
@@ -44,7 +46,6 @@ function ItemModal({
     return (
         <Row>
             <Col>
-                
                 <Modal show={show}>
                     <Modal.Header>
                         <Row>

@@ -62,15 +62,7 @@ const userSchema = new Schema({
       },
       price: {
         type: Number,
-        required: "Enter a price for the item",
-        // validation: $XX.XX 2 decimal places
-        validate: {
-          validator: (v) => {
-            return /^\s*(?=.*[1-9])\d*(?:\.\d{1,2})?\s*$/.test(v);
-          },
-          message: (props) =>
-            `${props.value} is not a valid price (<2 decimals)`,
-        },
+        set: (v) => Math.round(v * 100)/100
       },
       imgUrl: {
         type: String,
