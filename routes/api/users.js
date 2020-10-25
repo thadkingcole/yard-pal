@@ -172,9 +172,18 @@ router.post("/searchUsername", (req, res) => {
   User.findOne({ username: req.body.user })
     .then((userdata) => {
       // and returns the userId in json response
-      res.json(userdata._id);
+      if (userdata) {
+        res.json(userdata._id);
+      }
+      else {
+        console.log('username not found in collection');
+        res.json(null);
+      }
     })
-    .catch((err) => console.log(err));
+    .catch((err) => {
+      console.log('err', err);
+      res.json(err)
+    });
 });
 
 router.put("/addInterest", async (req, res) => {
