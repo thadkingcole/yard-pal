@@ -6,7 +6,7 @@ function ViewInterestModal({
     showViewInterest,
     closeViewInterestModal
 }) {
-    const [ state, dispatch ] = useStoreContext();
+    const [state, dispatch] = useStoreContext();
     let interestArray = state.interestItem.interest[0];
     return (
         <Row>
@@ -25,14 +25,18 @@ function ViewInterestModal({
                         </Row>
                     </Modal.Header>
                     <Modal.Body>
-                        {(interestArray &&    
-                        <Row>
-                            <Col>
-                                 <div>Buyer: {interestArray.name}</div>
-                                 <div>Email: {interestArray.email}</div>
-                                 <div>Message to Seller: {interestArray.message}</div>
-                            </Col>
-                        </Row>
+                        {(interestArray &&
+                            <Row className="d-block">
+                                <Col>
+                                    <div>Buyer: {interestArray.name}</div>
+                                </Col>
+                                <Col>
+                                    <div>Email: {interestArray.email}</div>
+                                </Col>
+                                <Col>
+                                    <div>Message to Seller: {interestArray.message}</div>
+                                </Col>
+                            </Row>
                         )}
                     </Modal.Body>
                 </Modal>
