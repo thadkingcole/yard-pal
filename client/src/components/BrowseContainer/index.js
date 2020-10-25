@@ -64,20 +64,22 @@ function BrowseContainer({ itemArray, handleDelete, loggedInAs, setItemArray }) 
                                                     id="delete-btn"
                                                     onClick={() => handleDelete(entry._id)}
                                                 >Delete</Button>
-                                                <Button
-                                                    className="d-block mx-auto mt-1 mb-1"
-                                                    id="edit-btn"
-                                                    onClick={() => {
-                                                        handleShowEdit();
-                                                        setEditItemInfo({
-                                                            name: entry.name,
-                                                            description: entry.description,
-                                                            price: entry.price,
-                                                            imgUrl: entry.imgUrl,
-                                                            itemId: entry._id
-                                                        })
-                                                    }}
-                                                >Edit</Button>
+                                                {(entry.interest.length === 0) &&
+                                                    <Button
+                                                        className="d-block mx-auto mt-1 mb-1"
+                                                        id="edit-btn"
+                                                        onClick={() => {
+                                                            handleShowEdit();
+                                                            setEditItemInfo({
+                                                                name: entry.name,
+                                                                description: entry.description,
+                                                                price: entry.price,
+                                                                imgUrl: entry.imgUrl,
+                                                                itemId: entry._id,
+                                                                interest: entry.interest
+                                                            })
+                                                        }}
+                                                    >Edit</Button>}
                                                 {(entry.interest.length > 0) && <Button
                                                     className="m-2"
                                                     variant="primary"
@@ -102,6 +104,23 @@ function BrowseContainer({ itemArray, handleDelete, loggedInAs, setItemArray }) 
                                                 >
                                                     View Interest
                                                 </Button>}
+                                                {(entry.interest.length > 0) &&
+                                                    <Button
+                                                        className="d-block mx-auto mt-1 mb-1"
+                                                        id="edit-btn"
+                                                        onClick={() => {
+                                                            alert('WARNING: Remove interest will remove any interest data stored for this item.  If you do not want to do this, please close the following window using the X in the top right corner.  By clicking Edit Item, the interest will be removed and the item will be updated with any changes made by the user')
+                                                            handleShowEdit();
+                                                            setEditItemInfo({
+                                                                name: entry.name,
+                                                                description: entry.description,
+                                                                price: entry.price,
+                                                                imgUrl: entry.imgUrl,
+                                                                itemId: entry._id,
+                                                                interest: entry.interest
+                                                            })
+                                                        }}
+                                                    >Remove Interest</Button>}
                                                 <EditModal
                                                     setItemArray={setItemArray}
                                                     editItemInfo={editItemInfo}
@@ -112,7 +131,6 @@ function BrowseContainer({ itemArray, handleDelete, loggedInAs, setItemArray }) 
                                                     closeEditModal={closeEditModal}
                                                 />
                                                 <ViewInterestModal
-
                                                     showViewInterest={showViewInterest}
                                                     closeViewInterestModal={closeViewInterestModal}
                                                 />

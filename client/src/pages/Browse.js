@@ -26,6 +26,7 @@ function Browse({ loggedInAs, state, dispatch, handleLogout }) {
                 const request = await axios
                     .get('/api/users/browseItems');
                 // setItemArray pushes request to itemArray
+                console.log('response api/browseItems: ', request.data[0])
                 setItemArray(request.data[0]); 
             }
             fetchData();
