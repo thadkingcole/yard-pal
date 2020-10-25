@@ -55,18 +55,14 @@ function BrowseContainer({ itemArray, handleDelete, loggedInAs, setItemArray }) 
                                             src={entry.imgUrl} alt={entry.name} width="100" height="100" /></td>
                                     <td className="entry-name">{entry.name}</td>
                                     <td className="entry-description">{entry.description}</td>
-                                    <td className="entry-price"><h4>$ {entry.price}</h4></td>
+                                    <td className="entry-price">$ {entry.price}</td>
                                     <td>
                                         {(loggedInAs.isLoggedOn ?
                                             <>
-                                                <Button
-                                                    className="d-block mx-auto"
-                                                    id="delete-btn"
-                                                    onClick={() => handleDelete(entry._id)}
-                                                >Delete</Button>
+                                                
                                                 {(entry.interest.length === 0) &&
                                                     <Button
-                                                        className="d-block mx-auto mt-1 mb-1"
+                                                        className="d-block mx-auto editBtn"
                                                         id="edit-btn"
                                                         onClick={() => {
                                                             handleShowEdit();
@@ -81,7 +77,7 @@ function BrowseContainer({ itemArray, handleDelete, loggedInAs, setItemArray }) 
                                                         }}
                                                     >Edit</Button>}
                                                 {(entry.interest.length > 0) && <Button
-                                                    className="m-2"
+                                                    className="viewInterestBtn"
                                                     variant="primary"
                                                     onClick={() => {
                                                         handleShowViewInterest();
@@ -101,12 +97,10 @@ function BrowseContainer({ itemArray, handleDelete, loggedInAs, setItemArray }) 
                                                         })
                                                     }}
 
-                                                >
-                                                    View Interest
-                                                </Button>}
+                                                >View Interest</Button>}
                                                 {(entry.interest.length > 0) &&
                                                     <Button
-                                                        className="d-block mx-auto mt-1 mb-1"
+                                                        className="d-block mx-auto removeInterestBtn"
                                                         id="edit-btn"
                                                         onClick={() => {
                                                             alert('WARNING: Remove interest will remove any interest data stored for this item.  If you do not want to do this, please close the following window using the X in the top right corner.  By clicking Edit Item, the interest will be removed and the item will be updated with any changes made by the user')
@@ -121,6 +115,11 @@ function BrowseContainer({ itemArray, handleDelete, loggedInAs, setItemArray }) 
                                                             })
                                                         }}
                                                     >Remove Interest</Button>}
+                                                <Button
+                                                    className="d-block mx-auto deleteBtn"
+                                                    id="delete-btn"
+                                                    onClick={() => handleDelete(entry._id)}
+                                                >Delete</Button>
                                                 <EditModal
                                                     setItemArray={setItemArray}
                                                     editItemInfo={editItemInfo}
