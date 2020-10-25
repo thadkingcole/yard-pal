@@ -20,7 +20,8 @@ const sellerSeed = [
         name: "apple",
         description: "very comfortable and awesome",
         price: 20,
-        imgUrl: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.fJei9NVjmP1ImM-jLn-lBQHaHa%26pid%3DApi&f=1"
+        imgUrl: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.fJei9NVjmP1ImM-jLn-lBQHaHa%26pid%3DApi&f=1",
+        interest: [{ name: "First1 Last1", email: "First1@example.com", message: "I am interested in apple" }, { name: "First2 Last2", email: "First2@example.com", message: "I am interested in apple" } ]
       }
     ]
   },
@@ -33,7 +34,8 @@ const sellerSeed = [
         name: "chair",
         description: "very comfortable and awesome",
         price: 20,
-        imgUrl: "https://images.unsplash.com/photo-1503602642458-232111445657?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+        imgUrl: "https://images.unsplash.com/photo-1503602642458-232111445657?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
+        interest: [{ name: "First4 Last4", email: "First4@example.com", message: "I am interested in chair" }, { name: "First5 Last5", email: "First5@example.com", message: "I am interested in chair" }]
       }
     ]
   },
