@@ -84,13 +84,15 @@ function InterestModal({
                                 value={interestArray.email}
                                 onChange={handleChange}
                             />
-                            <Form.Label className="pt-1">Item or item description</Form.Label>
+                            <Form.Label className="pt-1">Message</Form.Label>
                             <Form.Control
+                                as="textarea"
+                                rows={4}
                                 type="input"
                                 id="message"
                                 className="form-control"
                                 name="message"
-                                placeholder="Item"
+                                placeholder="Message fot the seller"
                                 value={interestArray.message}
                                 onChange={handleChange}
                             />
