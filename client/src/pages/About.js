@@ -59,7 +59,11 @@ function About() {
             <br />
             <Row>
                 <Col className="col col-md-8 col-lg-8">
-                    <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+                    <ul>
+                        <li>Worked with the team to develop and implement the front-end layout</li>
+                        <li>Coordinated with backend team on routing information to front-end</li>
+                        <li>Participated in debugging and testing across application, including local testing of routes and debugging ReactJS issues</li>
+                    </ul>
                     <br />
                     <p>
                         <a target="_blank" rel="noopener noreferrer" href="https://github.com/diuguide">

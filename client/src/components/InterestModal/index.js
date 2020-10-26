@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { Button, Modal, Form, Row, Col } from 'react-bootstrap';
 import axios from 'axios';
 import { INTEREST_INFO } from '../../store/actions';
@@ -8,6 +9,7 @@ function InterestModal({
     show,
     closeInterestModal,
 }) {
+    const history = useHistory();
     const [state, dispatch] = useStoreContext();
     const [interestArray, setInterestArray] = useState({
         name: '',
@@ -22,11 +24,17 @@ function InterestModal({
             .put('/api/users/addInterest', state.interestItem)
             .then((response) => {
                 console.log('success');
+                setInterestArray({
+                    name: '',
+                    email: '',
+                    message: '',
+                })
+                history.push('/Search');
             })
             .catch((error) => {
                 console.log(error);
             });
-        window.location.reload()
+
     };
 
     const handleConfirm = () => {
@@ -95,7 +103,9 @@ function InterestModal({
                                 onChange={handleChange}
                             />
                             <Button
+                                className="mr-2"
                                 color="dark"
+                                variant="success"
                                 style={{ marginTop: '2rem' }}
                                 onClick={handleConfirm}
                             >Confirm Interest</Button>
