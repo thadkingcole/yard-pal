@@ -9,7 +9,7 @@ import { useStoreContext } from '../../store/store';
 function SearchBar() {
     const history = useHistory();
     const [username, setUsername] = useState('');
-    const [ state, dispatch ] = useStoreContext();
+    const [state, dispatch] = useStoreContext();
     const handleChange = (e) => setUsername(e.target.value);
     const handleClick = (e) => {
         e.preventDefault();
@@ -18,9 +18,14 @@ function SearchBar() {
         async function fetchData() {
             await axios.post('/api/users/searchUsername', { user })
                 .then(response => {
-                    const userId = response.data;
-                    history.push(`/browse/${userId}`)
-                    setUsername('');
+                    if (response.data === null) {
+                        alert('Incorrect Username. Please check the Username entererd and retry');
+                    }
+                    else {
+                        const userId = response.data;
+                        history.push(`/browse/${userId}`)
+                        setUsername('');
+                    }
                 })
                 .catch(err => console.log('catch error /api/users/searchUsername: ', err))
         }
