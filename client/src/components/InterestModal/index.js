@@ -92,7 +92,7 @@ function InterestModal({
                                 id="message"
                                 className="form-control"
                                 name="message"
-                                placeholder="Message fot the seller"
+                                placeholder="Message for the seller"
                                 value={interestArray.message}
                                 onChange={handleChange}
                             />
