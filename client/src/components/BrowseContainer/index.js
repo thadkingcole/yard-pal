@@ -41,8 +41,8 @@ function BrowseContainer({ itemArray, handleDelete, loggedInAs, setItemArray }) 
 
     return (
         <Row>
-            <Col className="col bg-light border rounded itemTable">
-                <Row className="">
+            <Col className="col itemTable">
+                <Row>
                     <Table striped bordered hover>
                         <tbody>
                             {/* Map through Item array into table */}

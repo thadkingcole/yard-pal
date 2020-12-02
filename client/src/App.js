@@ -64,7 +64,7 @@ const App = () => {
         </Row>
         <Row>
           <Col>
-            <NavBar />
+            <NavBar state={state} />
           </Col>
         </Row>
       </Container>
