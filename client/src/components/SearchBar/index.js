@@ -9,7 +9,7 @@ import { useStoreContext } from '../../store/store';
 function SearchBar() {
     const history = useHistory();
     const [username, setUsername] = useState('');
-    const [state, dispatch] = useStoreContext();
+    const [store, dispatch] = useStoreContext();
     const handleChange = (e) => setUsername(e.target.value);
     const handleClick = (e) => {
         e.preventDefault();

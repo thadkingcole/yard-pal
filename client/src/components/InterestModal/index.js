@@ -16,6 +16,7 @@ function InterestModal({
         email: '',
         message: '',
     })
+    
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -23,7 +24,7 @@ function InterestModal({
         await axios
             .put('/api/users/addInterest', state.interestItem)
             .then((response) => {
-                console.log('success');
+                console.log('State inside of interest click: ', response);
                 setInterestArray({
                     name: '',
                     email: '',
@@ -49,6 +50,7 @@ function InterestModal({
                 username: state.user_name,
             }
         })
+
     };
     const handleChange = (event) => {
         const { name, value } = event.target;
@@ -110,6 +112,7 @@ function InterestModal({
                                 variant="success"
                                 style={{ marginTop: '2rem' }}
                                 onClick={handleConfirm}
+                                
                             >Confirm Interest</Button>
                             <Button
                                 color="dark"
