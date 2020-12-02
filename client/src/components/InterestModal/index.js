@@ -24,7 +24,7 @@ function InterestModal({
         await axios
             .put('/api/users/addInterest', state.interestItem)
             .then((response) => {
-                console.log('State inside of interest click: ', response);
+                
                 setInterestArray({
                     name: '',
                     email: '',
