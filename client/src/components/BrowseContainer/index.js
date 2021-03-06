@@ -41,8 +41,8 @@ function BrowseContainer({ itemArray, handleDelete, loggedInAs, setItemArray }) 
 
     return (
         <Row>
-            <Col className="col bg-light border rounded itemTable">
-                <Row className="">
+            <Col className="col itemTable">
+                <Row>
                     <Table striped bordered hover>
                         <tbody>
                             {/* Map through Item array into table */}
@@ -59,10 +59,11 @@ function BrowseContainer({ itemArray, handleDelete, loggedInAs, setItemArray }) 
                                     <td>
                                         {(loggedInAs.isLoggedOn ?
                                             <>
-                                                
+
                                                 {(entry.interest.length === 0) &&
                                                     <Button
                                                         className="d-block mx-auto editBtn"
+                                                        variant="warning"
                                                         id="edit-btn"
                                                         onClick={() => {
                                                             handleShowEdit();
@@ -78,7 +79,7 @@ function BrowseContainer({ itemArray, handleDelete, loggedInAs, setItemArray }) 
                                                     >Edit</Button>}
                                                 {(entry.interest.length > 0) && <Button
                                                     className="viewInterestBtn"
-                                                    variant="primary"
+                                                    variant="success"
                                                     onClick={() => {
                                                         handleShowViewInterest();
                                                         dispatch({
@@ -101,6 +102,7 @@ function BrowseContainer({ itemArray, handleDelete, loggedInAs, setItemArray }) 
                                                 {(entry.interest.length > 0) &&
                                                     <Button
                                                         className="d-block mx-auto removeInterestBtn"
+                                                        variant="warning"
                                                         id="edit-btn"
                                                         onClick={() => {
                                                             alert('WARNING: Remove interest will remove any interest data stored for this item.  If you do not want to do this, please close the following window using the X in the top right corner.  By clicking Edit Item, the interest will be removed and the item will be updated with any changes made by the user')
@@ -117,6 +119,7 @@ function BrowseContainer({ itemArray, handleDelete, loggedInAs, setItemArray }) 
                                                     >Remove Interest</Button>}
                                                 <Button
                                                     className="d-block mx-auto deleteBtn"
+                                                    variant="danger"
                                                     id="delete-btn"
                                                     onClick={() => handleDelete(entry._id)}
                                                 >Delete</Button>
